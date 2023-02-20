@@ -2,39 +2,69 @@ package com.kltn.api.entity;
 
 import java.sql.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+//@Entity
+//@Table(name = "HoSo")
+@Embeddable
 public class HoSo {
-	@Id
+//	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String maHoSo;
+	//@Column(name = "maHoSo", columnDefinition = "nvarchar(255)")
+	//private String maHoSo;
+	//@Column(name = "soCMND")
 	private String soCMND;
+	//@Column(name = "ngaySinh")
 	private Date ngaySinh;
+	//@Column(name = "soDienThoai")
 	private String soDienThoai;
+	//@Column(name = "diaChi", columnDefinition = "nvarchar(255)")
 	private String diaChi;
+	//@Column(name = "noiSinh", columnDefinition = "nvarchar(255)")
 	private String noiSinh;
+	//@Column(name = "ngayCapCCCD")
 	private Date ngayCapCCCD;
+	//@Column(name = "noiCapCCCD", columnDefinition = "nvarchar(255)")
 	private String noiCapCCCD;
 	private String email;
+	//@Column(name = "doiTuong", columnDefinition = "nvarchar(255)")
 	private String doiTuong;
+	//@Column(name = "dienChinhSach", columnDefinition = "nvarchar(255)")
 	private String dienChinhSach;
+	//@Column(name = "ngayVaoDoan")
 	private Date ngayVaoDoan;
+	//@Column(name = "ngayVaoDang")
 	private Date ngayVaoDang;
-	private String trangThai;
+	//@Column(columnDefinition = "nvarchar(255)")
+	//private String trangThai;
+	
+//	@OneToOne
+//	@MapsId
+//	@JoinColumn(name="hoSo") 
+//	private SinhVien sinhVien;
+//	
+//	@OneToOne()
+//	@MapsId
+//	@JoinColumn(name="hoSo") 
+//	private GiangVien giangVien;
 	
 	public HoSo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HoSo(String maHoSo, String soCMND, Date ngaySinh, String soDienThoai, String diaChi, String noiSinh,
+	public HoSo( String soCMND, Date ngaySinh, String soDienThoai, String diaChi, String noiSinh,
 			Date ngayCapCCCD, String noiCapCCCD, String email, String doiTuong, String dienChinhSach, Date ngayVaoDoan,
-			Date ngayVaoDang, String trangThai) {
+			Date ngayVaoDang) {
 		super();
-		this.maHoSo = maHoSo;
+		//this.maHoSo = maHoSo;
 		this.soCMND = soCMND;
 		this.ngaySinh = ngaySinh;
 		this.soDienThoai = soDienThoai;
@@ -47,16 +77,16 @@ public class HoSo {
 		this.dienChinhSach = dienChinhSach;
 		this.ngayVaoDoan = ngayVaoDoan;
 		this.ngayVaoDang = ngayVaoDang;
-		this.trangThai = trangThai;
+		//this.trangThai = trangThai;
 	}
 
-	public String getMaHoSo() {
-		return maHoSo;
-	}
-
-	public void setMaHoSo(String maHoSo) {
-		this.maHoSo = maHoSo;
-	}
+//	public String getMaHoSo() {
+//		return maHoSo;
+//	}
+//
+//	public void setMaHoSo(String maHoSo) {
+//		this.maHoSo = maHoSo;
+//	}
 
 	public String getSoCMND() {
 		return soCMND;
@@ -154,13 +184,13 @@ public class HoSo {
 		this.ngayVaoDang = ngayVaoDang;
 	}
 
-	public String getTrangThai() {
-		return trangThai;
-	}
-
-	public void setTrangThai(String trangThai) {
-		this.trangThai = trangThai;
-	}
+//	public String getTrangThai() {
+//		return trangThai;
+//	}
+//
+//	public void setTrangThai(String trangThai) {
+//		this.trangThai = trangThai;
+//	}
 	
 	@Override
 	public String toString() {

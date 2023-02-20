@@ -1,0 +1,20 @@
+package com.kltn.api.entity;
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class DayNha {
+	@Id
+	private String maDayNha;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String tenDayNha;
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "dayNha")
+	private List<Phong> dsPhong;
+}

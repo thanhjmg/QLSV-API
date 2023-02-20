@@ -15,19 +15,19 @@ import com.kltn.api.service.HoSoService;
 @RestController
 @RequestMapping("/api")
 public class HoSoRestController {
-	@Autowired
-	private HoSoService hoSoService;
-
-	@PostMapping("/hoso")
-	public HoSo luuHoSo(@RequestBody HoSo hoSo) {
-		hoSoService.luuHoSo(hoSo);
-		return hoSo;
-		
-	}
-	
-	@GetMapping("/hoso")
-	public List<HoSo> getHoSo() {
-
-		return hoSoService.getHoSo();
-	}
+//	@Autowired
+//	private HoSoService hoSoService;
+//
+//	@PostMapping("/hoso")
+//	public HoSo luuHoSo(@RequestBody HoSo hoSo) {
+//		hoSoService.luuHoSo(hoSo);
+//		return hoSo;
+//		
+//	}
+//	
+//	@GetMapping("/hoso")
+//	public List<HoSo> getHoSo() {
+//
+//		return hoSoService.getHoSo();
+//	}
 }
