@@ -1,41 +1,43 @@
 package com.kltn.api.entity;
 
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-public class NganhHoc{
+public class NhanVien {
 	@Id
-	private String maNganh;
+	private String maNhanVien;
 	@Column( columnDefinition = "nvarchar(255)")
-	private String tenNganh;
-	private Integer tongTinChi;
+	private String tenNhanVien;
+	@Column( columnDefinition = "nvarchar(255)")
+
+	private Boolean gioiTinh;
+	
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "idKhoa")
+	@Embedded
+	private HoSo hoSo;
+	
+	@ManyToOne
+    @JoinColumn(name = "maKhoa")
 	private Khoa khoa;
-
-	public NganhHoc(String maNganh) {
-		super();
-		this.maNganh = maNganh;
-	}
-
+	
+	
+	@OneToOne
+    @JoinColumn(name = "maChucVu")
+	private ChucVu chucVu;
 	
 	
 }

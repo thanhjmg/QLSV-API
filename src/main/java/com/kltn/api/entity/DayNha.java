@@ -7,9 +7,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-public class DayNha {
+@Table
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DayNha{
 	@Id
 	private String maDayNha;
 	@Column(columnDefinition = "nvarchar(255)")

@@ -2,7 +2,6 @@ package com.kltn.api.entity;
 
 import java.util.List;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,15 +17,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoaiBangDiem {
+public class ChucVu {
+	
 	@Id
-	private String maLoaiBangDiem;
+	private String maChucVu;
 	@Column(columnDefinition = "nvarchar(255)")
-	private String tenLoaiBangDiem;
-	private Integer heSo;
+	private String tenChucVu;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loaiBangDiem")
-	private List<BangDiem> dsBangDiem;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "chucVu")
+	private List<NhanVien> dsNhanVien;
 }

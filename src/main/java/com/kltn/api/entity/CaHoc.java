@@ -1,10 +1,10 @@
 package com.kltn.api.entity;
 
+import java.sql.Time;
 import java.util.List;
 
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -18,15 +18,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoaiBangDiem {
+public class CaHoc{
 	@Id
-	private String maLoaiBangDiem;
-	@Column(columnDefinition = "nvarchar(255)")
-	private String tenLoaiBangDiem;
-	private Integer heSo;
-	@Column(columnDefinition = "nvarchar(255)")
+	private String maCaHoc;
+
+	private Time gioBD;
+	private Time gioKT;
 	private String trangThai;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loaiBangDiem")
-	private List<BangDiem> dsBangDiem;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "caHoc")
+	private List<Lich> dsLich;
+
+	public CaHoc(String maCaHoc) {
+		super();
+		this.maCaHoc = maCaHoc;
+	}
+
+	
+	
+	
 }

@@ -3,14 +3,8 @@ package com.kltn.api.entity;
 import java.sql.Date;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+
 
 //@Entity
 //@Table(name = "HoSo")
@@ -35,6 +29,7 @@ public class HoSo {
 	//@Column(name = "noiCapCCCD", columnDefinition = "nvarchar(255)")
 	private String noiCapCCCD;
 	private String email;
+	private String linkAnh;
 	//@Column(name = "doiTuong", columnDefinition = "nvarchar(255)")
 	private String doiTuong;
 	//@Column(name = "dienChinhSach", columnDefinition = "nvarchar(255)")
