@@ -31,7 +31,7 @@ public class SinhVienRest {
 	
 	@PutMapping
 	public void updateSinhVien(@RequestBody SinhVien sinhVien) {
-		sinhVien.setMaSinhVien(sinhVienService.autoId());
+//		sinhVien.setMaSinhVien(sinhVienService.autoId());
 		sinhVienService.saveOrUpdateSinhVien(sinhVien);
 		
 	}

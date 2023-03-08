@@ -23,6 +23,15 @@ public class DayNha{
 	@Column(columnDefinition = "nvarchar(255)")
 	private String tenDayNha;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "dayNha")
-	private List<Phong> dsPhong;
+	private Integer soTang;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String trangThai;
+	public DayNha(String maDayNha) {
+		super();
+		this.maDayNha = maDayNha;
+	}
+	
+	
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "dayNha")
+//	private List<Phong> dsPhong;
 }

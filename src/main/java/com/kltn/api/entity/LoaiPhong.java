@@ -23,8 +23,11 @@ public class LoaiPhong {
 	private String maLoaiPhong;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String tenLoaiPhong;
+	public LoaiPhong(String maLoaiPhong) {
+		super();
+		this.maLoaiPhong = maLoaiPhong;
+	}
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "loaiPhong")
-	private List<Phong> dsPhong;
+	
 	
 }

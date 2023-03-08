@@ -40,6 +40,6 @@ public class Phong{
 	@JoinColumn(name = "maDayNha")
 	private DayNha dayNha;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "phong")
-	private List<Lich> dsLich;
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "phong")
+//	private List<Lich> dsLich;
 }
