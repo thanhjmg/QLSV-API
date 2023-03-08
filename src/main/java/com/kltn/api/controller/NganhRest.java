@@ -31,7 +31,7 @@ public class NganhRest {
 	
 	@PutMapping
 	public void updateNganhHoc(@RequestBody NganhHoc nganhHoc) {
-		nganhHoc.setMaNganh(nganhHocService.autoId());
+		//nganhHoc.setMaNganh(nganhHocService.autoId());
 		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
 		
 	}

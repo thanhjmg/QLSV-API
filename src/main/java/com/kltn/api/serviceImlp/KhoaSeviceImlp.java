@@ -15,10 +15,10 @@ import com.kltn.api.service.KhoaService;
 public class KhoaSeviceImlp implements KhoaService{
 	@Autowired
 	private KhoaRepository khoaRepository;
-	
+
 	@Override
 	public List<Khoa> getAllKhoa() {
-		
+
 		return khoaRepository.findAll();
 	}
 
@@ -31,14 +31,14 @@ public class KhoaSeviceImlp implements KhoaService{
 	@Override
 	public void addOrUpdateKhoa(Khoa khoa) {
 		khoaRepository.save(khoa);
-		
+
 	}
 
 	@Override
 	public String autoId() {
-		 int id = khoaRepository.autoId();
-		    String naturalId = "K" + String.format("%03d", id+1);
-		    return naturalId;
+		int id = khoaRepository.autoId();
+		String naturalId = "K" + String.format("%03d", id+1);
+		return naturalId;
 	}
 
 }

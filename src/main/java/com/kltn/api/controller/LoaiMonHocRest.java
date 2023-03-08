@@ -12,42 +12,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kltn.api.entity.SinhVien;
-import com.kltn.api.service.SinhVienService;
+import com.kltn.api.entity.LoaiMonHoc;
+import com.kltn.api.service.LoaiMonHocService;
 
 @RestController
-@RequestMapping("/api/sinhvien")
-public class SinhVienRest {
+@RequestMapping("/api/loaimonhoc")
+public class LoaiMonHocRest {
 	
 	@Autowired
-	private SinhVienService sinhVienService;
+	LoaiMonHocService loaiMonHocService;
 	
 	@PostMapping
-	public void addSinhVien(@RequestBody SinhVien sinhVien) {
-		sinhVien.setMaSinhVien(sinhVienService.autoId());
-		sinhVienService.saveOrUpdateSinhVien(sinhVien);
+	public void addLoaiMonHoc( @RequestBody LoaiMonHoc loaiMonHoc) {
+		loaiMonHoc.setMaLoaiMonHoc(loaiMonHocService.autoId());
+		loaiMonHocService.saveOrUpdateLoaiMonHoc(loaiMonHoc);
 		
 	}
 	
 	@PutMapping
-	public void updateSinhVien(@RequestBody SinhVien sinhVien) {
-
-//		sinhVien.setMaSinhVien(sinhVienService.autoId());
-
-		sinhVienService.saveOrUpdateSinhVien(sinhVien);
+	public void updateLoaiMonHoc( @RequestBody LoaiMonHoc loaiMonHoc) {
+		//loaiMonHoc.setMaLoaiMonHoc(loaiMonHocService.autoId());
+		loaiMonHocService.saveOrUpdateLoaiMonHoc(loaiMonHoc);
 		
 	}
 
 	@GetMapping
-	public List<SinhVien> getAllSinhVien() {
+	public List<LoaiMonHoc> getAllLoaiMonHoc() {
 		// TODO Auto-generated method stub
-		return sinhVienService.getAllSinhVien();
+		return loaiMonHocService.getAllLoaiMonHoc();
 	}
-	
+
 	@GetMapping
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public SinhVien getNganhHocById(@PathVariable("id") String id) {
+	public LoaiMonHoc getLoaiMonHocById(@PathVariable(name = "id") String id) {
 		// TODO Auto-generated method stub
-		return sinhVienService.getNganhHocById(id);
+		return loaiMonHocService.getLoaiMonHocById(id);
 	}
+
 }

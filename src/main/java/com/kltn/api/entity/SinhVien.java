@@ -42,6 +42,12 @@ public class SinhVien {
 	@Embedded
 	private HoSo hoSo;
 
+
+	public SinhVien(String maSinhVien) {
+		super();
+		this.maSinhVien = maSinhVien;
+	}
+
 	
 
 
