@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,37 +11,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kltn.api.entity.LopHoc;
-import com.kltn.api.service.LopHocService;
+import com.kltn.api.entity.MonHoc;
+import com.kltn.api.service.MonHocService;
 
 @RestController
-@RequestMapping("/api/lophoc")
-public class LopHocRest {
+@RequestMapping("/api/monhoc")
+public class MonHocRest {
+
 	@Autowired
-	private LopHocService lopHocService;
-	
-	@PostMapping()
-	public void addLopHoc(@RequestBody LopHoc lopHoc) {
-		lopHoc.setMaLop(lopHocService.autoId());
-		lopHocService.saveOrUpdateLopHoc(lopHoc);
-	}
-	
-	@PutMapping()
-	public void updateLopHoc(@RequestBody LopHoc lopHoc) {
-		//lopHoc.setMaLop(lopHocService.autoId());
-		lopHocService.saveOrUpdateLopHoc(lopHoc);
-	}
-	
+	private MonHocService monHocService;
+
 	@GetMapping
-	public List<LopHoc> getAllLopHoc() {
+	public List<MonHoc> getAllMonHoc() {
 		// TODO Auto-generated method stub
-		return lopHocService.getAllLopHoc();
+		return monHocService.getAllMonHoc();
 	}
-	
+
 	@GetMapping
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public LopHoc getLopHocById(@PathVariable String id) {
+	public MonHoc getMonHocById(String id) {
 		// TODO Auto-generated method stub
-		return lopHocService.getLopHocById(id);
+		return monHocService.getMonHocById(id);
+	}
+
+	@PostMapping
+	public void addMonHoc(@RequestBody MonHoc monHoc) {
+		monHoc.setMaMonHoc(monHocService.autoId());
+		monHocService.addOrUpdateMonHoc(monHoc);
+	}
+	
+	@PutMapping
+	public void updateMonHoc(@RequestBody MonHoc monHoc) {
+		
+		monHocService.addOrUpdateMonHoc(monHoc);
 	}
 }

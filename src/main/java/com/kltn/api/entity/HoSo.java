@@ -2,7 +2,7 @@ package com.kltn.api.entity;
 
 import java.sql.Date;
 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 
@@ -20,19 +20,19 @@ public class HoSo {
 	private Date ngaySinh;
 	//@Column(name = "soDienThoai")
 	private String soDienThoai;
-	//@Column(name = "diaChi", columnDefinition = "nvarchar(255)")
+	@Column(name = "diaChi", columnDefinition = "nvarchar(255)")
 	private String diaChi;
-	//@Column(name = "noiSinh", columnDefinition = "nvarchar(255)")
+	@Column(name = "noiSinh", columnDefinition = "nvarchar(255)")
 	private String noiSinh;
 	//@Column(name = "ngayCapCCCD")
 	private Date ngayCapCCCD;
-	//@Column(name = "noiCapCCCD", columnDefinition = "nvarchar(255)")
+	@Column(name = "noiCapCCCD", columnDefinition = "nvarchar(255)")
 	private String noiCapCCCD;
 	private String email;
 	private String linkAnh;
-	//@Column(name = "doiTuong", columnDefinition = "nvarchar(255)")
+	@Column(name = "doiTuong", columnDefinition = "nvarchar(255)")
 	private String doiTuong;
-	//@Column(name = "dienChinhSach", columnDefinition = "nvarchar(255)")
+	@Column(name = "dienChinhSach", columnDefinition = "nvarchar(255)")
 	private String dienChinhSach;
 	//@Column(name = "ngayVaoDoan")
 	private Date ngayVaoDoan;

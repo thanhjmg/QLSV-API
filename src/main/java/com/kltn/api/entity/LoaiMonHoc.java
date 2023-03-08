@@ -24,7 +24,13 @@ public class LoaiMonHoc {
 	private String tenLoaiMonHoc;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
+	public LoaiMonHoc(String maLoaiMonHoc) {
+		super();
+		this.maLoaiMonHoc = maLoaiMonHoc;
+	}
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loaiMonHoc")
-	private List<MonHoc> dsMonHoc;
+	
+	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loaiMonHoc")
+//	private List<MonHoc> dsMonHoc;
 }

@@ -10,39 +10,41 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kltn.api.entity.LopHoc;
-import com.kltn.api.service.LopHocService;
+import com.kltn.api.entity.HocKy;
+import com.kltn.api.service.HocKyService;
 
 @RestController
-@RequestMapping("/api/lophoc")
-public class LopHocRest {
+@RequestMapping("/api/hocky")
+public class HocKyRest {
+	
 	@Autowired
-	private LopHocService lopHocService;
-	
-	@PostMapping()
-	public void addLopHoc(@RequestBody LopHoc lopHoc) {
-		lopHoc.setMaLop(lopHocService.autoId());
-		lopHocService.saveOrUpdateLopHoc(lopHoc);
-	}
-	
-	@PutMapping()
-	public void updateLopHoc(@RequestBody LopHoc lopHoc) {
-		//lopHoc.setMaLop(lopHocService.autoId());
-		lopHocService.saveOrUpdateLopHoc(lopHoc);
-	}
+	private HocKyService hocKyService;
 	
 	@GetMapping
-	public List<LopHoc> getAllLopHoc() {
+	public List<HocKy> getAllKhoa() {
 		// TODO Auto-generated method stub
-		return lopHocService.getAllLopHoc();
+		return hocKyService.getAllKhoa();
 	}
-	
+
 	@GetMapping
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public LopHoc getLopHocById(@PathVariable String id) {
+	@ResponseBody
+	public HocKy getHocKyById(@PathVariable String id) {
 		// TODO Auto-generated method stub
-		return lopHocService.getLopHocById(id);
+		return hocKyService.getHocKyById(id);
+	}
+
+	@PostMapping
+	public void addHocKy(@RequestBody HocKy hocKy) {
+		hocKy.setMaHocKy(hocKyService.autoId());
+		hocKyService.addOrUpdateHocKy(hocKy);
+	}
+	
+	@PutMapping
+	public void updateHocKy(@RequestBody HocKy hocKy) {
+		hocKyService.addOrUpdateHocKy(hocKy);
 	}
 }
