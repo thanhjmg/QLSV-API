@@ -54,6 +54,9 @@ public class BangDiem implements Serializable{
 	private float thucHanh2;
 	@Column(columnDefinition = "float", nullable = true)
 	private float thucHanh3;
+	@Column(columnDefinition = "float", nullable = true)
+	private float diemTongKet;
+	
 	
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
