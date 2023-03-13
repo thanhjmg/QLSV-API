@@ -33,10 +33,15 @@ public class LopHocPhan{
 	private Date ngayKetThuc;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
+	public LopHocPhan(String maLopHocPhan) {
+		super();
+		this.maLopHocPhan = maLopHocPhan;
+	}
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
-	private List<Lich> dsLich;
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
+//	private List<Lich> dsLich;
+//	
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
+//	private List<BangDiem> dsBangDiem;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
-	private List<BangDiem> dsBangDiem;
 }

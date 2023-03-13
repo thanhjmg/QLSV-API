@@ -1,5 +1,7 @@
 package com.kltn.api.entity;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -10,11 +12,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class NhanVien {
 	@Id
 	private String maNhanVien;
@@ -38,6 +41,12 @@ public class NhanVien {
 	@OneToOne
     @JoinColumn(name = "maChucVu")
 	private ChucVu chucVu;
+
+
+	public NhanVien(String maNhanVien) {
+		super();
+		this.maNhanVien = maNhanVien;
+	}
 	
 	
 }

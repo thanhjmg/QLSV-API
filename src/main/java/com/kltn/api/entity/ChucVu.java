@@ -26,6 +26,5 @@ public class ChucVu {
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "chucVu")
-	private List<NhanVien> dsNhanVien;
+	
 }

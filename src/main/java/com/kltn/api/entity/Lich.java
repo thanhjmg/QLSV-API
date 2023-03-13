@@ -33,7 +33,7 @@ public class Lich {
 	
 	@ManyToOne
 	@JoinColumn(name = "idNhanVien")
-	private NhanVien giangVien;
+	private NhanVien nhanVien;
 	
 	@ManyToOne
 	@JoinColumn(name = "maLopHocPhan")
@@ -42,4 +42,10 @@ public class Lich {
 	@ManyToOne
 	@JoinColumn(name = "maCaHoc")
 	private CaHoc caHoc;
+
+	public Lich(String maLich) {
+		super();
+		this.maLich = maLich;
+	}
+	
 }

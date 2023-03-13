@@ -3,9 +3,10 @@ package com.kltn.api.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.kltn.api.entity.CaHoc;
+import com.kltn.api.entity.ChucVu;
 
-public interface CaHocRepository extends JpaRepository<CaHoc, String>{
-	@Query("SELECT COUNT(*) val_count FROM CaHoc")
+public interface ChucVuRepository extends JpaRepository<ChucVu, String> {
+	@Query("SELECT COUNT(*) val_count FROM ChucVu")
 	public int autoId();
+
 }

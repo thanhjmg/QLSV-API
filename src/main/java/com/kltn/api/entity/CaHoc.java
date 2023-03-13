@@ -26,8 +26,8 @@ public class CaHoc{
 	private Time gioKT;
 	private String trangThai;
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "caHoc")
-	private List<Lich> dsLich;
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "caHoc")
+//	private List<Lich> dsLich;
 
 	public CaHoc(String maCaHoc) {
 		super();

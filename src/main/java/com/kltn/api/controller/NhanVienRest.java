@@ -12,39 +12,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kltn.api.entity.NganhHoc;
-import com.kltn.api.service.NganhHocService;
+import com.kltn.api.entity.NhanVien;
+import com.kltn.api.entity.SinhVien;
+import com.kltn.api.service.NhanVienService;
 
-@RestController()
-@RequestMapping("/api/nganh")
-public class NganhRest {
-	
+@RestController
+@RequestMapping("/api/nhanvien")
+public class NhanVienRest {
 	@Autowired
-	private NganhHocService nganhHocService;
+	private NhanVienService nhanVienService;
 	
 	@PostMapping
-	public void addNganhHoc(@RequestBody NganhHoc nganhHoc) {
-		nganhHoc.setMaNganh(nganhHocService.autoId());
-		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
+	public void addNhanVien(@RequestBody NhanVien nhanVien) {
+		nhanVien.setMaNhanVien(nhanVienService.autoId());
+		nhanVienService.saveOrUpdateNhanVien(nhanVien);
 		
 	}
 	
 	@PutMapping
-	public void updateNganhHoc(@RequestBody NganhHoc nganhHoc) {
-		//nganhHoc.setMaNganh(nganhHocService.autoId());
-		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
+	public void updateNhanVien(@RequestBody NhanVien nhanVien) {
+
+//		sinhVien.setMaSinhVien(sinhVienService.autoId());
+
+		nhanVienService.saveOrUpdateNhanVien(nhanVien);
 		
 	}
 	@GetMapping
-	public List<NganhHoc> getAllNganhHoc() {
+	public List<NhanVien> getAllNhanVien() {
 		// TODO Auto-generated method stub
-		return nganhHocService.getAllNganhHoc();
+		return nhanVienService.getAllNhanVien();
 	}
 	
 	@GetMapping
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public NganhHoc getNganhHocById(@PathVariable String id) {
+	public NhanVien getNhanVienById(@PathVariable("id") String id) {
 		// TODO Auto-generated method stub
-		return nganhHocService.getNganhHocById(id);
+		return nhanVienService.getNhanVienById(id);
 	}
 }

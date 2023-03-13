@@ -12,39 +12,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.NganhHoc;
-import com.kltn.api.service.NganhHocService;
+import com.kltn.api.service.LichService;
 
-@RestController()
-@RequestMapping("/api/nganh")
-public class NganhRest {
-	
+@RestController
+@RequestMapping("/api/lich")
+public class LichRest {
 	@Autowired
-	private NganhHocService nganhHocService;
+	private LichService lichService;
 	
 	@PostMapping
-	public void addNganhHoc(@RequestBody NganhHoc nganhHoc) {
-		nganhHoc.setMaNganh(nganhHocService.autoId());
-		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
-		
+	public void addLichHoc(@RequestBody Lich lich) {
+		lich.setMaLich(lichService.autoId());
+		lichService.saveOrUpdateLich(lich);
 	}
-	
 	@PutMapping
-	public void updateNganhHoc(@RequestBody NganhHoc nganhHoc) {
-		//nganhHoc.setMaNganh(nganhHocService.autoId());
-		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
+	public void updateLichHoc(@RequestBody Lich lich) {
 		
+		lichService.saveOrUpdateLich(lich);
 	}
 	@GetMapping
-	public List<NganhHoc> getAllNganhHoc() {
-		// TODO Auto-generated method stub
-		return nganhHocService.getAllNganhHoc();
+	public List<Lich> getAllLich(){
+		return lichService.getAllLich();
 	}
-	
 	@GetMapping
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public NganhHoc getNganhHocById(@PathVariable String id) {
+	public Lich getLichById(@PathVariable String id) {
 		// TODO Auto-generated method stub
-		return nganhHocService.getNganhHocById(id);
+		return lichService.getLichById(id);
 	}
+
 }

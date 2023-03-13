@@ -39,7 +39,13 @@ public class Phong{
 	@ManyToOne
 	@JoinColumn(name = "maDayNha")
 	private DayNha dayNha;
+
+	public Phong(String maPhong) {
+		super();
+		this.maPhong = maPhong;
+	}
 	
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "phong")
 //	private List<Lich> dsLich;
+	
 }
