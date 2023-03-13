@@ -1,9 +1,9 @@
 package com.kltn.api.serviceImlp;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.kltn.api.dao.UserRepository;
 import com.kltn.api.entity.Role;
 import com.kltn.api.entity.User;
+import com.kltn.api.repository.UserRepository;
 import com.kltn.api.service.AuthService;
 import com.kltn.api.service.JwtService;
 
@@ -26,7 +26,7 @@ import java.util.Map;
 @Slf4j
 public class AuthServiceImlp implements AuthService {
 
-    private final UserRepository userRepo;
+	private final UserRepository userRepo;
 
 
 
@@ -79,6 +79,8 @@ public class AuthServiceImlp implements AuthService {
         Map<String, String> dataAuth = new HashMap<>();
         dataAuth.put("accessToken",accessToken);
         dataAuth.put("refreshToken",refreshToken);
+        dataAuth.put("username",user.getUsername());
+        dataAuth.put("role",user.getRole().name());
 
         return dataAuth;
     }

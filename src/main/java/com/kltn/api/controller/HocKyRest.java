@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kltn.api.entity.ChiTietHocKy;
+import com.kltn.api.entity.ChiTietMonHoc;
 import com.kltn.api.entity.HocKy;
 import com.kltn.api.service.HocKyService;
 
@@ -46,5 +48,11 @@ public class HocKyRest {
 	@PutMapping
 	public void updateHocKy(@RequestBody HocKy hocKy) {
 		hocKyService.addOrUpdateHocKy(hocKy);
+	}
+	
+	@PostMapping("/addCTMH")
+	public void addCTMonHoc(@RequestBody ChiTietMonHoc chiTietMonHoc) {
+		
+		hocKyService.addChiTietMonHoc(chiTietMonHoc);
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kltn.api.entity.ChiTietPhieuDangKy;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.service.PhieuDKHPService;
 
@@ -38,14 +39,20 @@ public class PhieuDKHPRest {
 	}
 
 	@PostMapping
-	public void addKhoa(@RequestBody PhieuDangKyHocPhan phieuDangKyHocPhan) {
+	public void addPhieuDK(@RequestBody PhieuDangKyHocPhan phieuDangKyHocPhan) {
 		phieuDangKyHocPhan.setMaPhieuDangKy(phieuDKHPService.autoId());
-		phieuDKHPService.addOrUpdateKhoa(phieuDangKyHocPhan);
+		phieuDKHPService.addOrUpdatePhieuDK(phieuDangKyHocPhan);
 	}
 	
 	@PutMapping
-	public void updateKhoa(@RequestBody PhieuDangKyHocPhan phieuDangKyHocPhan) {
+	public void updatePhieuDK(@RequestBody PhieuDangKyHocPhan phieuDangKyHocPhan) {
 		phieuDangKyHocPhan.setMaPhieuDangKy(phieuDKHPService.autoId());
-		phieuDKHPService.addOrUpdateKhoa(phieuDangKyHocPhan);
+		phieuDKHPService.addOrUpdatePhieuDK(phieuDangKyHocPhan);
+	}
+	
+	@PostMapping("/add-ctpdk")
+	public void addChiTietPhieuDK(@RequestBody ChiTietPhieuDangKy chiTietPhieuDangKy) {
+		
+		phieuDKHPService.addChiTietPhieuDKHP(chiTietPhieuDangKy);
 	}
 }

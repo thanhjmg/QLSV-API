@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.CaHocRepository;
-import com.kltn.api.dao.LichRepository;
-import com.kltn.api.dao.LopHocPhanRepository;
-import com.kltn.api.dao.NhanVienRepository;
-import com.kltn.api.dao.PhongRepository;
 import com.kltn.api.entity.CaHoc;
 import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.NhanVien;
 import com.kltn.api.entity.Phong;
+import com.kltn.api.repository.CaHocRepository;
+import com.kltn.api.repository.LichRepository;
+import com.kltn.api.repository.LopHocPhanRepository;
+import com.kltn.api.repository.NhanVienRepository;
+import com.kltn.api.repository.PhongRepository;
 import com.kltn.api.service.LichService;
 
 @Service

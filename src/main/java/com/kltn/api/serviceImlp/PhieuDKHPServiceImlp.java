@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.PhieuDKHPRepository;
-import com.kltn.api.dao.SinhVienRepository;
+import com.kltn.api.entity.ChiTietPhieuDangKy;
 import com.kltn.api.entity.Khoa;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.entity.SinhVien;
+import com.kltn.api.repository.ChiTietPhieuDKHPRepository;
+import com.kltn.api.repository.LoaiDKHPRepository;
+import com.kltn.api.repository.MonHocRepository;
+import com.kltn.api.repository.PhieuDKHPRepository;
+import com.kltn.api.repository.SinhVienRepository;
 import com.kltn.api.service.PhieuDKHPService;
 
 @Service
@@ -21,6 +25,12 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	private PhieuDKHPRepository phieuDKHPRepository;
 	@Autowired
 	private SinhVienRepository sinhVienRepository;
+	@Autowired
+	private ChiTietPhieuDKHPRepository chiTietPhieuDKHPRepository;
+	@Autowired
+	private MonHocRepository monHocRepository;
+	@Autowired
+	private LoaiDKHPRepository loaiDKHPRepository;
 	
 
 	@Override
@@ -36,7 +46,7 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	}
 
 	@Override
-	public void addOrUpdateKhoa(PhieuDangKyHocPhan phieuDangKyHocPhan) {
+	public void addOrUpdatePhieuDK(PhieuDangKyHocPhan phieuDangKyHocPhan) {
 		if(!phieuDangKyHocPhan.getSinhVien().getMaSinhVien().equals("")) {
 			var sinhVien = sinhVienRepository.findById(phieuDangKyHocPhan.getSinhVien().getMaSinhVien()).get();
 			
@@ -58,6 +68,25 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 		int id = phieuDKHPRepository.autoId();
 		String naturalId = "PDK" + String.format("%03d", id+1);
 		return naturalId;
+	}
+
+	@Override
+	public void addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy) {
+		if((!chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy().equals(""))&& (!chiTietPhieuDangKy.getMonHoc().getMaMonHoc().equals("")
+				&& (!chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP().equals("")))){
+			var pdk = phieuDKHPRepository.findById(chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy()).get();
+			var monHoc = monHocRepository.findById(chiTietPhieuDangKy.getMonHoc().getMaMonHoc()).get();
+			var loaiPhieu = loaiDKHPRepository.findById(chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP()).get();
+			if(pdk != null && monHoc !=null && loaiPhieu != null) {
+				chiTietPhieuDangKy.setLoaiDangKyHP(loaiPhieu);
+				chiTietPhieuDangKy.setMonHoc(monHoc);
+				chiTietPhieuDangKy.setPhieuDangKyHocPhan(pdk);
+			}
+			
+			
+		}
+		chiTietPhieuDKHPRepository.save(chiTietPhieuDangKy);
+		
 	}
 
 }

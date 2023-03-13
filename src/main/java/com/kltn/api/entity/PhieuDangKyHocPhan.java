@@ -26,4 +26,11 @@ public class PhieuDangKyHocPhan{
 	@ManyToOne
 	@JoinColumn(name = "idSinhVien")
 	private SinhVien sinhVien;
+
+	public PhieuDangKyHocPhan(String maPhieuDangKy) {
+		super();
+		this.maPhieuDangKy = maPhieuDangKy;
+	}
+	
+	
 }

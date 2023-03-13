@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.NhanVienRepository;
 import com.kltn.api.entity.NhanVien;
+import com.kltn.api.repository.NhanVienRepository;
 import com.kltn.api.service.NhanVienService;
 
 @Service

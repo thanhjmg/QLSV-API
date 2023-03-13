@@ -9,5 +9,5 @@ public interface LopHocPhanService {
 	public List<LopHocPhan> getAllLopHocPhan();
 	public LopHocPhan getLopHocPhanById(String id);
 	public String autoId();
-
+	
 }

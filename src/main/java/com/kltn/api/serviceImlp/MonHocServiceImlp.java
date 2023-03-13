@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.LoaiMonHocRepository;
-import com.kltn.api.dao.MonHocRepository;
 import com.kltn.api.entity.Khoa;
 import com.kltn.api.entity.LoaiMonHoc;
 import com.kltn.api.entity.MonHoc;
+import com.kltn.api.repository.LoaiMonHocRepository;
+import com.kltn.api.repository.MonHocRepository;
 import com.kltn.api.service.MonHocService;
 
 @Service

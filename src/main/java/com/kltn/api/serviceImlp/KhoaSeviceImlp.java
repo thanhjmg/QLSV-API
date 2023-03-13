@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.KhoaRepository;
 import com.kltn.api.entity.Khoa;
+import com.kltn.api.repository.KhoaRepository;
 import com.kltn.api.service.KhoaService;
 
 @Service

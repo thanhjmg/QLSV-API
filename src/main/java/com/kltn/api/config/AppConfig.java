@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.kltn.api.dao.UserRepository;
+import com.kltn.api.repository.UserRepository;
 
 @Configuration
 @RequiredArgsConstructor

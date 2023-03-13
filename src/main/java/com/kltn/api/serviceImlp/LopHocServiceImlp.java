@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.LopHocRepository;
-import com.kltn.api.dao.NganhRepository;
 import com.kltn.api.entity.LopHoc;
 import com.kltn.api.entity.NganhHoc;
+import com.kltn.api.repository.LopHocRepository;
+import com.kltn.api.repository.NganhRepository;
 import com.kltn.api.service.LopHocService;
 
 @Service

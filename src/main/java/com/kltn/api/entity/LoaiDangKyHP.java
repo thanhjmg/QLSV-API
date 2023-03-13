@@ -28,8 +28,12 @@ public class LoaiDangKyHP{
 	private String tenLoaiDKHP;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
+	public LoaiDangKyHP(String maLoaiDKHP) {
+		super();
+		this.maLoaiDKHP = maLoaiDKHP;
+	}
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "loaiDangKyHP")
-	private List<ChiTietPhieuDangKy> dsChiTietPhieuDangKi;
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "loaiDangKyHP")
+//	private List<ChiTietPhieuDangKy> dsChiTietPhieuDangKi;
 		
 }

@@ -32,12 +32,29 @@ public class BangDiem implements Serializable{
 	@JoinColumn(name = "idSinhVien")
 	private SinhVien sinhVien;
 	
-	private float diem;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thuongKy1;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thuongKy2;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thuongKy3;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thuongKy4;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thuongKy5;
+	
+	@Column(columnDefinition = "float", nullable = true)
+	private float giuaKy;
+	@Column(columnDefinition = "float", nullable = true)
+	private float cuoiKy;
+	
+	@Column(columnDefinition = "float", nullable = true)
+	private float thucHanh1;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thucHanh2;
+	@Column(columnDefinition = "float", nullable = true)
+	private float thucHanh3;
+	
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
-	
-	@ManyToOne
-	@JoinColumn(name = "maLoaiBangDiem")
-	private LoaiBangDiem loaiBangDiem;
-	
 }

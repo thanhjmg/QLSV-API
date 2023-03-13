@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kltn.api.dao.CaHocRepository;
 import com.kltn.api.entity.CaHoc;
+import com.kltn.api.repository.CaHocRepository;
 import com.kltn.api.service.CaHocService;
 
 @Service

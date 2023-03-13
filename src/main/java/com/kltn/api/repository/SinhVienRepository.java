@@ -1,4 +1,4 @@
-package com.kltn.api.dao;
+package com.kltn.api.repository;
 
 import java.util.List;
 

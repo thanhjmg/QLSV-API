@@ -27,4 +27,11 @@ public class ChuongTrinhKhung{
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idNganh")
 	private NganhHoc nganhHoc;
+
+	public ChuongTrinhKhung(String maChuongTrinhKhung) {
+		super();
+		this.maChuongTrinhKhung = maChuongTrinhKhung;
+	}
+	
+	
 }

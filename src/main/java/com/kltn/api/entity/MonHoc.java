@@ -61,4 +61,11 @@ public class MonHoc{
 	    @JoinColumn(name = "maLoaiMonHoc")
 	    private LoaiMonHoc loaiMonHoc;
 
+		public MonHoc(String maMonHoc) {
+			super();
+			this.maMonHoc = maMonHoc;
+		}
+	    
+	    
+
 }

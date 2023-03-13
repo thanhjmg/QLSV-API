@@ -25,4 +25,10 @@ public class HocKy {
 	private Date thoiGianKT;
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
+	public HocKy(String maHocKy) {
+		super();
+		this.maHocKy = maHocKy;
+	}
+	
+	
 }

@@ -25,54 +25,60 @@ import java.util.Map;
 public class AuthRest {
 
 	@Autowired
-	private  AuthService authService;
+    private  AuthService authService;
 
-	@GetMapping("/user")
-	public ResponseEntity<List<User>> getUsers(){
+    @GetMapping("/user")
+    public ResponseEntity<List<User>> getUsers(){
 
-		return ResponseEntity.ok().body(authService.getUsers());
-	}
+        return ResponseEntity.ok().body(authService.getUsers());
+    }
 
-	@GetMapping("/refresh-token")
-	public ResponseEntity<Map<String, String>> refreshToken(@CookieValue(name="refreshToken")String refreshToken, HttpServletResponse response) {
+    @GetMapping("/refresh-token")
+    public ResponseEntity<Map<String, String>> refreshToken(@CookieValue(name="refreshToken")String refreshToken, HttpServletResponse response) {
 
-		try {
-			Map<String, String>  newDataToken = authService.getNewToken(refreshToken);
-			HttpHeaders cookies = new HttpHeaders();
-			cookies.add("Set-Cookie","refreshToken="+newDataToken.get("refreshToken")+";Secure; HttpOnly");
+        try {
+            Map<String, String>  newDataToken = authService.getNewToken(refreshToken);
+            HttpHeaders cookies = new HttpHeaders();
+            cookies.add("Set-Cookie","refreshToken="+newDataToken.get("refreshToken")+";Secure; HttpOnly");
 
-			newDataToken.remove("refreshToken");
-			return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(newDataToken);
-		}
-		catch(Exception e){
+            newDataToken.remove("refreshToken");
+            return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(newDataToken);
+        }
+        catch(Exception e){
 
-			Map<String, String> error = new HashMap<>();
-			error.put("errorMessage", e.getMessage());
+                Map<String, String> error = new HashMap<>();
+                error.put("errorMessage", e.getMessage());
 
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
-		}
-	}
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
+            }
 
-	@PostMapping("/register")
-	public ResponseEntity<Map<String, String>> registerUser(@RequestBody ObjectNode  userRegister){
-		Map<String, String> dataAuth = authService.registerUser(userRegister); // trả về map bao gồm accesstoken vs refresh token
-		HttpHeaders cookies = new HttpHeaders();
-		cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Map<String, String>> registerUser(@RequestBody ObjectNode  userRegister){
+        Map<String, String> dataAuth = authService.registerUser(userRegister); // trả về map bao gồm accesstoken vs refresh token
+        HttpHeaders cookies = new HttpHeaders();
+        cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");
 
 
-		dataAuth.remove("refreshToken");
-		return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(dataAuth); // chỉ còn accesstoken trả về bên fe
-	}
+        dataAuth.remove("refreshToken");
+        return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(dataAuth); // chỉ còn accesstoken trả về bên fe
+    }
 
-	@PostMapping("/authenticate")
-	public ResponseEntity<Map<String, String>> authenticateUser(@RequestBody ObjectNode  userData){
-		Map<String, String> dataAuth = authService.authenticateUser(userData);
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> authenticateUser(@RequestBody ObjectNode  userData){
+    	
+        Map<String, String> dataAuth = authService.authenticateUser(userData);
 
-		HttpHeaders cookies = new HttpHeaders();
-		cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");
 
-		// chỉ trả về accessToken
-		dataAuth.remove("refreshToken");
-		return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(dataAuth);
-	}
+        HttpHeaders cookies = new HttpHeaders();
+        cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");
+
+        // chỉ trả về accessToken
+        dataAuth.remove("refreshToken");
+        return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(dataAuth);
+    }
+
+	
+	
 }
