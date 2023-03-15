@@ -21,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/auth")
+@CrossOrigin(origins =  "${client.url}")
 @RequiredArgsConstructor
 public class AuthRest {
 
@@ -69,7 +70,7 @@ public class AuthRest {
     public ResponseEntity<Map<String, String>> authenticateUser(@RequestBody ObjectNode  userData){
     	
         Map<String, String> dataAuth = authService.authenticateUser(userData);
-
+        
 
         HttpHeaders cookies = new HttpHeaders();
         cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");

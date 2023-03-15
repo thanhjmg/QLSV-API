@@ -81,7 +81,7 @@ public class AuthServiceImlp implements AuthService {
         dataAuth.put("refreshToken",refreshToken);
         dataAuth.put("username",user.getUsername());
         dataAuth.put("role",user.getRole().name());
-
+        
         return dataAuth;
     }
 
