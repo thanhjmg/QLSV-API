@@ -23,12 +23,12 @@ public class ChiTietPhieuDangKy implements Serializable{
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "maMonHoc")
-	private MonHoc monHoc;
+	@JoinColumn(name = "maHocPhan")
+	private HocPhan hocPhan;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "maHocKy")
+	@JoinColumn(name = "maPhieuDangKyHP")
 	private PhieuDangKyHocPhan phieuDangKyHocPhan;
 	
 	private Date ngayDangKy;

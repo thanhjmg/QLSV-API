@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SinhVien {
+public class SinhVien extends Nguoi{
 	@Id
 	private String maSinhVien;
 	@Column(name = "tenSinhVien", columnDefinition = "nvarchar(255)")
@@ -39,8 +39,8 @@ public class SinhVien {
 	private LopHoc lopHoc;
 	
 	
-	@Embedded
-	private HoSo hoSo;
+//	@Embedded
+//	private HoSo hoSo;
 
 
 	public SinhVien(String maSinhVien) {

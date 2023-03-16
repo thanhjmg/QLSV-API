@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kltn.api.entity.ChiTietHocKy;
-import com.kltn.api.entity.ChiTietMonHoc;
+import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
 import com.kltn.api.repository.ChiTietHocKyRepository;
 import com.kltn.api.repository.ChiTietMonHocRepository;
@@ -52,17 +52,17 @@ public class HocKyServiceImlp implements  HocKyService{
 	}
 
 	@Override
-	public void addChiTietMonHoc(ChiTietMonHoc chiTietMonHoc) {
-		if((!chiTietMonHoc.getHocKy().getMaHocKy().equals(""))&& (!chiTietMonHoc.getMonHoc().getMaMonHoc().equals(""))){
-			var monhoc = monHocRepository.findById(chiTietMonHoc.getMonHoc().getMaMonHoc()).get();
-			var hk = hocKyRepository.findById(chiTietMonHoc.getHocKy().getMaHocKy()).get();
-			if(monhoc != null && hk !=null) {
-				chiTietMonHoc.setMonHoc(monhoc);
-				chiTietMonHoc.setHocKy(hk);
-			}
-			
-			
-		}
+	public void addChiTietMonHoc(ChiTietHocPhan chiTietMonHoc) {
+//		if((!chiTietMonHoc.getHocKy().getMaHocKy().equals(""))&& (!chiTietMonHoc.getMonHoc().getMaMonHoc().equals(""))){
+//			var monhoc = monHocRepository.findById(chiTietMonHoc.getMonHoc().getMaMonHoc()).get();
+//			var hk = hocKyRepository.findById(chiTietMonHoc.getHocKy().getMaHocKy()).get();
+//			if(monhoc != null && hk !=null) {
+//				chiTietMonHoc.setMonHoc(monhoc);
+//				chiTietMonHoc.setHocKy(hk);
+//			}
+//			
+//			
+//		}
 		chiTietMonHocRepository.save(chiTietMonHoc);
 		
 	}

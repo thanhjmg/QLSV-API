@@ -11,10 +11,10 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@IdClass(ChiTietMonHocPK.class)
+@IdClass(ChiTietHocPhanPK.class)
 @Table
 @Data
-public class ChiTietMonHoc implements Serializable{
+public class ChiTietHocPhan implements Serializable{
 	
 	/**
 	 * 
@@ -23,8 +23,8 @@ public class ChiTietMonHoc implements Serializable{
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "maMonHoc")
-	private MonHoc monHoc;
+	@JoinColumn(name = "maHocPhan")
+	private HocPhan hocPhan;
 	
 	@Id
 	@ManyToOne

@@ -41,9 +41,11 @@ public class LopHocPhan{
 		this.maLopHocPhan = maLopHocPhan;
 	}
 	
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "ma_mon_hoc")
-	private MonHoc monHoc;
+	@JoinColumn(name = "ma_hoc_phan")
+	private HocPhan hocPhan;
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
 //	private List<Lich> dsLich;
 //	

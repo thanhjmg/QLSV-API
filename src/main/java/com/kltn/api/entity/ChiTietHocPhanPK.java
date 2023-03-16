@@ -6,16 +6,16 @@ import java.util.Objects;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class ChiTietMonHocPK implements Serializable{
+public class ChiTietHocPhanPK implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String monHoc;
+	private String hocPhan;
 	private String hocKy;
 	@Override
 	public int hashCode() {
-		return Objects.hash(hocKy, monHoc);
+		return Objects.hash(hocKy, hocPhan);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -25,8 +25,8 @@ public class ChiTietMonHocPK implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ChiTietMonHocPK other = (ChiTietMonHocPK) obj;
-		return hocKy == other.hocKy && monHoc == other.monHoc;
+		ChiTietHocPhanPK other = (ChiTietHocPhanPK) obj;
+		return hocKy == other.hocKy && hocPhan == other.hocPhan;
 	}
 	
 	

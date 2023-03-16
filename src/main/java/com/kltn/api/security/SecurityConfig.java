@@ -38,8 +38,6 @@ public class SecurityConfig {
 	                    .permitAll()
 
 	                    .requestMatchers("/actuator/**").permitAll()
-
-	                .requestMatchers(HttpMethod.GET,"/api/**").permitAll()
 	               
 
 	                    .anyRequest()

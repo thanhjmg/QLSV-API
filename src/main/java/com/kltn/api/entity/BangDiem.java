@@ -24,12 +24,12 @@ public class BangDiem implements Serializable{
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "idLopHocPhan")
-	private LopHocPhan lopHocPhan;
+	@JoinColumn(name = "ma_hoc_phan")
+	private HocPhan hocPhan;
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "idSinhVien")
+	@JoinColumn(name = "ma_sinh_vien")
 	private SinhVien sinhVien;
 	
 	@Column(columnDefinition = "float", nullable = true)

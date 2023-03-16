@@ -27,18 +27,18 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	@Override
 	public void saveOrUpdate(LopHocPhan lopHocPhan) {
 		// TODO Auto-generated method stub
-		if(!lopHocPhan.getMonHoc().getMaMonHoc().equals("")) {
-			var monHoc = monHocRepository.findById(lopHocPhan.getMonHoc().getMaMonHoc()).get();
-			
-			if(monHoc != null) {
-				lopHocPhan.setMonHoc(monHoc);;
-			}
-			else {
-				monHoc = new MonHoc(lopHocPhan.getMonHoc().getMaMonHoc());
-				lopHocPhan.setMonHoc(monHoc);
-			}
-			
-		}
+//		if(!lopHocPhan.getMonHoc().getMaMonHoc().equals("")) {
+//			var monHoc = monHocRepository.findById(lopHocPhan.getMonHoc().getMaMonHoc()).get();
+//			
+//			if(monHoc != null) {
+//				lopHocPhan.setMonHoc(monHoc);;
+//			}
+//			else {
+//				monHoc = new MonHoc(lopHocPhan.getMonHoc().getMaMonHoc());
+//				lopHocPhan.setMonHoc(monHoc);
+//			}
+//			
+//		}
 		lopHocPhanRepository.save(lopHocPhan);
 		
 		

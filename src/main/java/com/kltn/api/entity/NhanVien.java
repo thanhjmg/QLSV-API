@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NhanVien {
+public class NhanVien extends Nguoi{
 	@Id
 	private String maNhanVien;
 	@Column( columnDefinition = "nvarchar(255)")
@@ -30,8 +30,8 @@ public class NhanVien {
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@Embedded
-	private HoSo hoSo;
+//	@Embedded
+//	private HoSo hoSo;
 	
 	@ManyToOne
     @JoinColumn(name = "maKhoa")

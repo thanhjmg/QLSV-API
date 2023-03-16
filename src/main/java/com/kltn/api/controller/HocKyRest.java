@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kltn.api.entity.ChiTietHocKy;
-import com.kltn.api.entity.ChiTietMonHoc;
+import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
 import com.kltn.api.service.HocKyService;
 
@@ -51,7 +51,7 @@ public class HocKyRest {
 	}
 	
 	@PostMapping("/addCTMH")
-	public void addCTMonHoc(@RequestBody ChiTietMonHoc chiTietMonHoc) {
+	public void addCTMonHoc(@RequestBody ChiTietHocPhan chiTietMonHoc) {
 		
 		hocKyService.addChiTietMonHoc(chiTietMonHoc);
 	}

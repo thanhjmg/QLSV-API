@@ -72,19 +72,19 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 
 	@Override
 	public void addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy) {
-		if((!chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy().equals(""))&& (!chiTietPhieuDangKy.getMonHoc().getMaMonHoc().equals("")
-				&& (!chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP().equals("")))){
-			var pdk = phieuDKHPRepository.findById(chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy()).get();
-			var monHoc = monHocRepository.findById(chiTietPhieuDangKy.getMonHoc().getMaMonHoc()).get();
-			var loaiPhieu = loaiDKHPRepository.findById(chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP()).get();
-			if(pdk != null && monHoc !=null && loaiPhieu != null) {
-				chiTietPhieuDangKy.setLoaiDangKyHP(loaiPhieu);
-				chiTietPhieuDangKy.setMonHoc(monHoc);
-				chiTietPhieuDangKy.setPhieuDangKyHocPhan(pdk);
-			}
-			
-			
-		}
+//		if((!chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy().equals(""))&& (!chiTietPhieuDangKy.getMonHoc().getMaMonHoc().equals("")
+//				&& (!chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP().equals("")))){
+//			var pdk = phieuDKHPRepository.findById(chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy()).get();
+//			var monHoc = monHocRepository.findById(chiTietPhieuDangKy.getMonHoc().getMaMonHoc()).get();
+//			var loaiPhieu = loaiDKHPRepository.findById(chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP()).get();
+//			if(pdk != null && monHoc !=null && loaiPhieu != null) {
+//				chiTietPhieuDangKy.setLoaiDangKyHP(loaiPhieu);
+//				chiTietPhieuDangKy.setMonHoc(monHoc);
+//				chiTietPhieuDangKy.setPhieuDangKyHocPhan(pdk);
+//			}
+//			
+//			
+//		}
 		chiTietPhieuDKHPRepository.save(chiTietPhieuDangKy);
 		
 	}

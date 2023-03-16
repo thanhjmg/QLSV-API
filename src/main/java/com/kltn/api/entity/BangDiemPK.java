@@ -11,7 +11,7 @@ public class BangDiemPK implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String lopHocPhan;
+	private String hocPhan;
 	private String sinhVien;
 	
 	public BangDiemPK() {
@@ -19,7 +19,7 @@ public class BangDiemPK implements Serializable{
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(lopHocPhan, sinhVien);
+		return Objects.hash(hocPhan, sinhVien);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -30,7 +30,7 @@ public class BangDiemPK implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		BangDiemPK other = (BangDiemPK) obj;
-		return lopHocPhan == other.lopHocPhan && sinhVien == other.sinhVien;
+		return hocPhan == other.hocPhan && sinhVien == other.sinhVien;
 	}
 	
 	
