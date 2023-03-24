@@ -3,6 +3,8 @@ package com.kltn.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +12,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kltn.api.entity.ChiTietHocKy;
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
+import com.kltn.api.entity.Khoa;
 import com.kltn.api.service.HocKyService;
 
 @RestController
 @RequestMapping("/api/hocky")
+@CrossOrigin(origins =   "${client.url}")
 public class HocKyRest {
 	
 	@Autowired
@@ -40,15 +45,22 @@ public class HocKyRest {
 	}
 
 	@PostMapping
-	public void addHocKy(@RequestBody HocKy hocKy) {
+	public HocKy addHocKy(@RequestBody HocKy hocKy) {
 		hocKy.setMaHocKy(hocKyService.autoId());
 		hocKyService.addOrUpdateHocKy(hocKy);
+		return hocKy;
 	}
 	
 	@PutMapping
-	public void updateHocKy(@RequestBody HocKy hocKy) {
+	public HocKy updateHocKy(@RequestBody HocKy hocKy) {
 		hocKyService.addOrUpdateHocKy(hocKy);
+		return hocKy;
 	}
+	@GetMapping("/timkiem")
+    public ResponseEntity<List<HocKy>> timKiemHocKy(@RequestParam("value") String textSearch) {
+        List<HocKy> hocKys = hocKyService.timKiemHocKy(textSearch);
+        return ResponseEntity.ok(hocKys);
+    }
 	
 	@PostMapping("/addCTMH")
 	public void addCTMonHoc(@RequestBody ChiTietHocPhan chiTietMonHoc) {

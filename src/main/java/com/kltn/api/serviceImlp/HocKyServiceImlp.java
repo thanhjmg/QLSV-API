@@ -67,4 +67,10 @@ public class HocKyServiceImlp implements  HocKyService{
 		
 	}
 
+	@Override
+	public List<HocKy> timKiemHocKy(String textSearch) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.timKiemHocKy(textSearch);
+	}
+
 }

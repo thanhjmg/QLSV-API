@@ -56,7 +56,7 @@ public class AuthRest {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> registerUser(@RequestBody ObjectNode  userRegister){
+    public ResponseEntity<Map<String, String>> registerUser(@RequestBody User userRegister){
         Map<String, String> dataAuth = authService.registerUser(userRegister); // trả về map bao gồm accesstoken vs refresh token
         HttpHeaders cookies = new HttpHeaders();
         cookies.add("Set-Cookie","refreshToken="+dataAuth.get("refreshToken")+";Secure; HttpOnly");

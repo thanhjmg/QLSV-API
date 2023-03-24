@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kltn.api.entity.SinhVien;
 import com.kltn.api.service.SinhVienService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/sinhvien")
 @CrossOrigin(origins =   "${client.url}")
+@RequiredArgsConstructor
 public class SinhVienRest {
 	
 	@Autowired
@@ -46,10 +49,10 @@ public class SinhVienRest {
 		return sinhVienService.getAllSinhVien();
 	}
 	
-	@GetMapping
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public SinhVien getNganhHocById(@PathVariable("id") String id) {
+	@GetMapping(value = "/{id}")
+	public SinhVien getSinhVienById(@PathVariable("id") String id) {
 		// TODO Auto-generated method stub
-		return sinhVienService.getNganhHocById(id);
+		System.out.println(id);
+		return sinhVienService.getSinhVienById(id);
 	}
 }
