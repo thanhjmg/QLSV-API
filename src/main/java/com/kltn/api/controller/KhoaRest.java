@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.kltn.api.service.KhoaService;
 
 @RestController
 @RequestMapping("/api/khoa")
+@CrossOrigin(origins =  "${client.url}")
 public class KhoaRest {
 	@Autowired
 	private KhoaService khoaService;

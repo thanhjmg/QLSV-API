@@ -36,18 +36,7 @@ public class MonHocServiceImlp implements MonHocService{
 
 	@Override
 	public void addOrUpdateMonHoc(MonHoc monHoc) {
-		if(!monHoc.getLoaiMonHoc().getMaLoaiMonHoc().equals("")) {
-			var loaiMH = loaiMonHocRepository.findById(monHoc.getLoaiMonHoc().getMaLoaiMonHoc()).get();
-			
-			if(loaiMH != null) {
-				monHoc.setLoaiMonHoc(loaiMH);
-			}
-			else {
-				loaiMH = new LoaiMonHoc(monHoc.getLoaiMonHoc().getMaLoaiMonHoc());
-				monHoc.setLoaiMonHoc(loaiMH);
-			}
-			
-		}
+		
 		monHocRepository.save(monHoc);
 	}
 
