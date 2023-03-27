@@ -41,4 +41,10 @@ public class KhoaSeviceImlp implements KhoaService{
 		return naturalId;
 	}
 
+	@Override
+	public List<Khoa> timKiemKhoa(String textSearch) {
+		// TODO Auto-generated method stub
+		return khoaRepository.timKiemKhoa(textSearch);
+	}
+
 }

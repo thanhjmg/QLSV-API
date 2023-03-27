@@ -7,6 +7,6 @@ import com.kltn.api.entity.SinhVien;
 public interface SinhVienService {
 	public void saveOrUpdateSinhVien(SinhVien sinhVien );
 	public List<SinhVien> getAllSinhVien();
-	public SinhVien getNganhHocById(String id);
+	public SinhVien getSinhVienById(String id);
 	public String autoId();
 }

@@ -1,5 +1,6 @@
 package com.kltn.api.serviceImlp;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public void saveOrUpdateNhanVien(NhanVien nhanVien) {
 		// TODO Auto-generated method stub
+		
 		nhanVienRepository.save(nhanVien);
 		
 	}
@@ -35,19 +37,42 @@ public class NhanVienServiceImpl implements NhanVienService{
 		return nhanVienRepository.getById(id);
 	}
 
+	
 	@Override
 	public String autoId() {
-		// TODO Auto-generated method stub
-		String maNhanVien="";
-		String lastMaNhanVien = nhanVienRepository.findTopByOrderBymaNhanVienDesc();
-		if(lastMaNhanVien != null && !lastMaNhanVien.equals("") && lastMaNhanVien.length()==8) {
-			int lastNumber = Integer.parseInt(lastMaNhanVien.substring(6));
-			lastNumber++;
-			maNhanVien = String.format("NV%06d", lastNumber);
-		}else {
-			maNhanVien = String.format("NV%06d", 1);
-		}
-		return maNhanVien;
+		String maNhanVien = "";
+	    
+	    // Lấy giá trị của maNhanVien cuối cùng từ cơ sở dữ liệu
+	    String lastMaNhanVien = nhanVienRepository.findTopByOrderBymaNhanVienDesc();
+	    
+	    // Lấy năm hiện tại
+	    Calendar cal = Calendar.getInstance();
+	    int currentYear = cal.get(Calendar.YEAR) % 100; // lấy 2 chữ số cuối của năm hiện tại
+	    
+	    // Xử lý phần số
+	    if (lastMaNhanVien != null && !lastMaNhanVien.equals("") && lastMaNhanVien.length() == 10) {
+	        // Lấy phần số (6 chữ số cuối cùng) của maNhanVien cuối cùng
+	        int lastNumber = Integer.parseInt(lastMaNhanVien.substring(8));
+	        
+	        // Nếu năm hiện tại khác năm của maNhanVien cuối cùng, đặt phần số bằng 1
+	        if (currentYear != Integer.parseInt(lastMaNhanVien.substring(2, 4))) {
+	            lastNumber = 0;
+	        }
+	        
+	        // Tăng phần số lên 1 và cập nhật maNhanVien mới
+	        lastNumber++;
+	        maNhanVien = String.format("NV%02d%06d", currentYear, lastNumber);
+	    } else {
+	        // Nếu chưa có maNhanVien nào được lưu trữ trong cơ sở dữ liệu, tạo mới maNhanVien đầu tiên
+	        maNhanVien = String.format("NV%02d%06d", currentYear, 1);
+	    }
+	    
+	    return maNhanVien;
 	}
 
+	@Override
+	public List<NhanVien> timKiemNhanVien(String textSearch) {
+		// TODO Auto-generated method stub
+		 return nhanVienRepository.timKiemNhanVien(textSearch);
+	}
 }

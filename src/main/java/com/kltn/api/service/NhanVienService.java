@@ -9,5 +9,6 @@ public interface NhanVienService {
 	public List<NhanVien> getAllNhanVien();
 	public NhanVien getNhanVienById(String id);
 	public String autoId();
+	public List<NhanVien> timKiemNhanVien(String textSearch);
 
 }

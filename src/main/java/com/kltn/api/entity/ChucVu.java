@@ -25,6 +25,11 @@ public class ChucVu {
 	private String tenChucVu;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
+	public ChucVu(String maChucVu) {
+		super();
+		this.maChucVu = maChucVu;
+	}
+	
 	
 	
 }

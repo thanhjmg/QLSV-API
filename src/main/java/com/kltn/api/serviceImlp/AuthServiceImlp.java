@@ -41,16 +41,18 @@ public class AuthServiceImlp implements AuthService {
     }
 
     @Override
-    public Map<String, String> registerUser(ObjectNode userRegister) {
+    public Map<String, String> registerUser(User userRegister) {
         var newUser = new User();
 
         PasswordEncoder passEndcoder = new BCryptPasswordEncoder(); // khởi tạo pass mã hoá (chưa có data)
-        String pass = passEndcoder.encode(userRegister.get("password").asText());   // lấy pass ra, mã hoá bcrypt
+        String pass = passEndcoder.encode(userRegister.getPassword());   // lấy pass ra, mã hoá bcrypt
 
-        newUser.setUsername(userRegister.get("username").asText());
+        newUser.setUsername(userRegister.getUsername());
         newUser.setPassword(pass);
-        newUser.setRole(Role.ROLE_QUANLY);
-
+        newUser.setRole(userRegister.getRole());
+       
+//        System.out.println(Role.ROLE_GIANGVIEN);
+       
         userRepo.save(newUser);
 
         String accessToken = jwtService.generateToken(newUser);   // tạo token với thông tin là user truyền vào

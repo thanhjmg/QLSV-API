@@ -2,6 +2,7 @@ package com.kltn.api.entity;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -30,4 +31,7 @@ public class ChiTietHocPhan implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "maHocKy")
 	private HocKy hocKy;
+	
+	@Column( columnDefinition = "nvarchar(255)")
+	private String trangThai;
 }

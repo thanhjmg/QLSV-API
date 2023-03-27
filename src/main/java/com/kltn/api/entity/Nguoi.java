@@ -16,6 +16,7 @@ public abstract class Nguoi {
 	public Date ngaySinh;
 	
 	public String soDienThoai;
+	public String soCCCD;
 	
 	@Column( columnDefinition = "nvarchar(255)")
 	public String diaChi;

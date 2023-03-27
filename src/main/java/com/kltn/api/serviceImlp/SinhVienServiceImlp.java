@@ -32,8 +32,9 @@ public class SinhVienServiceImlp implements SinhVienService{
 	}
 
 	@Override
-	public SinhVien getNganhHocById(String id) {
+	public SinhVien getSinhVienById(String id) {
 		// TODO Auto-generated method stub
+		
 		return sinhVienRepository.findById(id).get();
 	}
 

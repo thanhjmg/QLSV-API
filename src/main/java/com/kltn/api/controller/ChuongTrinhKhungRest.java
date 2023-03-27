@@ -41,10 +41,11 @@ public class ChuongTrinhKhungRest {
 	}
 
 	@PostMapping
-	public void addChuongTrinhKhung(@RequestBody ChuongTrinhKhung chuongTrinhKhung) {
+	public ChuongTrinhKhung addChuongTrinhKhung(@RequestBody ChuongTrinhKhung chuongTrinhKhung) {
 		// TODO Auto-generated method stub
 		chuongTrinhKhung.setMaChuongTrinhKhung(chuongTrinhKhungService.autoId());
 		chuongTrinhKhungService.addOrUpdateChuongTrinhKhung(chuongTrinhKhung);
+		return chuongTrinhKhung;
 	}
 	
 	@PutMapping

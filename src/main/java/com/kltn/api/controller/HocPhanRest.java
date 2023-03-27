@@ -1,5 +1,6 @@
 package com.kltn.api.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocPhan;
 import com.kltn.api.entity.MonHoc;
 import com.kltn.api.service.HocPhanService;
@@ -26,9 +29,10 @@ public class HocPhanRest {
 	private HocPhanService hocPhanService;
 	
 	@PostMapping
-	public void addHocPhan(@RequestBody HocPhan hocPhan) {
+	public HocPhan addHocPhan(@RequestBody HocPhan hocPhan) {
 		hocPhan.setMaHocPhan(hocPhanService.autoId());
 		hocPhanService.saveOrUpdateHocPhan(hocPhan);
+		return hocPhan;
 	}
 	
 	@PutMapping
@@ -48,5 +52,17 @@ public class HocPhanRest {
 	public HocPhan getHocPhanById(@PathVariable String id) {
 		// TODO Auto-generated method stub
 		return hocPhanService.getHocPhanById(id);
+	}
+	
+	@GetMapping("/hocky")
+	public List<HocPhan> getHocPhanTheoHocKy(@RequestParam("maHocKy") String maHocKy) {
+		// TODO Auto-generated method stub
+		return hocPhanService.getHocPhanTheoHocKy(maHocKy);
+	}
+	
+	@GetMapping("/chitiet")
+	public List<ChiTietHocPhan> getChiTietHocPhan(@RequestParam("startDate") Date startDate,@RequestParam("endDate") Date endDate, @RequestParam("maCTK") String maCTK) {
+		// TODO Auto-generated method stub
+		return hocPhanService.getChiTietHocPhan(startDate, endDate, maCTK);
 	}
 }

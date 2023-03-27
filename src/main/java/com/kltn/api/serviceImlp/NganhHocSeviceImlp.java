@@ -53,5 +53,6 @@ public class NganhHocSeviceImlp implements NganhHocService{
 		    String naturalId = "N" + String.format("%03d", id+1);
 		    return naturalId;
 	}
+	
 
 }

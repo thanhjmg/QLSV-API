@@ -26,4 +26,11 @@ public class HocPhan {
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_mon_hoc")
 	private MonHoc monHoc;
+
+	public HocPhan(String maHocPhan) {
+		super();
+		this.maHocPhan = maHocPhan;
+	}
+	
+	
 }

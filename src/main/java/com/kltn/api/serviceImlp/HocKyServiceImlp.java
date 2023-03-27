@@ -1,5 +1,6 @@
 package com.kltn.api.serviceImlp;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.kltn.api.entity.HocKy;
 import com.kltn.api.repository.ChiTietHocKyRepository;
 import com.kltn.api.repository.ChiTietMonHocRepository;
 import com.kltn.api.repository.HocKyRepository;
+import com.kltn.api.repository.HocPhanRepository;
 import com.kltn.api.repository.MonHocRepository;
 import com.kltn.api.service.HocKyService;
 
@@ -26,6 +28,8 @@ public class HocKyServiceImlp implements  HocKyService{
 	
 	@Autowired
 	private MonHocRepository monHocRepository;
+	@Autowired
+	private HocPhanRepository hocPhanRepository;
 	@Override
 	public List<HocKy> getAllKhoa() {
 		// TODO Auto-generated method stub
@@ -53,18 +57,30 @@ public class HocKyServiceImlp implements  HocKyService{
 
 	@Override
 	public void addChiTietMonHoc(ChiTietHocPhan chiTietMonHoc) {
-//		if((!chiTietMonHoc.getHocKy().getMaHocKy().equals(""))&& (!chiTietMonHoc.getMonHoc().getMaMonHoc().equals(""))){
-//			var monhoc = monHocRepository.findById(chiTietMonHoc.getMonHoc().getMaMonHoc()).get();
-//			var hk = hocKyRepository.findById(chiTietMonHoc.getHocKy().getMaHocKy()).get();
-//			if(monhoc != null && hk !=null) {
-//				chiTietMonHoc.setMonHoc(monhoc);
-//				chiTietMonHoc.setHocKy(hk);
-//			}
-//			
-//			
-//		}
+		var hocPhan = hocPhanRepository.findById(chiTietMonHoc.getHocPhan().getMaHocPhan()).get();
+		var hk = hocKyRepository.findById(chiTietMonHoc.getHocKy().getMaHocKy()).get();
+		chiTietMonHoc.setHocPhan(hocPhan);
+		chiTietMonHoc.setHocKy(hk);
 		chiTietMonHocRepository.save(chiTietMonHoc);
 		
+	}
+
+	@Override
+	public List<HocKy> timKiemHocKy(String textSearch) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.timKiemHocKy(textSearch);
+	}
+
+	@Override
+	public List<HocKy> getHocKyTheoKhoaHoc(Date startDate, Date endDate) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.findHocKyByThoiGianKTBetween(startDate, endDate);
+	}
+
+	@Override
+	public List<HocKy> getHocKyTheoMaCTK(String maCTK) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.getHocKyByMaCTK(maCTK);
 	}
 
 }
