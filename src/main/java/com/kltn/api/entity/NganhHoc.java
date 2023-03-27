@@ -36,6 +36,11 @@ public class NganhHoc{
 		this.maNganh = maNganh;
 	}
 
+	public void setId(String nganhId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 }

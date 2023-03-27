@@ -55,4 +55,10 @@ public class LopHocServiceImlp implements LopHocService{
 		    return naturalId;
 	}
 
+	@Override
+	public List<LopHoc> getLopHocByNganhHoc(NganhHoc nganhHoc) {
+		// TODO Auto-generated method stub
+		return lopHocRepository.findByNganhHoc(nganhHoc);
+	}
+
 }

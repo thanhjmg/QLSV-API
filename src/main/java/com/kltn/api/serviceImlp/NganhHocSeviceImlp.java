@@ -54,5 +54,9 @@ public class NganhHocSeviceImlp implements NganhHocService{
 		    return naturalId;
 	}
 	
-
+	@Override
+	public List<NganhHoc> getNganhHocByKhoa(Khoa khoa) {
+		// TODO Auto-generated method stub
+		  return nganhRepository.findByKhoa(khoa);
+	}
 }

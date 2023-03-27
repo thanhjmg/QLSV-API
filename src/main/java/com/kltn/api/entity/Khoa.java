@@ -32,12 +32,21 @@ public class Khoa {
 	
 	
 
-
+	
 
 	public Khoa(String maKhoa) {
 		super();
 		this.maKhoa = maKhoa;
 	}
+
+	public void setId(String khoaId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
 
 
 
