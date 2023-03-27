@@ -32,6 +32,11 @@ public class ChiTietHocPhan implements Serializable{
 	@JoinColumn(name = "maHocKy")
 	private HocKy hocKy;
 	
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "maChuongTrinhKhung")
+	private ChuongTrinhKhung chuongTrinhKhung;
+	
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 }

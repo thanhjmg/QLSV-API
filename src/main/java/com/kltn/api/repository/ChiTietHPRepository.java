@@ -13,12 +13,12 @@ public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, Strin
 //	@Query("SELECT cthp FROM ChiTietHocPhan cthp JOIN cthp.hocKy hk\r\n"
 //			+ "WHERE hk.thoiGianKT BETWEEN :startDate AND :endDate\r\n"
 //			+ "ORDER BY hk.thoiGianKT ASC")
-	@Query(value = "SELECT chi_tiet_hoc_phan.*\r\n"
+	@Query(value = "SELECT DISTINCT chi_tiet_hoc_phan.*, hoc_ky.thoi_giankt\r\n"
 			+ "FROM     chi_tiet_hoc_phan INNER JOIN\r\n"
 			+ "                  hoc_ky ON chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky INNER JOIN\r\n"
 			+ "                  hoc_phan ON chi_tiet_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan CROSS JOIN\r\n"
 			+ "                  chuong_trinh_khung\r\n"
-			+ "				  WHERE hoc_ky.thoi_giankt BETWEEN :startDate AND :endDate and chuong_trinh_khung.ma_chuong_trinh_khung like :maCTK\r\n"
+			+ "				  WHERE hoc_ky.thoi_giankt BETWEEN :startDate AND :endDate and chi_tiet_hoc_phan.ma_chuong_trinh_khung like :maCTK\r\n"
 			+ "			ORDER BY hoc_ky.thoi_giankt ASC", nativeQuery = true)
 	public List<ChiTietHocPhan> getChiTietHocPhanTheoKhoaHoc(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("maCTK") String maCTK);
 }

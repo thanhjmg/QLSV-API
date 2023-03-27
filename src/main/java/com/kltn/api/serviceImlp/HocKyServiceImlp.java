@@ -10,8 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kltn.api.entity.ChiTietHocKy;
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
+import com.kltn.api.repository.ChiTietHPRepository;
 import com.kltn.api.repository.ChiTietHocKyRepository;
-import com.kltn.api.repository.ChiTietMonHocRepository;
+import com.kltn.api.repository.ChuongTrinhKhungRepository;
 import com.kltn.api.repository.HocKyRepository;
 import com.kltn.api.repository.HocPhanRepository;
 import com.kltn.api.repository.MonHocRepository;
@@ -24,12 +25,14 @@ public class HocKyServiceImlp implements  HocKyService{
 	@Autowired
 	private HocKyRepository hocKyRepository;
 	@Autowired
-	private ChiTietMonHocRepository chiTietMonHocRepository;
+	private ChiTietHPRepository chiTietMonHocRepository;
 	
 	@Autowired
 	private MonHocRepository monHocRepository;
 	@Autowired
 	private HocPhanRepository hocPhanRepository;
+	@Autowired
+	private ChuongTrinhKhungRepository chuongTrinhKhungRepository;
 	@Override
 	public List<HocKy> getAllKhoa() {
 		// TODO Auto-generated method stub
@@ -59,8 +62,10 @@ public class HocKyServiceImlp implements  HocKyService{
 	public void addChiTietMonHoc(ChiTietHocPhan chiTietMonHoc) {
 		var hocPhan = hocPhanRepository.findById(chiTietMonHoc.getHocPhan().getMaHocPhan()).get();
 		var hk = hocKyRepository.findById(chiTietMonHoc.getHocKy().getMaHocKy()).get();
+		var ctk = chuongTrinhKhungRepository.findById(chiTietMonHoc.getChuongTrinhKhung().getMaChuongTrinhKhung()).get();
 		chiTietMonHoc.setHocPhan(hocPhan);
 		chiTietMonHoc.setHocKy(hk);
+		chiTietMonHoc.setChuongTrinhKhung(ctk);
 		chiTietMonHocRepository.save(chiTietMonHoc);
 		
 	}
