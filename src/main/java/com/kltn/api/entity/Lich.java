@@ -24,7 +24,12 @@ public class Lich {
 	private String tenLich;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String loaiLich;
+	@Column(columnDefinition = "nvarchar(255)")
 	private Date ngayHoc;
+	@Column(columnDefinition = "nvarchar(255)")
+	private String trangThai;
+	
+	private Integer nhomTH;
 	
 
 	@ManyToOne

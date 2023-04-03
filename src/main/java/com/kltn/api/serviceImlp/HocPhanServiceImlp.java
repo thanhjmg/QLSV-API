@@ -76,4 +76,10 @@ public class HocPhanServiceImlp implements HocPhanService{
 		return chiTietHPRepository.getChiTietHocPhanTheoKhoaHoc(startDate, endDate, maCTK);
 	}
 
+	@Override
+	public HocPhan getHocPhanTheoMaMH(String maMH) {
+		// TODO Auto-generated method stub
+		return hocPhanRepository.getHocPhanTheoMaMH(maMH);
+	}
+
 }

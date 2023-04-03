@@ -35,22 +35,24 @@ public class AuthRest {
     }
 
     @GetMapping("/refresh-token")
-    public ResponseEntity<Map<String, String>> refreshToken(@CookieValue(name="refreshToken")String refreshToken, HttpServletResponse response) {
-
+    public ResponseEntity<Map<String, String>> refreshToken(@CookieValue(name="refreshToken") String refreshToken) {
+        System.out.println(refreshToken);
         try {
             Map<String, String>  newDataToken = authService.getNewToken(refreshToken);
             HttpHeaders cookies = new HttpHeaders();
-            cookies.add("Set-Cookie","refreshToken="+newDataToken.get("refreshToken")+";Secure; HttpOnly");
+
+            cookies.add("Set-Cookie","refreshToken="+newDataToken.get("refreshToken")+";Secure; HttpOnly; SameSite=None");
 
             newDataToken.remove("refreshToken");
             return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(newDataToken);
         }
         catch(Exception e){
+                throw e;
 
-                Map<String, String> error = new HashMap<>();
-                error.put("errorMessage", e.getMessage());
-
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
+//                Map<String, String> error = new HashMap<>();
+//                error.put("errorMessage", e.getMessage());
+//
+//                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
             }
 
     }

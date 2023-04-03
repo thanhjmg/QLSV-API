@@ -3,6 +3,7 @@ package com.kltn.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.kltn.api.service.LoaiPhongService;
 
 @RestController
 @RequestMapping("/api/loaiphong")
+@CrossOrigin(origins =  "${client.url}")
 public class LoaiPhongRest {
 	@Autowired
 	private LoaiPhongService loaiPhongService;

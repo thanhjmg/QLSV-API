@@ -15,5 +15,8 @@ public interface NhanVienRepository extends JpaRepository<NhanVien, String>{
 	 @Query("SELECT n FROM NhanVien n WHERE lower(n.tenNhanVien) LIKE lower(concat('%', :textSearch, '%')) "
 	            + "OR lower(n.soCCCD) LIKE lower(concat('%', :textSearch, '%')) " + "OR lower(n.maNhanVien) LIKE lower(concat('%', :textSearch, '%'))")
 	  public List<NhanVien> timKiemNhanVien(@Param("textSearch") String textSearch);
+	 
+	 @Query(value = "select nhan_vien.* from nhan_vien where ma_khoa like :maKhoa", nativeQuery = true)
+	 public List<NhanVien> getGiangVienTheoKhoa(@Param("maKhoa") String maKhoa);
 }
 

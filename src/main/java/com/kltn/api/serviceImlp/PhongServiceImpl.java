@@ -1,5 +1,6 @@
 package com.kltn.api.serviceImlp;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +71,13 @@ public class PhongServiceImpl implements PhongService{
 		    String naturalId = "P" + String.format("%03d", id+1);
 		    return naturalId;
 	}
+
+	@Override
+	public List<Phong> getPhongHocConTrong(String maLoai, String maDay, Date ngayHoc, String maCa) {
+		// TODO Auto-generated method stub
+		return phongRepository.getPhongHocConTrong(maLoai, maDay, ngayHoc, maCa);
+	}
+
+	
 
 }

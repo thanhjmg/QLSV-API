@@ -96,4 +96,10 @@ public class LichServiceImpl implements LichService{
 		    return naturalId;
 	}
 
+	@Override
+	public List<Lich> getTatCaLichTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return lichRepository.getTatCaLichTheoMaLHP(maLHP);
+	}
+
 }

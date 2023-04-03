@@ -2,6 +2,8 @@ package com.kltn.api.service;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.kltn.api.entity.NhanVien;
 
 public interface NhanVienService {
@@ -10,5 +12,6 @@ public interface NhanVienService {
 	public NhanVien getNhanVienById(String id);
 	public String autoId();
 	public List<NhanVien> timKiemNhanVien(String textSearch);
+	public List<NhanVien> getGiangVienTheoKhoa( String maKhoa);
 
 }

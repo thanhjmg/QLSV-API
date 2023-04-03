@@ -23,8 +23,8 @@ public class ChiTietPhieuDangKy implements Serializable{
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "maHocPhan")
-	private HocPhan hocPhan;
+	@JoinColumn(name = "maLopHocPhan")
+	private LopHocPhan lopHocPhan;
 	
 	@Id
 	@ManyToOne

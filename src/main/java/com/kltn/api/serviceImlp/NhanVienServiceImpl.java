@@ -75,4 +75,10 @@ public class NhanVienServiceImpl implements NhanVienService{
 		// TODO Auto-generated method stub
 		 return nhanVienRepository.timKiemNhanVien(textSearch);
 	}
+
+	@Override
+	public List<NhanVien> getGiangVienTheoKhoa(String maKhoa) {
+		// TODO Auto-generated method stub
+		return nhanVienRepository.getGiangVienTheoKhoa(maKhoa);
+	}
 }

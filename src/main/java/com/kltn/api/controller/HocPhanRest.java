@@ -65,4 +65,10 @@ public class HocPhanRest {
 		// TODO Auto-generated method stub
 		return hocPhanService.getChiTietHocPhan(startDate, endDate, maCTK);
 	}
+	
+	@GetMapping("/monhoc")
+	public HocPhan getHocPhanTheoMaMH(@RequestParam String maMH) {
+		// TODO Auto-generated method stub
+		return hocPhanService.getHocPhanTheoMaMH(maMH);
+	}
 }
