@@ -1,14 +1,18 @@
 package com.kltn.api.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +21,7 @@ import com.kltn.api.service.PhongService;
 
 @RestController
 @RequestMapping("/api/phong")
+@CrossOrigin(origins =  "${client.url}")
 public class PhongRest {
 
 	@Autowired
@@ -41,5 +46,12 @@ public class PhongRest {
 	@PutMapping
 	public void updatePhong(@RequestBody Phong phong) {
 		phongService.addOrUpdatePhong(phong);
+	}
+	
+	@GetMapping("/phongtrong")
+	public List<Phong> getPhongHocConTrong(@RequestParam("maLoai") String maLoai,@RequestParam("maDay") String maDay,
+			@RequestParam("ngayHoc") Date ngayHoc,@RequestParam("maCa") String maCa) {
+		// TODO Auto-generated method stub
+		return phongService.getPhongHocConTrong(maLoai, maDay, ngayHoc, maCa);
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.MonHoc;
+import com.kltn.api.repository.HocPhanRepository;
 import com.kltn.api.repository.LopHocPhanRepository;
 import com.kltn.api.repository.MonHocRepository;
 import com.kltn.api.service.LopHocPhanService;
@@ -21,24 +22,14 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	private LopHocPhanRepository lopHocPhanRepository;
 	
 	@Autowired
-	private MonHocRepository monHocRepository;
+	private HocPhanRepository hocPhanRepository;
 	
 
 	@Override
 	public void saveOrUpdate(LopHocPhan lopHocPhan) {
 		// TODO Auto-generated method stub
-//		if(!lopHocPhan.getMonHoc().getMaMonHoc().equals("")) {
-//			var monHoc = monHocRepository.findById(lopHocPhan.getMonHoc().getMaMonHoc()).get();
-//			
-//			if(monHoc != null) {
-//				lopHocPhan.setMonHoc(monHoc);;
-//			}
-//			else {
-//				monHoc = new MonHoc(lopHocPhan.getMonHoc().getMaMonHoc());
-//				lopHocPhan.setMonHoc(monHoc);
-//			}
-//			
-//		}
+		var hp = hocPhanRepository.findById(lopHocPhan.getHocPhan().getMaHocPhan()).get();
+		lopHocPhan.setHocPhan(hp);
 		lopHocPhanRepository.save(lopHocPhan);
 		
 		
@@ -61,6 +52,12 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		int id = lopHocPhanRepository.autoId();
 		String naturalId = "LHP" + String.format("%03d", id+1);
 		return naturalId;
+	}
+
+	@Override
+	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(String maHP, String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanTheoMaHocPhan(maHP, maHK);
 	}
 
 }

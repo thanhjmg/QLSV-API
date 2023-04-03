@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -21,9 +22,11 @@ import lombok.NoArgsConstructor;
 public class CaHoc{
 	@Id
 	private String maCaHoc;
-
+	@Column( columnDefinition = "nvarchar(255)")
+	private String tenCaHoc;
 	private Time gioBD;
 	private Time gioKT;
+	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "caHoc")

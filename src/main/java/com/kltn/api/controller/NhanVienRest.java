@@ -59,4 +59,11 @@ public class NhanVienRest {
 		// TODO Auto-generated method stub
 		return nhanVienService.getNhanVienById(id);
 	}
+	
+	@GetMapping("/khoa")
+	public List<NhanVien> getGiangVienTheoKhoa(@RequestParam String maKhoa) {
+		// TODO Auto-generated method stub
+		return nhanVienService.getGiangVienTheoKhoa(maKhoa);
+	}
 }
+
