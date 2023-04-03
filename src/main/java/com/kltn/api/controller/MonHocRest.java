@@ -17,7 +17,7 @@ import com.kltn.api.service.MonHocService;
 
 @RestController
 @RequestMapping("/api/monhoc")
-@CrossOrigin(origins =   "${client.url}")
+@CrossOrigin(origins =  "${client.url}")
 public class MonHocRest {
 
 	@Autowired
@@ -37,9 +37,15 @@ public class MonHocRest {
 	}
 
 	@PostMapping
-	public void addMonHoc(@RequestBody MonHoc monHoc) {
-		monHoc.setMaMonHoc(monHocService.autoId());
-		monHocService.addOrUpdateMonHoc(monHoc);
+	public MonHoc addMonHoc(@RequestBody MonHoc monHoc) {
+		try {
+			monHoc.setMaMonHoc(monHocService.autoId());
+			monHocService.addOrUpdateMonHoc(monHoc);
+			return monHoc;
+		} catch (Exception e) {
+			throw e;
+		}
+		
 	}
 	
 	@PutMapping

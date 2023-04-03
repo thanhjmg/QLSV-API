@@ -12,6 +12,8 @@ import com.kltn.api.entity.Khoa;
 import com.kltn.api.repository.ChiTietHocKyRepository;
 import com.kltn.api.repository.ChuongTrinhKhungRepository;
 import com.kltn.api.repository.HocKyRepository;
+import com.kltn.api.repository.KhoaHocRepository;
+import com.kltn.api.repository.NganhRepository;
 import com.kltn.api.service.ChuongTrinhKhungService;
 
 @Service
@@ -24,6 +26,10 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	private ChiTietHocKyRepository chiTietHocKyRepository;
 	@Autowired
 	private HocKyRepository hocKyRepository;
+	@Autowired
+	private NganhRepository nganhRepository;
+	@Autowired 
+	private KhoaHocRepository khoaHocRepository;
 
 	@Override
 	public List<ChuongTrinhKhung> getAllChuongTrinhKhung() {
@@ -40,6 +46,10 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	@Override
 	public void addOrUpdateChuongTrinhKhung(ChuongTrinhKhung chuongTrinhKhung) {
 		// TODO Auto-generated method stub
+		var nganh = nganhRepository.findById(chuongTrinhKhung.getNganhHoc().getMaNganh()).get();
+		var khoaHoc = khoaHocRepository.findById(chuongTrinhKhung.getKhoaHoc().getMaKhoaHoc()).get();
+		chuongTrinhKhung.setKhoaHoc(khoaHoc);
+		chuongTrinhKhung.setNganhHoc(nganh);
 		chuongTrinhKhungRepository.save(chuongTrinhKhung);
 	}
 

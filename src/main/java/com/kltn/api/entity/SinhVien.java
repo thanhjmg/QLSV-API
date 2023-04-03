@@ -28,14 +28,16 @@ public class SinhVien extends Nguoi{
 	private Boolean gioiTinh;
 	@Column( columnDefinition = "nvarchar(255)")
 	private Date ngayVaoTruong;
-	@Column( columnDefinition = "nvarchar(255)")
-	private String khoaHoc;
+	
+	@ManyToOne
+	@JoinColumn(name = "maKhoaHoc")
+	private KhoaHoc khoaHoc;
 	
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
 	@ManyToOne
-	@JoinColumn(name = "idLop")
+	@JoinColumn(name = "maLopHoc")
 	private LopHoc lopHoc;
 	
 	

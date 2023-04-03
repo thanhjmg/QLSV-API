@@ -23,7 +23,7 @@ import com.kltn.api.service.KhoaService;
 
 @RestController
 @RequestMapping("/api/khoa")
-@CrossOrigin(origins =   "${client.url}")
+@CrossOrigin(origins =  "${client.url}")
 public class KhoaRest {
 	@Autowired
 	private KhoaService khoaService;

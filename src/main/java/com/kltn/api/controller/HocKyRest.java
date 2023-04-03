@@ -1,5 +1,6 @@
 package com.kltn.api.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,19 @@ public class HocKyRest {
         return ResponseEntity.ok(hocKys);
     }
 	
-	@PostMapping("/addCTMH")
+	@GetMapping("/khoahoc")
+    public ResponseEntity<List<HocKy>> getHocKyTheoKhoaHoc(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
+        List<HocKy> hocKys = hocKyService.getHocKyTheoKhoaHoc(startDate, endDate);
+        return ResponseEntity.ok(hocKys);
+    }
+
+	@GetMapping("/ctk")
+	public List<HocKy> getHocKyTheoMaCTK(@RequestParam("maCTK") String maCTK) {
+		// TODO Auto-generated method stub
+		return hocKyService.getHocKyTheoMaCTK(maCTK);
+	}
+	
+	@PostMapping("/addCTHP")
 	public void addCTMonHoc(@RequestBody ChiTietHocPhan chiTietMonHoc) {
 		
 		hocKyService.addChiTietMonHoc(chiTietMonHoc);

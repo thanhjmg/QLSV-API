@@ -70,4 +70,16 @@ public class SinhVienServiceImlp implements SinhVienService{
 	    return maSinhVien;
 	}
 
+	@Override
+	public Long countSVByLopHoc(String classID) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countStudentsByClass(classID);
+	}
+
+	@Override
+	public List<SinhVien> timKiemSinhVien(String textSearch) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.timKiemSinhVien(textSearch);
+	}
+
 }

@@ -28,9 +28,10 @@ public class LopHocRest {
 	private LopHocService lopHocService;
 	
 	@PostMapping()
-	public void addLopHoc(@RequestBody LopHoc lopHoc) {
+	public LopHoc addLopHoc(@RequestBody LopHoc lopHoc) {
 		lopHoc.setMaLop(lopHocService.autoId());
 		lopHocService.saveOrUpdateLopHoc(lopHoc);
+		return lopHoc;
 	}
 	
 	@PutMapping()

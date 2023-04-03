@@ -21,7 +21,7 @@ import com.kltn.api.service.NhanVienService;
 
 @RestController
 @RequestMapping("/api/nhanvien")
-@CrossOrigin(origins =   "${client.url}")
+@CrossOrigin(origins =  "${client.url}")
 public class NhanVienRest {
 	@Autowired
 	private NhanVienService nhanVienService;

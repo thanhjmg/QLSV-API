@@ -45,4 +45,10 @@ public class DayNhaServiceImpl implements DayNhaService{
 		return naturalId;
 	}
 
+	@Override
+	public List<DayNha> timKiemDayNha(String textSearch) {
+		// TODO Auto-generated method stub
+		return dayNhaRepository.timKiemDayNha(textSearch);
+	}
+
 }

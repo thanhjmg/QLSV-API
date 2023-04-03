@@ -1,5 +1,6 @@
 package com.kltn.api.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.kltn.api.entity.ChiTietHocKy;
@@ -14,4 +15,6 @@ public interface HocKyService {
 	public String autoId();
 	public void addChiTietMonHoc(ChiTietHocPhan chiTietMonHoc);
 	public List<HocKy> timKiemHocKy(String textSearch);
+	public List<HocKy> getHocKyTheoKhoaHoc(Date startDate, Date endDate);
+	public List<HocKy> getHocKyTheoMaCTK(String maCTK);
 }

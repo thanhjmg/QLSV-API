@@ -57,9 +57,6 @@ public class MonHoc{
 	    @PrimaryKeyJoinColumn(name = "monhoc_id")
 	    private Set<MonHoc> danhSachMonHocSongHanh;
 
-	    @ManyToOne
-	    @JoinColumn(name = "maLoaiMonHoc")
-	    private LoaiMonHoc loaiMonHoc;
 
 		public MonHoc(String maMonHoc) {
 			super();
