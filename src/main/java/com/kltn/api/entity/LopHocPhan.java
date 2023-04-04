@@ -46,8 +46,9 @@ public class LopHocPhan{
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ma_hoc_phan")
 	private HocPhan hocPhan;
-//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
-//	private List<Lich> dsLich;
+	
+//	@OneToMany(cascade = CascadeType.ALL,mappedBy = "maNhom")
+//	private List<NhomThucHanh> listNhomThucHanh;
 //	
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
 //	private List<BangDiem> dsBangDiem;

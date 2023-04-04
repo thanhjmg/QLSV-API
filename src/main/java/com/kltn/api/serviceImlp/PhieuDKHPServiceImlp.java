@@ -11,6 +11,7 @@ import com.kltn.api.entity.Khoa;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.entity.SinhVien;
 import com.kltn.api.repository.ChiTietPhieuDKHPRepository;
+import com.kltn.api.repository.HocKyRepository;
 import com.kltn.api.repository.LoaiDKHPRepository;
 import com.kltn.api.repository.MonHocRepository;
 import com.kltn.api.repository.PhieuDKHPRepository;
@@ -31,6 +32,8 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	private MonHocRepository monHocRepository;
 	@Autowired
 	private LoaiDKHPRepository loaiDKHPRepository;
+	@Autowired
+	private HocKyRepository hocKyRepository;
 	
 
 	@Override
@@ -59,6 +62,8 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 			}
 			
 		}
+		var hk = hocKyRepository.findById(phieuDangKyHocPhan.getHocKy().getMaHocKy()).get();
+		phieuDangKyHocPhan.setHocKy(hk);
 		phieuDKHPRepository.save(phieuDangKyHocPhan);
 		
 	}
@@ -66,7 +71,7 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	@Override
 	public String autoId() {
 		int id = phieuDKHPRepository.autoId();
-		String naturalId = "PDK" + String.format("%03d", id+1);
+		String naturalId = "PDK" + String.format("%05d", id+1);
 		return naturalId;
 	}
 
