@@ -60,4 +60,10 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		return lopHocPhanRepository.getLopHocPhanTheoMaHocPhan(maHP, maHK);
 	}
 
+	@Override
+	public List<LopHocPhan> getLopHocPhanTheoMaHP(String maHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanTheoMaHP(maHP);
+	}
+
 }

@@ -71,4 +71,9 @@ public class HocPhanRest {
 		// TODO Auto-generated method stub
 		return hocPhanService.getHocPhanTheoMaMH(maMH);
 	}
+	@GetMapping("/sinhvien_nganh")
+	public List<ChiTietHocPhan> findHocPhanByMaSinhVienAndMaNganh (@RequestParam String maSinhVien, @RequestParam String maNganh) {
+		// TODO Auto-generated method stub
+		return hocPhanService.findHocPhanByMaSinhVienAndMaNganh(maSinhVien, maNganh);
+	}
 }

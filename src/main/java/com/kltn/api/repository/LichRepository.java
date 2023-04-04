@@ -14,5 +14,7 @@ public interface LichRepository extends JpaRepository<Lich, String> {
 	
 	@Query(value = "select lich.* from lich where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	public List<Lich> getTatCaLichTheoMaLHP(@Param("maLHP") String maLHP);
+	
+	
 
 }

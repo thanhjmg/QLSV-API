@@ -18,4 +18,12 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 			+ "                  chi_tiet_hoc_phan ON hoc_phan.ma_hoc_phan = chi_tiet_hoc_phan.ma_hoc_phan\r\n"
 			+ "				  where chi_tiet_hoc_phan.ma_hoc_phan like :maHP and chi_tiet_hoc_phan.ma_hoc_ky like :maHK", nativeQuery = true)
 	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(@Param("maHP") String maHP, @Param("maHK") String maHK);
+	
+	
+	@Query(value = "SELECT DISTINCT lop_hoc_phan.*\r\n"
+			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
+			+ "                  hoc_phan ON lop_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
+			+ "                  chi_tiet_hoc_phan ON hoc_phan.ma_hoc_phan = chi_tiet_hoc_phan.ma_hoc_phan\r\n"
+			+ "				  where chi_tiet_hoc_phan.ma_hoc_phan like :maHP", nativeQuery = true)
+	public List<LopHocPhan> getLopHocPhanTheoMaHP(@Param("maHP") String maHP);
 }

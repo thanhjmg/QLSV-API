@@ -14,13 +14,5 @@ public interface AuthService {
 	    Map<String, String> authenticateUser(ObjectNode userData);
 	    Map<String, String> getNewToken(String refreshToken);
 
-		
-
-
-
-
-	
-
-
 		Map<String, String> registerUser(User userRegister);
 }

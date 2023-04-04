@@ -56,4 +56,9 @@ public class LopHocPhanRest {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getLopHocPhanTheoMaHocPhan(maHP,maHK);
 	}
+	@GetMapping("/mahocphan")
+	public List<LopHocPhan> getLopHocPhanTheoMaHP(@RequestParam("maHP") String maHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getLopHocPhanTheoMaHP(maHP);
+	}
 }

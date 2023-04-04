@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.ChiTietHocPhan;
+import com.kltn.api.entity.HocPhan;
 
 public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, String>{
 //	@Query("SELECT cthp FROM ChiTietHocPhan cthp JOIN cthp.hocKy hk\r\n"
@@ -21,4 +22,16 @@ public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, Strin
 			+ "				  WHERE hoc_ky.thoi_giankt BETWEEN :startDate AND :endDate and chi_tiet_hoc_phan.ma_chuong_trinh_khung like :maCTK\r\n"
 			+ "			ORDER BY hoc_ky.thoi_giankt ASC", nativeQuery = true)
 	public List<ChiTietHocPhan> getChiTietHocPhanTheoKhoaHoc(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("maCTK") String maCTK);
+	
+	@Query(value = "SELECT chi_tiet_hoc_phan.*\r\n"
+			+ "FROM     chi_tiet_hoc_ky INNER JOIN\r\n"
+			+ "                  chi_tiet_hoc_phan ON chi_tiet_hoc_ky.ma_chuong_trinh_khung = chi_tiet_hoc_phan.ma_chuong_trinh_khung INNER JOIN\r\n"
+			+ "                  chuong_trinh_khung ON chi_tiet_hoc_ky.ma_chuong_trinh_khung = chuong_trinh_khung.ma_chuong_trinh_khung AND chi_tiet_hoc_phan.ma_chuong_trinh_khung = chuong_trinh_khung.ma_chuong_trinh_khung INNER JOIN\r\n"
+			+ "                  hoc_ky ON chi_tiet_hoc_ky.ma_hoc_ky = hoc_ky.ma_hoc_ky AND chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky INNER JOIN\r\n"
+			+ "                  hoc_phan ON chi_tiet_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
+			+ "                  khoa_hoc ON chuong_trinh_khung.ma_khoa_hoc = khoa_hoc.ma_khoa_hoc INNER JOIN\r\n"
+			+ "                  nganh_hoc ON chuong_trinh_khung.id_nganh = nganh_hoc.ma_nganh INNER JOIN\r\n"
+			+ "                  lop_hoc ON nganh_hoc.ma_nganh = lop_hoc.id_nganh INNER JOIN\r\n"
+			+ "                  sinh_vien ON khoa_hoc.ma_khoa_hoc = sinh_vien.ma_khoa_hoc AND lop_hoc.ma_lop = sinh_vien.ma_lop_hoc where ma_sinh_vien like :maSinhVien AND ma_nganh LIKE :maNganh", nativeQuery = true)
+	    List<ChiTietHocPhan> findHocPhanByMaSinhVienAndMaNganh(@Param("maSinhVien") String maSinhVien, @Param("maNganh") String maNganh);
 }

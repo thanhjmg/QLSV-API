@@ -12,5 +12,6 @@ public interface LopHocPhanService {
 	public LopHocPhan getLopHocPhanById(String id);
 	public String autoId();
 	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(String maHP,String maHK);
+	public List<LopHocPhan> getLopHocPhanTheoMaHP(String maHP);
 	
 }

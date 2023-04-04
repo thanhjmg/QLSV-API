@@ -25,4 +25,7 @@ public interface HocPhanRepository extends JpaRepository<HocPhan, String>{
 			+ "                  mon_hoc ON hoc_phan.ma_mon_hoc = mon_hoc.ma_mon_hoc\r\n"
 			+ "				  where mon_hoc.ma_mon_hoc like :maMH", nativeQuery = true)
 	public HocPhan getHocPhanTheoMaMH(@Param("maMH") String maMH);
+	
+	
+	
 }
