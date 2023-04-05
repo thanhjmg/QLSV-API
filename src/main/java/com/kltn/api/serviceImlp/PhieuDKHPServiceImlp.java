@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kltn.api.entity.ChiTietPhieuDangKy;
+import com.kltn.api.entity.HocKy;
 import com.kltn.api.entity.Khoa;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.entity.SinhVien;
 import com.kltn.api.repository.ChiTietPhieuDKHPRepository;
+import com.kltn.api.repository.HocKyRepository;
 import com.kltn.api.repository.LoaiDKHPRepository;
 import com.kltn.api.repository.MonHocRepository;
 import com.kltn.api.repository.PhieuDKHPRepository;
@@ -31,6 +33,8 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	private MonHocRepository monHocRepository;
 	@Autowired
 	private LoaiDKHPRepository loaiDKHPRepository;
+	@Autowired
+	private HocKyRepository hocKyRepository;
 	
 
 	@Override
@@ -46,7 +50,7 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	}
 
 	@Override
-	public void addOrUpdatePhieuDK(PhieuDangKyHocPhan phieuDangKyHocPhan) {
+	public PhieuDangKyHocPhan addOrUpdatePhieuDK(PhieuDangKyHocPhan phieuDangKyHocPhan) {
 		if(!phieuDangKyHocPhan.getSinhVien().getMaSinhVien().equals("")) {
 			var sinhVien = sinhVienRepository.findById(phieuDangKyHocPhan.getSinhVien().getMaSinhVien()).get();
 			
@@ -59,19 +63,22 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 			}
 			
 		}
+		var hk = hocKyRepository.findById(phieuDangKyHocPhan.getHocKy().getMaHocKy()).get();
+		phieuDangKyHocPhan.setHocKy(hk);
 		phieuDKHPRepository.save(phieuDangKyHocPhan);
+		return phieuDangKyHocPhan;
 		
 	}
 
 	@Override
 	public String autoId() {
 		int id = phieuDKHPRepository.autoId();
-		String naturalId = "PDK" + String.format("%03d", id+1);
+		String naturalId = "PDK" + String.format("%05d", id+1);
 		return naturalId;
 	}
 
 	@Override
-	public void addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy) {
+	public ChiTietPhieuDangKy addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy) {
 //		if((!chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy().equals(""))&& (!chiTietPhieuDangKy.getMonHoc().getMaMonHoc().equals("")
 //				&& (!chiTietPhieuDangKy.getLoaiDangKyHP().getMaLoaiDKHP().equals("")))){
 //			var pdk = phieuDKHPRepository.findById(chiTietPhieuDangKy.getPhieuDangKyHocPhan().getMaPhieuDangKy()).get();
@@ -86,7 +93,30 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 //			
 //		}
 		chiTietPhieuDKHPRepository.save(chiTietPhieuDangKy);
+		return chiTietPhieuDangKy;
 		
 	}
+
+	@Override
+	public List<PhieuDangKyHocPhan> findByMaHocKyAndIdSinhVien(String maHocKy, String maSinhVien) {
+		// TODO Auto-generated method stub
+		return phieuDKHPRepository.findByHocKyMaHocKyAndSinhVienMaSinhVien(maHocKy, maSinhVien);
+	}
+
+	@Override
+	public List<ChiTietPhieuDangKy> getAllChiTietPhieuDKHP() {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.findAll();
+	}
+
+	@Override
+	public List<ChiTietPhieuDangKy> findByMaHocKy(String maHocKy) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.findByMaHocKy(maHocKy);
+	}
+
+	
+
+	
 
 }

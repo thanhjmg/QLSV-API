@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.kltn.api.entity.ChiTietHocPhan;
+import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.MonHoc;
+import com.kltn.api.repository.ChiTietHPRepository;
 import com.kltn.api.repository.HocPhanRepository;
 import com.kltn.api.repository.LopHocPhanRepository;
 import com.kltn.api.repository.MonHocRepository;
@@ -23,6 +25,9 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	
 	@Autowired
 	private HocPhanRepository hocPhanRepository;
+	
+	@Autowired
+	private ChiTietHPRepository chiTietHPRepository;
 	
 
 	@Override
@@ -65,5 +70,7 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		// TODO Auto-generated method stub
 		return lopHocPhanRepository.getLopHocPhanTheoMaHP(maHP);
 	}
+
+	
 
 }

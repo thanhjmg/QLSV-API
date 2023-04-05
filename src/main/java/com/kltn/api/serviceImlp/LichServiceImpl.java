@@ -102,4 +102,16 @@ public class LichServiceImpl implements LichService{
 		return lichRepository.getTatCaLichTheoMaLHP(maLHP);
 	}
 
+	@Override
+	public List<Lich> getLichTheoNgayCuaSinhVien(String maSV, String ngayBD, String ngayKT) {
+		// TODO Auto-generated method stub
+		return lichRepository.getLichTheoNgayCuaSinhVien(maSV, ngayBD, ngayKT);
+	}
+
+	@Override
+	public List<Lich> getChiTietLopHPByMaLopHocPhan(String maLopHocPhan) {
+		// TODO Auto-generated method stub
+		return lichRepository.getChiTietLopHPByMaLopHocPhan(maLopHocPhan);
+	}
+
 }

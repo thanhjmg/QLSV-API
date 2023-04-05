@@ -12,5 +12,7 @@ public interface LichService {
 	public Lich getLichById(String id);
 	public String autoId();
 	public List<Lich> getTatCaLichTheoMaLHP( String maLHP);
-
+	public List<Lich> getLichTheoNgayCuaSinhVien(String maSV,String ngayBD,  String ngayKT);
+	
+	public List<Lich> getChiTietLopHPByMaLopHocPhan(String maLopHocPhan);
 }

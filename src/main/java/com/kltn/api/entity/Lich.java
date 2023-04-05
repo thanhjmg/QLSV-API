@@ -29,7 +29,7 @@ public class Lich {
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	private Integer nhomTH;
+	//private Integer nhomTH;
 	
 
 	@ManyToOne
@@ -43,6 +43,10 @@ public class Lich {
 	@ManyToOne
 	@JoinColumn(name = "maLopHocPhan")
 	private LopHocPhan lopHocPhan;
+	
+	@ManyToOne
+	@JoinColumn(name = "maNhomTH")
+	private NhomThucHanh nhomThucHanh;
 	
 	@ManyToOne
 	@JoinColumn(name = "maCaHoc")

@@ -51,5 +51,17 @@ public class LichRest {
 		// TODO Auto-generated method stub
 		return lichService.getTatCaLichTheoMaLHP(maLHP);
 	}
+	
+	@GetMapping("/sv")
+	public List<Lich> getLichTheoNgayCuaSinhVien(@RequestParam("maSV") String maSV,@RequestParam("ngayBD") String ngayBD,@RequestParam("ngayKT") String ngayKT) {
+		// TODO Auto-generated method stub
+		return lichService.getLichTheoNgayCuaSinhVien(maSV, ngayBD, ngayKT);
+	}
+	
+	@GetMapping("/malhp")
+	public List<Lich> getChiTietLopHPByMaLopHocPhan(@RequestParam("maLopHocPhan") String maLopHocPhan) {
+		// TODO Auto-generated method stub
+		return lichService.getChiTietLopHPByMaLopHocPhan(maLopHocPhan);
+	}
 
 }

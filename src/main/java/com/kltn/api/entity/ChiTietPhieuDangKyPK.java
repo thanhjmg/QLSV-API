@@ -11,11 +11,12 @@ public class ChiTietPhieuDangKyPK implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String lopHocPhan;
+	//private String lopHocPhan;
 	private String phieuDangKyHocPhan;
+	private String nhomThucHanh;
 	@Override
 	public int hashCode() {
-		return Objects.hash(lopHocPhan, phieuDangKyHocPhan);
+		return Objects.hash(nhomThucHanh, phieuDangKyHocPhan);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -26,8 +27,13 @@ public class ChiTietPhieuDangKyPK implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ChiTietPhieuDangKyPK other = (ChiTietPhieuDangKyPK) obj;
-		return Objects.equals(lopHocPhan, other.lopHocPhan) && Objects.equals(phieuDangKyHocPhan, other.phieuDangKyHocPhan);
+		return Objects.equals(nhomThucHanh, other.nhomThucHanh)
+				&& Objects.equals(phieuDangKyHocPhan, other.phieuDangKyHocPhan);
 	}
+	
+	
+	
+	
 	
 	
 	
