@@ -62,6 +62,7 @@ public class PhieuDKHPRest {
 		phieuDKHPService.addChiTietPhieuDKHP(chiTietPhieuDangKy);
 		return chiTietPhieuDangKy;
 	}
+
 	  @GetMapping("/hocky-sinhvien")
 	    public List<PhieuDangKyHocPhan> findByMaHocKyAndIdSinhVien(@RequestParam String maHocKy, @RequestParam String maSinhVien) {
 	        return phieuDKHPService.findByMaHocKyAndIdSinhVien(maHocKy, maSinhVien);
@@ -78,4 +79,13 @@ public class PhieuDKHPRest {
 			// TODO Auto-generated method stub
 			return phieuDKHPService.findByMaHocKy(maHocKy);
 		}
+
+	
+	@GetMapping("/lhp")
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(@RequestParam("maLHP") String maLHP,@RequestParam("maNhom") String maNhom) {
+		// TODO Auto-generated method stub
+		return phieuDKHPService.getListChiTietPDKByMaLHP(maLHP, maNhom);
+	}
+
+
 }

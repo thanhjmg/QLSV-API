@@ -41,4 +41,16 @@ public class NhomTHServiceImlp implements NhomTHService{
 	    return naturalId;
 	}
 
+	@Override
+	public List<NhomThucHanh> getNhomTHTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return nhomTHRepository.getNhomTHTheoMaLHP(maLHP);
+	}
+
+	@Override
+	public List<NhomThucHanh> getAllNhomTHByMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return nhomTHRepository.getAllNhomTHByMaLHP(maLHP);
+	}
+
 }

@@ -15,6 +15,7 @@ import com.kltn.api.repository.CaHocRepository;
 import com.kltn.api.repository.LichRepository;
 import com.kltn.api.repository.LopHocPhanRepository;
 import com.kltn.api.repository.NhanVienRepository;
+import com.kltn.api.repository.NhomTHRepository;
 import com.kltn.api.repository.PhongRepository;
 import com.kltn.api.service.LichService;
 
@@ -34,6 +35,7 @@ public class LichServiceImpl implements LichService{
 	private LopHocPhanRepository lopHocPhanRepository;
 	@Autowired 
 	private CaHocRepository caHocRepository;
+	@Autowired NhomTHRepository nhomTHRepository;
 	
 	
 	@Override
@@ -72,6 +74,8 @@ public class LichServiceImpl implements LichService{
 				lich.setLopHocPhan(lopHocPhan);			
 				}
 		}
+		var nhomTH = nhomTHRepository.findById(lich.getNhomThucHanh().getMaNhom()).get();
+		lich.setNhomThucHanh(nhomTH);
 		lichRepository.save(lich);
 		
 	}

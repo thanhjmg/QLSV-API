@@ -18,4 +18,5 @@ public interface HocPhanService {
 	public List<ChiTietHocPhan> findHocPhanByMaSinhVienAndMaNganh(String maSinhVien, String maNganh);
 	public List<ChiTietHocPhan> getChiTietHocPhan(Date startDate, Date endDate,String maCTK);
 	public HocPhan getHocPhanTheoMaMH(String maMH);
+	public List<HocPhan> getHocPhanTheoKyVaMaGV(String maGV, String maHK);
 }

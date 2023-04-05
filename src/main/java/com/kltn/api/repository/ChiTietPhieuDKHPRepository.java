@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import com.kltn.api.entity.ChiTietPhieuDangKy;
 
 public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDangKy, String>{
+
 	
 	 @Query(value = "SELECT chi_tiet_phieu_dang_ky.*\r\n"
 	 		+ "FROM     chi_tiet_hoc_phan INNER JOIN\r\n"
@@ -19,4 +20,13 @@ public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDa
 	 		+ "                  chi_tiet_phieu_dang_ky ON nhom_thuc_hanh.ma_nhom = chi_tiet_phieu_dang_ky.ma_nhomth\r\n"
 	 		+ "				  where hoc_ky.ma_hoc_ky like  :maHocKy",nativeQuery = true)
 	    List<ChiTietPhieuDangKy> findByMaHocKy(@Param("maHocKy") String maHocKy);
+
+	@Query(value = "SELECT chi_tiet_phieu_dang_ky.*\r\n"
+			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
+			+ "                  nhom_thuc_hanh ON lop_hoc_phan.ma_lop_hoc_phan = nhom_thuc_hanh.ma_lop_hoc_phan INNER JOIN\r\n"
+			+ "                  chi_tiet_phieu_dang_ky ON nhom_thuc_hanh.ma_nhom = chi_tiet_phieu_dang_ky.ma_nhomth\r\n"
+			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and chi_tiet_phieu_dang_ky.ma_nhomth like :maNhom", nativeQuery = true)
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(@Param("maLHP") String maLHP, @Param("maNhom") String maNhom);
+	
+
 }

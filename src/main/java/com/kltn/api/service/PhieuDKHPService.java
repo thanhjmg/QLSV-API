@@ -12,8 +12,13 @@ public interface PhieuDKHPService {
 	public PhieuDangKyHocPhan getPhieuDKHPById(String id);
 	public PhieuDangKyHocPhan addOrUpdatePhieuDK(PhieuDangKyHocPhan phieuDangKyHocPhan);
 	public String autoId();
+
 	public ChiTietPhieuDangKy addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy);
 	
 	public List<PhieuDangKyHocPhan> findByMaHocKyAndIdSinhVien(String maHocKy, String maSinhVien);
 	public List<ChiTietPhieuDangKy> findByMaHocKy(String maHocKy);
+
+	
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom);
+
 }

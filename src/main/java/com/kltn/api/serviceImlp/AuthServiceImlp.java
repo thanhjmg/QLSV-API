@@ -89,20 +89,21 @@ public class AuthServiceImlp implements AuthService {
 
     @Override
     public Map<String, String> getNewToken(String refreshToken) {
-        Map<String, String> dataNewToken = new HashMap<>();
-        String userName =  jwtService.extractUsername(refreshToken);
+    	 Map<String, String> dataNewToken = new HashMap<>();
+         String userName =  jwtService.extractUsername(refreshToken);
 
-        User user = userRepo.findByUsername(userName);
-        if(user == null || !jwtService.isTokenValid(refreshToken, user)){
-            dataNewToken.put("errorMessage","Token không hợp lệ");
-            return dataNewToken;
-        }
+         User user = userRepo.findByUsername(userName);
+         if(user == null || !jwtService.isTokenValid(refreshToken, user)){
+             dataNewToken.put("errorMessage","Token không hợp lệ");
+             return dataNewToken;
+         }
 
-        String newAccessToken = jwtService.generateToken(user);
+         String newAccessToken = jwtService.generateToken(user);
+         String newRefreshToken = jwtService.generateRefreshToken(user);
 
-        dataNewToken.put("accessToken",newAccessToken);
-        dataNewToken.put("refreshToken",refreshToken);
+         dataNewToken.put("accessToken",newAccessToken);
+         dataNewToken.put("refreshToken",newRefreshToken);
 
-        return dataNewToken;
+         return dataNewToken;
     }
 }

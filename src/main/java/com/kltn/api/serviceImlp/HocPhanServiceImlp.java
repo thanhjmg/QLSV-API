@@ -83,9 +83,15 @@ public class HocPhanServiceImlp implements HocPhanService{
 	}
 
 	@Override
+
 	public List<ChiTietHocPhan> findHocPhanByMaSinhVienAndMaNganh(String maSinhVien, String maNganh) {
 		// TODO Auto-generated method stub
 		return chiTietHPRepository.findHocPhanByMaSinhVienAndMaNganh(maSinhVien, maNganh);
+	}
+	public List<HocPhan> getHocPhanTheoKyVaMaGV(String maGV, String maHK) {
+		// TODO Auto-generated method stub
+		return hocPhanRepository.getHocPhanTheoKyVaMaGV(maGV, maHK);
+
 	}
 
 }

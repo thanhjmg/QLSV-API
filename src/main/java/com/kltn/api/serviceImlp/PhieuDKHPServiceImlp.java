@@ -98,6 +98,7 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	}
 
 	@Override
+
 	public List<PhieuDangKyHocPhan> findByMaHocKyAndIdSinhVien(String maHocKy, String maSinhVien) {
 		// TODO Auto-generated method stub
 		return phieuDKHPRepository.findByHocKyMaHocKyAndSinhVienMaSinhVien(maHocKy, maSinhVien);
@@ -118,5 +119,12 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	
 
 	
+
+
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.getListChiTietPDKByMaLHP(maLHP, maNhom);
+	}
+
 
 }

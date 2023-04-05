@@ -37,7 +37,7 @@ public class JwtServiceImlp implements JwtService {
     // tạo token theo thông tin user
     @Override
     public String generateToken(UserDetails user){
-        return generateToken(new HashMap<>(), user,1000*60*60*24); // 1 ngay
+        return generateToken(new HashMap<>(), user,1000*60*60*24*7); // 1 ngay
     }
 
     @Override
