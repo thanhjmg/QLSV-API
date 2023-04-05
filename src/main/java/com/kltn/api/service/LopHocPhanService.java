@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.query.Param;
 
+import com.kltn.api.entity.ChiTietPhieuDangKy;
 import com.kltn.api.entity.LopHocPhan;
 
 public interface LopHocPhanService {
@@ -12,5 +13,5 @@ public interface LopHocPhanService {
 	public LopHocPhan getLopHocPhanById(String id);
 	public String autoId();
 	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(String maHP,String maHK);
-	
+	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(String maGV, String maHK, String maHP);
 }

@@ -82,4 +82,10 @@ public class HocPhanServiceImlp implements HocPhanService{
 		return hocPhanRepository.getHocPhanTheoMaMH(maMH);
 	}
 
+	@Override
+	public List<HocPhan> getHocPhanTheoKyVaMaGV(String maGV, String maHK) {
+		// TODO Auto-generated method stub
+		return hocPhanRepository.getHocPhanTheoKyVaMaGV(maGV, maHK);
+	}
+
 }

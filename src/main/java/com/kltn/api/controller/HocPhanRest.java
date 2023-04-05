@@ -71,4 +71,10 @@ public class HocPhanRest {
 		// TODO Auto-generated method stub
 		return hocPhanService.getHocPhanTheoMaMH(maMH);
 	}
+	
+	@GetMapping("/giangvien")
+	public List<HocPhan> getHocPhanTheoKyVaMaGV(@RequestParam("maGV") String maGV,@RequestParam("maHK") String maHK) {
+		// TODO Auto-generated method stub
+		return hocPhanService.getHocPhanTheoKyVaMaGV(maGV, maHK);
+	}
 }

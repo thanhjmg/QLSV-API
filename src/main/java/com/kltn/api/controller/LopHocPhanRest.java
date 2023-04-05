@@ -46,14 +46,20 @@ public class LopHocPhanRest {
 		return lopHocPhan;
 	}
 	@PutMapping
-	public void updateLopHocPhan(@RequestBody LopHocPhan lopHocPhan) {
+	public LopHocPhan updateLopHocPhan(@RequestBody LopHocPhan lopHocPhan) {
 		
 		lopHocPhanService.saveOrUpdate(lopHocPhan);
+		return lopHocPhan;
 	}
 	
 	@GetMapping("/hocphan")
 	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(@RequestParam("maHP") String maHP,@RequestParam("maHK") String maHK) {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getLopHocPhanTheoMaHocPhan(maHP,maHK);
+	}
+	@GetMapping("/giangvien")
+	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(@RequestParam("maGV") String maGV,@RequestParam("maHK") String maHK,@RequestParam("maHP") String maHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getTatCaLHPByHocPhanAndMaGVAndMaHK(maGV, maHK, maHP);
 	}
 }

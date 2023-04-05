@@ -11,4 +11,5 @@ public interface PhieuDKHPService {
 	public void addOrUpdatePhieuDK(PhieuDangKyHocPhan phieuDangKyHocPhan);
 	public String autoId();
 	public void addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy);
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom);
 }
