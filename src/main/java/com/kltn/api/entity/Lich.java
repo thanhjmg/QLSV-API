@@ -39,10 +39,10 @@ public class Lich {
 	@ManyToOne
 	@JoinColumn(name = "idNhanVien")
 	private NhanVien nhanVien;
-	
-	@ManyToOne
-	@JoinColumn(name = "maLopHocPhan")
-	private LopHocPhan lopHocPhan;
+//	
+//	@ManyToOne
+//	@JoinColumn(name = "maLopHocPhan")
+//	private LopHocPhan lopHocPhan;
 	
 	@ManyToOne
 	@JoinColumn(name = "maNhomTH")

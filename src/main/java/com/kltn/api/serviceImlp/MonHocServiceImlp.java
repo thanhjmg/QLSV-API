@@ -47,4 +47,10 @@ public class MonHocServiceImlp implements MonHocService{
 	    return maMH;
 	}
 
+	@Override
+	public List<MonHoc> getMonHocByTextSearch(String valueSearch) {
+		// TODO Auto-generated method stub
+		return monHocRepository.getMonHocByTextSearch(valueSearch);
+	}
+
 }

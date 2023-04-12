@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 
 import com.kltn.api.entity.Lich;
-
+import com.kltn.api.entity.BangDiem;
 import com.kltn.api.entity.ChiTietPhieuDangKy;
 
 import com.kltn.api.entity.LopHocPhan;
@@ -23,5 +23,7 @@ public interface LopHocPhanService {
 	
 
 	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(String maGV, String maHK, String maHP);
-
+	public List<BangDiem> getBangDiemTheoLHPAndMaSV(String maLHP);
+	public void addBangDiem(BangDiem bangDiem);
+	public List<LopHocPhan> getLopHocPhanByTextSearch( String valueSearch);
 }

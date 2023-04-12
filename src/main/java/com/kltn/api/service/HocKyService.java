@@ -3,6 +3,8 @@ package com.kltn.api.service;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.kltn.api.entity.ChiTietHocKy;
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
@@ -17,4 +19,5 @@ public interface HocKyService {
 	public List<HocKy> timKiemHocKy(String textSearch);
 	public List<HocKy> getHocKyTheoKhoaHoc(Date startDate, Date endDate);
 	public List<HocKy> getHocKyTheoMaCTK(String maCTK);
+	public void removeMonHocOfChuongTrinhKhung(String maCTK, String maHK, String maHP);
 }

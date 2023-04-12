@@ -76,4 +76,12 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 		
 	}
 
+	@Override
+	public List<ChuongTrinhKhung> getCTKByTextSearch(String valueSearch) {
+		// TODO Auto-generated method stub
+		return chuongTrinhKhungRepository.getCTKByTextSearch(valueSearch);
+	}
+
+	
+
 }

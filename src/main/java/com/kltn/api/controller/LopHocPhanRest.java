@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kltn.api.entity.BangDiem;
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.Phong;
 import com.kltn.api.service.LopHocPhanService;
@@ -69,5 +70,28 @@ public class LopHocPhanRest {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getTatCaLHPByHocPhanAndMaGVAndMaHK(maGV, maHK, maHP);
 
+	}
+	
+	@GetMapping("/bangdiem")
+	public List<BangDiem> getBangDiemTheoLHP(@RequestParam("maLHP") String maLHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getBangDiemTheoLHPAndMaSV(maLHP);
+	}
+	
+	@PostMapping("/bangdiem")
+	public BangDiem addBangDiem(@RequestBody BangDiem bangDiem) {
+		lopHocPhanService.addBangDiem(bangDiem);
+		return bangDiem;
+	}
+	@PutMapping("/bangdiem")
+	public BangDiem updateBangDiem(@RequestBody BangDiem bangDiem) {
+		lopHocPhanService.addBangDiem(bangDiem);
+		return bangDiem;
+	}
+	
+	@GetMapping("/search")
+	public List<LopHocPhan> getLopHocPhanByTextSearch(@RequestParam("valueSearch") String valueSearch) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getLopHocPhanByTextSearch(valueSearch);
 	}
 }

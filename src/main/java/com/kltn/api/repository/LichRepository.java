@@ -8,12 +8,17 @@ import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.Lich;
+import com.kltn.api.entity.MonHoc;
 
 public interface LichRepository extends JpaRepository<Lich, String> {
 	@Query("SELECT COUNT(*) val_count FROM Lich")
 	public int autoId();
 	
-	@Query(value = "select lich.* from lich where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
+	//@Query(value = "select lich.* from lich where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
+	@Query(value = "SELECT lich.*\r\n"
+			+ "FROM     lich INNER JOIN\r\n"
+			+ "                  nhom_thuc_hanh ON lich.ma_nhomth = nhom_thuc_hanh.ma_nhom\r\n"
+			+ "				  where nhom_thuc_hanh.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	public List<Lich> getTatCaLichTheoMaLHP(@Param("maLHP") String maLHP);
 	
 
@@ -41,6 +46,7 @@ public interface LichRepository extends JpaRepository<Lich, String> {
 			+ " GROUP BY ma_nhomth", nativeQuery = true)
 	  List<Lich> getChiTietLopHPByMaLopHocPhan(@Param("maLopHocPhan") String maLopHocPhan);
 	
-
+	@Query("SELECT lich FROM Lich lich WHERE lower(lich.maLich) LIKE lower(concat('%', :valueSearch, '%'))")
+	public List<Lich> getLichByTextSearch(@Param("valueSearch") String valueSearch);
 
 }

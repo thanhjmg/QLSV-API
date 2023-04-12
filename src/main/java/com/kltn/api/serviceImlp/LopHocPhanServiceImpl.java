@@ -6,14 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kltn.api.entity.BangDiem;
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.MonHoc;
+import com.kltn.api.repository.BangDiemRepository;
 import com.kltn.api.repository.ChiTietHPRepository;
 import com.kltn.api.repository.HocPhanRepository;
 import com.kltn.api.repository.LopHocPhanRepository;
 import com.kltn.api.repository.MonHocRepository;
+import com.kltn.api.repository.SinhVienRepository;
 import com.kltn.api.service.LopHocPhanService;
 
 @Service
@@ -28,6 +31,10 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	
 	@Autowired
 	private ChiTietHPRepository chiTietHPRepository;
+	@Autowired
+	private BangDiemRepository bangDiemRepository;
+	@Autowired 
+	private SinhVienRepository sinhVienRepository;
 	
 
 	@Override
@@ -78,6 +85,27 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(String maGV, String maHK, String maHP) {
 		// TODO Auto-generated method stub
 		return lopHocPhanRepository.getTatCaLHPByHocPhanAndMaGVAndMaHK(maGV, maHK, maHP);
+	}
+
+	@Override
+	public List<BangDiem> getBangDiemTheoLHPAndMaSV(String maLHP) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getbangDiemTheoLHP(maLHP);
+	}
+
+	@Override
+	public void addBangDiem(BangDiem bangDiem) {
+		var sv = sinhVienRepository.findById(bangDiem.getSinhVien().getMaSinhVien()).get();
+		var hp = hocPhanRepository.findById(bangDiem.getHocPhan().getMaHocPhan()).get();
+		bangDiem.setSinhVien(sv);
+		bangDiem.setHocPhan(hp);
+		bangDiemRepository.save(bangDiem);
+	}
+
+	@Override
+	public List<LopHocPhan> getLopHocPhanByTextSearch(String valueSearch) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanByTextSearch(valueSearch);
 	}
 
 

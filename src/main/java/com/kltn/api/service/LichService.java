@@ -15,4 +15,5 @@ public interface LichService {
 	public List<Lich> getLichTheoNgayCuaSinhVien(String maSV,String ngayBD,  String ngayKT);
 	
 	public List<Lich> getChiTietLopHPByMaLopHocPhan(String maLopHocPhan);
+	public List<Lich> getLichByTextSearch(String valueSearch);
 }

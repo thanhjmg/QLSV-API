@@ -126,5 +126,11 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 		return chiTietPhieuDKHPRepository.getListChiTietPDKByMaLHP(maLHP, maNhom);
 	}
 
+	@Override
+	public List<ChiTietPhieuDangKy> getMonHocByTextSearch(String valueSearch) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.getMonHocByTextSearch(valueSearch);
+	}
+
 
 }

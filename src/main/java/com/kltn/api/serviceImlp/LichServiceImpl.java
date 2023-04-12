@@ -65,15 +65,15 @@ public class LichServiceImpl implements LichService{
 				nhanVien = new NhanVien(lich.getNhanVien().getMaNhanVien());
 				lich.setNhanVien(nhanVien);;			}
 		}
-		if(!lich.getLopHocPhan().getMaLopHocPhan().equals("")) {
-			var lopHocPhan = lopHocPhanRepository.findById(lich.getLopHocPhan().getMaLopHocPhan()).get();
-			if(lopHocPhan != null) {
-				lich.setLopHocPhan(lopHocPhan);
-			}else {
-				lopHocPhan = new LopHocPhan(lich.getLopHocPhan().getMaLopHocPhan());
-				lich.setLopHocPhan(lopHocPhan);			
-				}
-		}
+//		if(!lich.getLopHocPhan().getMaLopHocPhan().equals("")) {
+//			var lopHocPhan = lopHocPhanRepository.findById(lich.getLopHocPhan().getMaLopHocPhan()).get();
+//			if(lopHocPhan != null) {
+//				lich.setLopHocPhan(lopHocPhan);
+//			}else {
+//				lopHocPhan = new LopHocPhan(lich.getLopHocPhan().getMaLopHocPhan());
+//				lich.setLopHocPhan(lopHocPhan);			
+//				}
+//		}
 		var nhomTH = nhomTHRepository.findById(lich.getNhomThucHanh().getMaNhom()).get();
 		lich.setNhomThucHanh(nhomTH);
 		lichRepository.save(lich);
@@ -116,6 +116,12 @@ public class LichServiceImpl implements LichService{
 	public List<Lich> getChiTietLopHPByMaLopHocPhan(String maLopHocPhan) {
 		// TODO Auto-generated method stub
 		return lichRepository.getChiTietLopHPByMaLopHocPhan(maLopHocPhan);
+	}
+
+	@Override
+	public List<Lich> getLichByTextSearch(String valueSearch) {
+		// TODO Auto-generated method stub
+		return lichRepository.getLichByTextSearch(valueSearch);
 	}
 
 }

@@ -39,11 +39,10 @@ public class LichRest {
 	public List<Lich> getAllLich(){
 		return lichService.getAllLich();
 	}
-	@GetMapping
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Lich getLichById(@PathVariable String id) {
+	@GetMapping("/malich")
+	public List<Lich> getLichById(@RequestParam("valueSearch") String valueSearch) {
 		// TODO Auto-generated method stub
-		return lichService.getLichById(id);
+		return lichService.getLichByTextSearch(valueSearch);
 	}
 	
 	@GetMapping("lhp")

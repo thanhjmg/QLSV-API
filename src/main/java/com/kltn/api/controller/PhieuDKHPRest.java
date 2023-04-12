@@ -87,5 +87,9 @@ public class PhieuDKHPRest {
 		return phieuDKHPService.getListChiTietPDKByMaLHP(maLHP, maNhom);
 	}
 
-
+	@GetMapping("/chitietpdk/search")
+	public List<ChiTietPhieuDangKy> getMonHocByTextSearch(@RequestParam String valueSearch) {
+		// TODO Auto-generated method stub
+		return phieuDKHPService.getMonHocByTextSearch(valueSearch);
+	}
 }

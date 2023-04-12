@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.ChiTietPhieuDangKy;
+import com.kltn.api.entity.MonHoc;
 
 public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDangKy, String>{
 
@@ -28,5 +29,7 @@ public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDa
 			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and chi_tiet_phieu_dang_ky.ma_nhomth like :maNhom", nativeQuery = true)
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(@Param("maLHP") String maLHP, @Param("maNhom") String maNhom);
 	
-
+	@Query("SELECT distinct pdk FROM ChiTietPhieuDangKy pdk WHERE lower(pdk.nhomThucHanh.lopHocPhan.maLopHocPhan) LIKE lower(concat('%', :valueSearch, '%')) "
+            + "OR lower(pdk.nhomThucHanh.lopHocPhan.tenLopHocPhan) LIKE lower(concat('%', :valueSearch, '%'))")
+	public List<ChiTietPhieuDangKy> getMonHocByTextSearch(@Param("valueSearch") String valueSearch);
 }

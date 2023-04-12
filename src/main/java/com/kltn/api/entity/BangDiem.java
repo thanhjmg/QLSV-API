@@ -32,30 +32,30 @@ public class BangDiem implements Serializable{
 	@JoinColumn(name = "ma_sinh_vien")
 	private SinhVien sinhVien;
 	
-	@Column(columnDefinition = "float", nullable = true)
-	private float thuongKy1;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thuongKy2;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thuongKy3;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thuongKy4;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thuongKy5;
+	@Column(  nullable = true)
+	private Double thuongKy1;
+	@Column(  nullable = true)
+	private Double thuongKy2;
+	@Column(  nullable = true)
+	private Double thuongKy3;
+	@Column(  nullable = true)
+	private Double thuongKy4;
+	@Column(  nullable = true)
+	private Double thuongKy5;
 	
-	@Column(columnDefinition = "float", nullable = true)
-	private float giuaKy;
-	@Column(columnDefinition = "float", nullable = true)
-	private float cuoiKy;
+	@Column(  nullable = true)
+	private Double giuaKy;
+	@Column(  nullable = true)
+	private Double cuoiKy;
 	
-	@Column(columnDefinition = "float", nullable = true)
-	private float thucHanh1;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thucHanh2;
-	@Column(columnDefinition = "float", nullable = true)
-	private float thucHanh3;
-	@Column(columnDefinition = "float", nullable = true)
-	private float diemTongKet;
+	@Column(  nullable = true)
+	private Double thucHanh1;
+	@Column(  nullable = true)
+	private Double thucHanh2;
+	@Column(  nullable = true)
+	private Double thucHanh3;
+	@Column(  nullable = true)
+	private Double diemTongKet;
 	
 	
 	@Column(columnDefinition = "nvarchar(255)")

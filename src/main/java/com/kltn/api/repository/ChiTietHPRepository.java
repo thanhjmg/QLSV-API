@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -35,7 +36,9 @@ public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, Strin
 			+ "                  sinh_vien ON khoa_hoc.ma_khoa_hoc = sinh_vien.ma_khoa_hoc AND lop_hoc.ma_lop = sinh_vien.ma_lop_hoc where ma_sinh_vien like :maSinhVien AND ma_nganh LIKE :maNganh", nativeQuery = true)
 	    List<ChiTietHocPhan> findHocPhanByMaSinhVienAndMaNganh(@Param("maSinhVien") String maSinhVien, @Param("maNganh") String maNganh);
 	
-	
+	@Query(value = "delete [dbo].[chi_tiet_hoc_phan] where [ma_chuong_trinh_khung] like :maCTK and [ma_hoc_ky] like :maHK and [ma_hoc_phan] like :maHP", nativeQuery = true)
+	@Modifying
+	public void removeMonHocOfChuongTrinhKhung(@Param("maCTK") String maCTK,@Param("maHK") String maHK,@Param("maHP") String maHP);
 	
 	
 	

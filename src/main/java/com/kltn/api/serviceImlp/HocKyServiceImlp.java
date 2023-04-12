@@ -88,4 +88,10 @@ public class HocKyServiceImlp implements  HocKyService{
 		return hocKyRepository.getHocKyByMaCTK(maCTK);
 	}
 
+	@Override
+	public void removeMonHocOfChuongTrinhKhung(String maCTK, String maHK, String maHP) {
+		chiTietMonHocRepository.removeMonHocOfChuongTrinhKhung(maCTK, maHK, maHP);
+		
+	}
+
 }

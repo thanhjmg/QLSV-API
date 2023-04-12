@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.LopHocPhan;
+import com.kltn.api.entity.MonHoc;
 
 public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 	@Query("SELECT COUNT(*) val_count FROM LopHocPhan")
@@ -38,5 +39,8 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 			+ "                  hoc_ky ON chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky\r\n"
 			+ "				  where nhan_vien.ma_nhan_vien like :maGV and hoc_ky.ma_hoc_ky like :maHK and hoc_phan.ma_hoc_phan like :maHP", nativeQuery = true)
 	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(@Param("maGV") String maGV, @Param("maHK") String maHK, @Param("maHP") String maHP);
-
+	
+	@Query("SELECT lhp FROM LopHocPhan lhp WHERE lower(lhp.tenLopHocPhan) LIKE lower(concat('%', :valueSearch, '%')) "
+            + "OR lower(lhp.maLopHocPhan) LIKE lower(concat('%', :valueSearch, '%'))")
+	public List<LopHocPhan> getLopHocPhanByTextSearch(@Param("valueSearch") String valueSearch);
 }
