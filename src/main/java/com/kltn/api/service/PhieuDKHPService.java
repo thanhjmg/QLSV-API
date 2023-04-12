@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.ChiTietPhieuDangKy;
 import com.kltn.api.entity.HocKy;
+import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 
 public interface PhieuDKHPService {
@@ -18,9 +19,20 @@ public interface PhieuDKHPService {
 	public ChiTietPhieuDangKy addChiTietPhieuDKHP(ChiTietPhieuDangKy chiTietPhieuDangKy);
 	
 	public List<PhieuDangKyHocPhan> findByMaHocKyAndIdSinhVien(String maHocKy, String maSinhVien);
-	public List<ChiTietPhieuDangKy> findByMaHocKy(String maHocKy);
+	public List<ChiTietPhieuDangKy> findByMaHocKyAndMaSinhVien(String maSinhVien,String maHocKy);
 
 	
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom);
+<<<<<<< HEAD
 	public List<ChiTietPhieuDangKy> getMonHocByTextSearch( String valueSearch);
+=======
+	
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaSinhVien(String maSinhVien);
+	
+	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(String maPhieuDK, String maNhomTH);
+
+	
+
+
+>>>>>>> c78b0d88d1f8d227b2d5e14c866f4e6a4695b43f
 }

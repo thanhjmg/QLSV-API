@@ -124,4 +124,8 @@ public class LichServiceImpl implements LichService{
 		return lichRepository.getLichByTextSearch(valueSearch);
 	}
 
+	public List<Lich> getListChiTietPDKByMaSinhVienAndLopHP(String maSinhVien, String maLHP) {
+		// TODO Auto-generated method stub
+		return lichRepository.getListChiTietPDKByMaSinhVienAndLopHP(maSinhVien, maLHP);
+	}
 }

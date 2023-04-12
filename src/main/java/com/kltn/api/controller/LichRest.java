@@ -62,5 +62,11 @@ public class LichRest {
 		// TODO Auto-generated method stub
 		return lichService.getChiTietLopHPByMaLopHocPhan(maLopHocPhan);
 	}
+	
+	@GetMapping("/chitietlich/sinhvien-lophocphan")
+	public List<Lich> getListChiTietPDKByMaSinhVienAndLHP(@RequestParam("maSinhVien") String maSinhVien, @RequestParam("maLHP") String maLHP) {
+		// TODO Auto-generated method stub
+		return lichService.getListChiTietPDKByMaSinhVienAndLopHP(maSinhVien, maLHP);
+	}
 
 }

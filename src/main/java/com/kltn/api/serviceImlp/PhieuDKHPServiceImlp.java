@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kltn.api.entity.ChiTietPhieuDangKy;
 import com.kltn.api.entity.HocKy;
 import com.kltn.api.entity.Khoa;
+import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.entity.SinhVien;
 import com.kltn.api.repository.ChiTietPhieuDKHPRepository;
@@ -111,15 +112,10 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 	}
 
 	@Override
-	public List<ChiTietPhieuDangKy> findByMaHocKy(String maHocKy) {
+	public List<ChiTietPhieuDangKy> findByMaHocKyAndMaSinhVien(String maSinhVien, String maHocKy) {
 		// TODO Auto-generated method stub
-		return chiTietPhieuDKHPRepository.findByMaHocKy(maHocKy);
+		return chiTietPhieuDKHPRepository.findByMaHocKyAndMaSinhVien(maSinhVien, maHocKy);
 	}
-
-	
-
-	
-
 
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom) {
 		// TODO Auto-generated method stub
@@ -132,5 +128,15 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 		return chiTietPhieuDKHPRepository.getMonHocByTextSearch(valueSearch);
 	}
 
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaSinhVien(String maSinhVien) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.getListChiTietPDKByMaSinhVien(maSinhVien);
+	}
+
+	@Override
+	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(String maPhieuDK, String maNhomTH) {
+		// TODO Auto-generated method stub
+		chiTietPhieuDKHPRepository.deleteChiTietPDKByMaPhieuDKAndMaNhomTH(maPhieuDK, maNhomTH);
+	}
 
 }

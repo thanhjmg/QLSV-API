@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kltn.api.entity.ChiTietPhieuDangKy;
+import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.PhieuDangKyHocPhan;
 import com.kltn.api.service.PhieuDKHPService;
 
@@ -74,10 +76,10 @@ public class PhieuDKHPRest {
 			return phieuDKHPService.getAllChiTietPhieuDKHP();
 		}
 		
-		@GetMapping("/chitietpdk/byhocky")
-		public List<ChiTietPhieuDangKy> findByMaHocKy(String maHocKy) {
+		@GetMapping("/chitietpdk/byhockyandsinhvien")
+		public List<ChiTietPhieuDangKy> findByMaHocKyAndMaSinhVien(String maSinhVien,String maHocKy) {
 			// TODO Auto-generated method stub
-			return phieuDKHPService.findByMaHocKy(maHocKy);
+			return phieuDKHPService.findByMaHocKyAndMaSinhVien(maSinhVien, maHocKy);
 		}
 
 	
@@ -92,4 +94,15 @@ public class PhieuDKHPRest {
 		// TODO Auto-generated method stub
 		return phieuDKHPService.getMonHocByTextSearch(valueSearch);
 	}
+	@GetMapping("/chitietpdk/sinhvien")
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaSinhVien(@RequestParam("maSinhVien") String maSinhVien) {
+		// TODO Auto-generated method stub
+		return phieuDKHPService.getListChiTietPDKByMaSinhVien(maSinhVien);
+	}
+	
+	@DeleteMapping("/chitietpdk")
+	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(@RequestParam("maPhieuDK") String maPhieuDK, @RequestParam("maNhomTH") String maNhomTH) {
+		phieuDKHPService.deleteChiTietPDKByMaPhieuDKAndMaNhomTH(maPhieuDK, maNhomTH);
+	}
+
 }
