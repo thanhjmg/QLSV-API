@@ -118,4 +118,9 @@ public class LichServiceImpl implements LichService{
 		return lichRepository.getChiTietLopHPByMaLopHocPhan(maLopHocPhan);
 	}
 
+	@Override
+	public List<Lich> getListChiTietPDKByMaSinhVienAndLopHP(String maSinhVien, String maLHP) {
+		// TODO Auto-generated method stub
+		return lichRepository.getListChiTietPDKByMaSinhVienAndLopHP(maSinhVien, maLHP);
+	}
 }
