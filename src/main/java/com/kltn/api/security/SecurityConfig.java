@@ -38,8 +38,7 @@ public class SecurityConfig {
 	                    .permitAll()
 
 	                    .requestMatchers("/actuator/**").permitAll()
-	               
-
+	                    
 	                    .anyRequest()
 	                    .authenticated()
 	                    .and()
@@ -59,8 +58,10 @@ public class SecurityConfig {
 	            public void addCorsMappings(CorsRegistry registry) {
 	                registry.addMapping("/api/**").allowedOrigins("${client.url}")
 	                        .allowCredentials(true)
-	                        .allowedHeaders("*")
+	                        .allowedHeaders("*","Content-Type","Access-Control-Allow-Origins")
+
 	                        .allowedMethods("*")
+	                        .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Credentials","Content-Type")
 	                ;
 	            }
 	        };

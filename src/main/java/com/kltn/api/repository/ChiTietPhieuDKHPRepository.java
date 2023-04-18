@@ -15,7 +15,7 @@ import com.kltn.api.entity.Lich;
 public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDangKy, String>{
 
 	
-	 @Query(value = "SELECT chi_tiet_phieu_dang_ky.*\r\n"
+	 @Query(value = "SELECT  chi_tiet_phieu_dang_ky.*\r\n"
 	 		+ "FROM     chi_tiet_hoc_phan INNER JOIN\r\n"
 	 		+ "                  hoc_ky ON chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky INNER JOIN\r\n"
 	 		+ "                  hoc_phan ON chi_tiet_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
@@ -27,10 +27,13 @@ public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDa
 	  public  List<ChiTietPhieuDangKy> findByMaHocKyAndMaSinhVien(@Param("maSinhVien") String maSinhVien,@Param("maHocKy") String maHocKy);
 
 	@Query(value = "SELECT chi_tiet_phieu_dang_ky.*\r\n"
-			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
-			+ "                  nhom_thuc_hanh ON lop_hoc_phan.ma_lop_hoc_phan = nhom_thuc_hanh.ma_lop_hoc_phan INNER JOIN\r\n"
-			+ "                  chi_tiet_phieu_dang_ky ON nhom_thuc_hanh.ma_nhom = chi_tiet_phieu_dang_ky.ma_nhomth\r\n"
-			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and chi_tiet_phieu_dang_ky.ma_nhomth like :maNhom", nativeQuery = true)
+			+ "FROM     chi_tiet_phieu_dang_ky INNER JOIN\r\n"
+			+ "                  phieu_dang_ky_hoc_phan ON chi_tiet_phieu_dang_ky.ma_phieu_dang_kyhp = phieu_dang_ky_hoc_phan.ma_phieu_dang_ky INNER JOIN\r\n"
+			+ "                  sinh_vien ON phieu_dang_ky_hoc_phan.id_sinh_vien = sinh_vien.ma_sinh_vien INNER JOIN\r\n"
+			+ "                  nhom_thuc_hanh ON chi_tiet_phieu_dang_ky.ma_nhomth = nhom_thuc_hanh.ma_nhom INNER JOIN\r\n"
+			+ "                  lop_hoc_phan ON nhom_thuc_hanh.ma_lop_hoc_phan = lop_hoc_phan.ma_lop_hoc_phan\r\n"
+			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and chi_tiet_phieu_dang_ky.ma_nhomth like :maNhom\r\n"
+			+ "				  ORDER BY RIGHT(sinh_vien.ten_sinh_vien, 1) ASC", nativeQuery = true)
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(@Param("maLHP") String maLHP, @Param("maNhom") String maNhom);
 	
 	@Query("SELECT distinct pdk FROM ChiTietPhieuDangKy pdk WHERE lower(pdk.nhomThucHanh.lopHocPhan.maLopHocPhan) LIKE lower(concat('%', :valueSearch, '%')) "

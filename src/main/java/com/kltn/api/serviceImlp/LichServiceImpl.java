@@ -128,4 +128,10 @@ public class LichServiceImpl implements LichService{
 		// TODO Auto-generated method stub
 		return lichRepository.getListChiTietPDKByMaSinhVienAndLopHP(maSinhVien, maLHP);
 	}
+
+	@Override
+	public List<Lich> getLichTheoNgayCuaGiangVien(String maGV, String ngayBD, String ngayKT) {
+		// TODO Auto-generated method stub
+		return lichRepository.getLichTheoNgayCuaGiangVien(maGV, ngayBD, ngayKT);
+	}
 }

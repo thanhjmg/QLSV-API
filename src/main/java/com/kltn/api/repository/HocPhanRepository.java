@@ -29,14 +29,15 @@ public interface HocPhanRepository extends JpaRepository<HocPhan, String>{
 	
 
 	@Query(value = "SELECT DISTINCT hoc_phan.*\r\n"
-			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
+			+ "FROM     hoc_phan INNER JOIN\r\n"
+			+ "                  lop_hoc_phan ON hoc_phan.ma_hoc_phan = lop_hoc_phan.ma_hoc_phan INNER JOIN\r\n"
 			+ "                  nhom_thuc_hanh ON lop_hoc_phan.ma_lop_hoc_phan = nhom_thuc_hanh.ma_lop_hoc_phan INNER JOIN\r\n"
-			+ "                  lich ON lop_hoc_phan.ma_lop_hoc_phan = lich.ma_lop_hoc_phan AND nhom_thuc_hanh.ma_nhom = lich.ma_nhomth INNER JOIN\r\n"
-			+ "                  nhan_vien ON lich.id_nhan_vien = nhan_vien.ma_nhan_vien INNER JOIN\r\n"
-			+ "                  hoc_phan ON lop_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
 			+ "                  chi_tiet_hoc_phan ON hoc_phan.ma_hoc_phan = chi_tiet_hoc_phan.ma_hoc_phan INNER JOIN\r\n"
-			+ "                  hoc_ky ON chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky\r\n"
-			+ "				  where nhan_vien.ma_nhan_vien like :maGV and hoc_ky.ma_hoc_ky like :maHK", nativeQuery = true)
+			+ "                  hoc_ky ON chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky INNER JOIN\r\n"
+			+ "                  lich ON lop_hoc_phan.ma_lop_hoc_phan = lich.ma_lop_hoc_phan AND nhom_thuc_hanh.ma_nhom = lich.ma_nhomth INNER JOIN\r\n"
+			+ "                  nhan_vien ON lich.id_nhan_vien = nhan_vien.ma_nhan_vien\r\n"
+			+ "				   where nhan_vien.ma_nhan_vien like :maGV and hoc_ky.ma_hoc_ky like :maHK", nativeQuery = true)
 	public List<HocPhan> getHocPhanTheoKyVaMaGV(@Param("maGV") String maGV, @Param("maHK") String maHK);
+	
 
 }

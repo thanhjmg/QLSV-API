@@ -40,6 +40,14 @@ public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, Strin
 	@Modifying
 	public void removeMonHocOfChuongTrinhKhung(@Param("maCTK") String maCTK,@Param("maHK") String maHK,@Param("maHP") String maHP);
 	
-	
+	@Query(value = "SELECT distinct chi_tiet_hoc_phan.*\r\n"
+			+ "FROM     chi_tiet_hoc_phan where ma_chuong_trinh_khung in\r\n"
+			+ "(SELECT chuong_trinh_khung.ma_chuong_trinh_khung\r\n"
+			+ "FROM     sinh_vien INNER JOIN\r\n"
+			+ "                  lop_hoc ON sinh_vien.ma_lop_hoc = lop_hoc.ma_lop INNER JOIN\r\n"
+			+ "                  nganh_hoc ON lop_hoc.id_nganh = nganh_hoc.ma_nganh INNER JOIN\r\n"
+			+ "                  chuong_trinh_khung ON nganh_hoc.ma_nganh = chuong_trinh_khung.id_nganh\r\n"
+			+ "				  where sinh_vien.ma_sinh_vien like :maSV)", nativeQuery = true)
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@Param("maSV") String maSV);
 	
 }

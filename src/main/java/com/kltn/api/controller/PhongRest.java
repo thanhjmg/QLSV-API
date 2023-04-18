@@ -39,13 +39,15 @@ public class PhongRest {
 	}
 	
 	@PostMapping
-	public void addPhong(@RequestBody Phong phong) {
+	public Phong addPhong(@RequestBody Phong phong) {
 		phong.setMaPhong(phongService.autoId());
 		phongService.addOrUpdatePhong(phong);
+		return phong;
 	}
 	@PutMapping
-	public void updatePhong(@RequestBody Phong phong) {
+	public Phong updatePhong(@RequestBody Phong phong) {
 		phongService.addOrUpdatePhong(phong);
+		return phong;
 	}
 	
 	@GetMapping("/phongtrong")
@@ -54,4 +56,6 @@ public class PhongRest {
 		// TODO Auto-generated method stub
 		return phongService.getPhongHocConTrong(maLoai, maDay, ngayHoc, maCa);
 	}
+	
+	
 }

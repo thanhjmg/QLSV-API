@@ -58,4 +58,11 @@ public interface LichRepository extends JpaRepository<Lich, String> {
 	         + "                  phieu_dang_ky_hoc_phan ON chi_tiet_phieu_dang_ky.ma_phieu_dang_kyhp = phieu_dang_ky_hoc_phan.ma_phieu_dang_ky INNER JOIN\r\n"
 	         + "                  sinh_vien ON phieu_dang_ky_hoc_phan.id_sinh_vien = sinh_vien.ma_sinh_vien WHERE sinh_vien.ma_sinh_vien LIKE :maSinhVien AND nhom_thuc_hanh.ma_lop_hoc_phan LIKE :maLHP", nativeQuery = true)
 	public List<Lich> getListChiTietPDKByMaSinhVienAndLopHP(@Param("maSinhVien") String maSinhVien,@Param("maLHP") String maLHP);
+	
+	@Query(value = "select distinct lich.*\r\n"
+			+ "FROM     nhan_vien INNER JOIN\r\n"
+			+ "                  lich ON nhan_vien.ma_nhan_vien = lich.id_nhan_vien"
+			+ "				  where nhan_vien.ma_nhan_vien like :maNV \r\n"
+			+ "				  and lich.ngay_hoc BETWEEN :ngayBD AND :ngayKT", nativeQuery = true)
+	public List<Lich> getLichTheoNgayCuaGiangVien(@Param("maNV") String maNV, @Param("ngayBD") String ngayBD, @Param("ngayKT") String ngayKT);
 }

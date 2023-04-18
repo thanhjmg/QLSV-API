@@ -1,5 +1,6 @@
 package com.kltn.api.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,5 +46,10 @@ public class CaHocRest {
 		caHocService.saveOrUpdateCaHoc(caHoc);
 	}
 	
+	@GetMapping("/gv")
+	public List<CaHoc> getTatCaCaHocKhongTrungLichDayCuaGV(@RequestParam("maGV") String maGV,@RequestParam("ngayDay") Date ngayDay) {
+		// TODO Auto-generated method stub
+		return caHocService.getTatCaCaHocKhongTrungLichDayCuaGV(maGV, ngayDay);
+	}
 
 }

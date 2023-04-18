@@ -1,5 +1,6 @@
 package com.kltn.api.serviceImlp;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,12 @@ public class CaHocServiceImpl implements CaHocService{
 		int id = caHocRepository.autoId();
 		String naturalId = "CA" + String.format("%03d", id+1);
 		return naturalId;
+	}
+
+	@Override
+	public List<CaHoc> getTatCaCaHocKhongTrungLichDayCuaGV(String maGV, Date ngayDay) {
+		// TODO Auto-generated method stub
+		return caHocRepository.getTatCaCaHocKhongTrungLichDayCuaGV(maGV, ngayDay);
 	}
 
 }

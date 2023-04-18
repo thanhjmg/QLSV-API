@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kltn.api.entity.ChiTietHocKy;
+import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.ChuongTrinhKhung;
 import com.kltn.api.entity.Khoa;
+import com.kltn.api.repository.ChiTietHPRepository;
 import com.kltn.api.repository.ChiTietHocKyRepository;
 import com.kltn.api.repository.ChuongTrinhKhungRepository;
 import com.kltn.api.repository.HocKyRepository;
@@ -30,6 +32,8 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	private NganhRepository nganhRepository;
 	@Autowired 
 	private KhoaHocRepository khoaHocRepository;
+	@Autowired
+	private ChiTietHPRepository chiTietHPRepository;
 
 	@Override
 	public List<ChuongTrinhKhung> getAllChuongTrinhKhung() {
@@ -80,6 +84,12 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	public List<ChuongTrinhKhung> getCTKByTextSearch(String valueSearch) {
 		// TODO Auto-generated method stub
 		return chuongTrinhKhungRepository.getCTKByTextSearch(valueSearch);
+	}
+
+	@Override
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(String maSV) {
+		// TODO Auto-generated method stub
+		return chiTietHPRepository.getChuongTrinhKhungTheoMaSV(maSV);
 	}
 
 	

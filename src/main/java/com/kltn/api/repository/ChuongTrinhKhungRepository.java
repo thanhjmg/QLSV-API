@@ -17,4 +17,6 @@ public interface ChuongTrinhKhungRepository extends JpaRepository<ChuongTrinhKhu
 			+"OR lower(ctk.nganhHoc.maNganh) LIKE lower(concat('%', :valueSearch, '%')) "
             + "OR lower(ctk.maChuongTrinhKhung) LIKE lower(concat('%', :valueSearch, '%'))")
 	public List<ChuongTrinhKhung> getCTKByTextSearch(@Param("valueSearch") String valueSearch);
+	
+	
 }

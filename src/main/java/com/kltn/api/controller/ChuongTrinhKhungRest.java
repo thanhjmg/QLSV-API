@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kltn.api.entity.ChiTietHocKy;
+import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.ChuongTrinhKhung;
 import com.kltn.api.service.ChuongTrinhKhungService;
 
@@ -66,6 +67,12 @@ public class ChuongTrinhKhungRest {
 	public List<ChuongTrinhKhung> getCTKByTextSearch(@RequestParam("valueSearch") String valueSearch) {
 		// TODO Auto-generated method stub
 		return chuongTrinhKhungService.getCTKByTextSearch(valueSearch);
+	}
+	
+	@GetMapping("/sv")
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@RequestParam("maSV") String maSV) {
+		// TODO Auto-generated method stub
+		return chuongTrinhKhungService.getChuongTrinhKhungTheoMaSV(maSV);
 	}
 
 }
