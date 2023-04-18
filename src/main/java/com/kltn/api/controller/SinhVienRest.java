@@ -67,4 +67,13 @@ public class SinhVienRest {
 	        List<SinhVien> sinhViens = sinhVienService.timKiemSinhVien(textSearch);
 	        return ResponseEntity.ok(sinhViens);
 	    }
+		@GetMapping("/countsvbylhp")
+		public int countSinhVienByLHP(@RequestParam("maLHP")String maLHP) {
+			return sinhVienService.countSinhVienByLHP(maLHP);
+		}
+		
+		@GetMapping("/countsvbynth")
+		public int countSinhVienByNTH(@RequestParam("maNTH")String maNTH) {
+			return sinhVienService.countSinhVienByNTH(maNTH);
+		}
 }

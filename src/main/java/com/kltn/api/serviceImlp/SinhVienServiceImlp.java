@@ -82,4 +82,16 @@ public class SinhVienServiceImlp implements SinhVienService{
 		return sinhVienRepository.timKiemSinhVien(textSearch);
 	}
 
+	@Override
+	public int countSinhVienByLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countSinhVienByLHP(maLHP);
+	}
+
+	@Override
+	public int countSinhVienByNTH(String maNTH) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countSinhVienByNTH(maNTH);
+	}
+
 }

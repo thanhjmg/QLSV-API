@@ -20,4 +20,6 @@ public interface HocKyService {
 	public List<HocKy> getHocKyTheoKhoaHoc(Date startDate, Date endDate);
 	public List<HocKy> getHocKyTheoMaCTK(String maCTK);
 	public void removeMonHocOfChuongTrinhKhung(String maCTK, String maHK, String maHP);
+	
+	public List<HocKy> getHocKyByKhoaHoc(String maKhoaHoc);
 }

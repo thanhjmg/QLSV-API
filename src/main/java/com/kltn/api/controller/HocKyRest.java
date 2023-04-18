@@ -22,6 +22,7 @@ import com.kltn.api.entity.ChiTietHocKy;
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocKy;
 import com.kltn.api.entity.Khoa;
+import com.kltn.api.entity.Lich;
 import com.kltn.api.service.HocKyService;
 
 @RestController
@@ -86,5 +87,10 @@ public class HocKyRest {
 	public void removeMonHocOfChuongTrinhKhung(@RequestParam("maCTK") String maCTK,@RequestParam("maHK") String maHK,@RequestParam("maHP") String maHP) {
 		hocKyService.removeMonHocOfChuongTrinhKhung(maCTK, maHK, maHP);
 		
+	}
+	@GetMapping("/bymakhoahoc")
+	public List<HocKy> getHocKyByKhoaHoc(@RequestParam("maKhoaHoc") String maKhoaHoc) {
+		// TODO Auto-generated method stub
+		return hocKyService.getHocKyByKhoaHoc(maKhoaHoc);
 	}
 }

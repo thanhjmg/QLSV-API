@@ -20,10 +20,14 @@ public interface LopHocPhanService {
 
 	public List<LopHocPhan> getLopHocPhanTheoMaHP(String maHP);
 	
-	
-
 	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(String maGV, String maHK, String maHP);
 	public List<BangDiem> getBangDiemTheoLHPAndMaSV(String maLHP);
 	public void addBangDiem(BangDiem bangDiem);
 	public List<LopHocPhan> getLopHocPhanByTextSearch( String valueSearch);
+	public LopHocPhan getLopHocPhanByMaLHP(String maLHP);
+	
+	public List<BangDiem> getBangDiemBySVAndHK(String maSinhVien,String maHK);
+	public List<BangDiem> getBangDiemKhongDat(String maSinhVien);
+	
+	public float diemTBTheoHK(String maSinhVien,String maHK);
 }

@@ -94,4 +94,10 @@ public class HocKyServiceImlp implements  HocKyService{
 		
 	}
 
+	@Override
+	public List<HocKy> getHocKyByKhoaHoc(String maKhoaHoc) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.getHocKyByKhoaHoc(maKhoaHoc);
+	}
+
 }
