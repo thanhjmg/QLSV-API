@@ -27,4 +27,14 @@ public interface HocKyRepository extends JpaRepository<HocKy, String>{
 	 		+ "                  hoc_ky ON chi_tiet_hoc_ky.ma_hoc_ky = hoc_ky.ma_hoc_ky\r\n"
 	 		+ "				  where chuong_trinh_khung.ma_chuong_trinh_khung like :maCTK", nativeQuery = true)
 	 public List<HocKy> getHocKyByMaCTK(@Param("maCTK") String maCTK);
+	 
+	 
+	 
+	 @Query(value = "SELECT DISTINCT hoc_ky.*\r\n"
+	 		+ "FROM     sinh_vien INNER JOIN\r\n"
+	 		+ "                  khoa_hoc ON sinh_vien.ma_khoa_hoc = khoa_hoc.ma_khoa_hoc INNER JOIN\r\n"
+	 		+ "                  chuong_trinh_khung ON khoa_hoc.ma_khoa_hoc = chuong_trinh_khung.ma_khoa_hoc INNER JOIN\r\n"
+	 		+ "                  chi_tiet_hoc_ky ON chuong_trinh_khung.ma_chuong_trinh_khung = chi_tiet_hoc_ky.ma_chuong_trinh_khung INNER JOIN\r\n"
+	 		+ "                  hoc_ky ON chi_tiet_hoc_ky.ma_hoc_ky = hoc_ky.ma_hoc_ky  where khoa_hoc.ma_khoa_hoc like :maKhoaHoc", nativeQuery = true)
+	 public List<HocKy> getHocKyByKhoaHoc(@Param("maKhoaHoc") String maKhoaHoc);
 }

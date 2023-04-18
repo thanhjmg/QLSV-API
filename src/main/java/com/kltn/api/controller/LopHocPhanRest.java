@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kltn.api.entity.BangDiem;
+import com.kltn.api.entity.Khoa;
 import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.Phong;
 import com.kltn.api.service.LopHocPhanService;
@@ -32,7 +34,7 @@ public class LopHocPhanRest {
 	}
 	
 	@GetMapping
-	@RequestMapping(value = "/{id}", method =   RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method =RequestMethod.GET)
 	@ResponseBody
 	public LopHocPhan getLopHocPhanById(String id) {
 		return lopHocPhanService.getLopHocPhanById(id);
@@ -94,4 +96,27 @@ public class LopHocPhanRest {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getLopHocPhanByTextSearch(valueSearch);
 	}
+	
+	@GetMapping("/malophocphan")
+	public LopHocPhan getLopHocPhanByMaLHP(@RequestParam("maLHP") String maLHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getLopHocPhanByMaLHP(maLHP);
+	}
+	
+	@GetMapping("/bangdiemsvandhk")
+	public List<BangDiem> getBangDiemBySVAndHK(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHK") String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getBangDiemBySVAndHK(maSinhVien, maHK);
+	}
+	@GetMapping("/bangdiemkhongdat")
+	public List<BangDiem> getBangDiemKhongDat(@RequestParam("maSinhVien") String maSinhVien) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getBangDiemKhongDat(maSinhVien);
+	}
+	@GetMapping("/diemtbtheohk")
+	public float diemTBTheoHK(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHK") String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.diemTBTheoHK(maSinhVien, maHK);
+	}
+	
 }

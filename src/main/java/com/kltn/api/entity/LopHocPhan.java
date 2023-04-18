@@ -36,10 +36,6 @@ public class LopHocPhan{
 	private Date ngayKetThuc;
 	@Column(columnDefinition = "nvarchar(255)")
 	private String trangThai;
-	public LopHocPhan(String maLopHocPhan) {
-		super();
-		this.maLopHocPhan = maLopHocPhan;
-	}
 	
 	
 	
@@ -47,10 +43,20 @@ public class LopHocPhan{
 	@JoinColumn(name = "ma_hoc_phan")
 	private HocPhan hocPhan;
 	
+	public LopHocPhan(String maLopHocPhan) {
+		super();
+		this.maLopHocPhan = maLopHocPhan;
+	}
+	
+	public void setId(String lopHocPhanId) {
+		// TODO Auto-generated method stub
+		
+	}
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "maNhom")
 //	private List<NhomThucHanh> listNhomThucHanh;
 //	
 //	@OneToMany(cascade = CascadeType.ALL,mappedBy = "lopHocPhan")
 //	private List<BangDiem> dsBangDiem;
+	
 	
 }

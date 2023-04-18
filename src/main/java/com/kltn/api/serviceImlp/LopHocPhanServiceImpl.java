@@ -53,12 +53,7 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		return lopHocPhanRepository.findAll();
 	}
 
-	@Override
-	public LopHocPhan getLopHocPhanById(String id) {
-		// TODO Auto-generated method stub
-		return lopHocPhanRepository.getById(id);
-	}
-
+	
 	@Override
 	public String autoId() {
 		int id = lopHocPhanRepository.autoId();
@@ -106,6 +101,36 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	public List<LopHocPhan> getLopHocPhanByTextSearch(String valueSearch) {
 		// TODO Auto-generated method stub
 		return lopHocPhanRepository.getLopHocPhanByTextSearch(valueSearch);
+	}
+
+	@Override
+	public LopHocPhan getLopHocPhanById(String id) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getById(id);
+	}
+
+	@Override
+	public LopHocPhan getLopHocPhanByMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanByMaLHP(maLHP);
+	}
+
+	@Override
+	public List<BangDiem> getBangDiemBySVAndHK(String maSinhVien, String maHK) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getBangDiemBySVAndHK(maSinhVien, maHK);
+	}
+
+	@Override
+	public float diemTBTheoHK(String maSinhVien, String maHK) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.diemTBTheoHK(maSinhVien, maHK);
+	}
+
+	@Override
+	public List<BangDiem> getBangDiemKhongDat(String maSinhVien) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getBangDiemKhongDat(maSinhVien);
 	}
 
 

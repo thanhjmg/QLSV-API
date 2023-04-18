@@ -23,9 +23,9 @@ public interface PhieuDKHPService {
 
 	
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHP(String maLHP, String maNhom);
-<<<<<<< HEAD
+
 	public List<ChiTietPhieuDangKy> getMonHocByTextSearch( String valueSearch);
-=======
+
 	
 	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaSinhVien(String maSinhVien);
 	
@@ -34,5 +34,5 @@ public interface PhieuDKHPService {
 	
 
 
->>>>>>> c78b0d88d1f8d227b2d5e14c866f4e6a4695b43f
+
 }

@@ -9,4 +9,6 @@ public interface KhoaHocService {
 	public void saveOrUpdateKhoaHoc(KhoaHoc khoaHoc);
 	public String autoId();
 	public List<KhoaHoc> getAllKhoaHoc();
+	
+	
 }

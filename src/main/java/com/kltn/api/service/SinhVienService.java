@@ -12,5 +12,8 @@ public interface SinhVienService {
 	public Long countSVByLopHoc(String classID);
 	public String autoId();
 	public List<SinhVien> timKiemSinhVien(String textSearch);
+	public int countSinhVienByLHP(String maLHP);
+	
+	public int countSinhVienByNTH(String maNTH);
 
 }
