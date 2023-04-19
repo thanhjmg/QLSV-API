@@ -15,7 +15,7 @@ import com.kltn.api.entity.Lich;
 public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDangKy, String>{
 
 	
-	 @Query(value = " SELECT chi_tiet_phieu_dang_ky.ma_nhomth, chi_tiet_phieu_dang_ky.ma_phieu_dang_kyhp, chi_tiet_phieu_dang_ky.ngay_dang_ky, chi_tiet_phieu_dang_ky.ma_loai_dang_kyhp\r\n"
+	 @Query(value = " SELECT chi_tiet_phieu_dang_ky.*\r\n"
 	 		+ "FROM     chi_tiet_hoc_phan INNER JOIN\r\n"
 	 		+ "                  hoc_phan ON chi_tiet_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
 	 		+ "                  lop_hoc_phan ON hoc_phan.ma_hoc_phan = lop_hoc_phan.ma_hoc_phan INNER JOIN\r\n"
