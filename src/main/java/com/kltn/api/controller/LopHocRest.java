@@ -59,4 +59,10 @@ public class LopHocRest {
 	        List<LopHoc> lopHocList = lopHocService.getLopHocByNganhHoc(nganhHoc);
 	        return ResponseEntity.ok().body(lopHocList);
 	    }
+	 @GetMapping("/countlophoc")
+	 public int countLopHocBtTenLopHoc(@RequestParam String tenLop) {
+		return lopHocService.countLopHocByTenLopHoc(tenLop);
+		 
+	 }
+	 
 }

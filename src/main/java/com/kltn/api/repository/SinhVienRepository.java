@@ -35,5 +35,19 @@ public interface SinhVienRepository extends JpaRepository<SinhVien, String>{
 	 		+ "                  nhom_thuc_hanh ON chi_tiet_phieu_dang_ky.ma_nhomth = nhom_thuc_hanh.ma_nhom where nhom_thuc_hanh.ma_nhom like :maNTH", nativeQuery = true)
 	 public int countSinhVienByNTH(@Param("maNTH") String maNTH);
 	 
+	 @Query(value = "select COUNT(ma_sinh_vien) from sinh_vien where so_dien_thoai like :soDT", nativeQuery = true)
+	 public int countSinhVienBySDT(@Param("soDT") String soDT);
+	 
+	 @Query(value = "select COUNT(ma_sinh_vien) from sinh_vien where email like :email", nativeQuery = true)
+	 public int countSinhVienByEmail(@Param("email") String email);
+	 
+	 @Query(value = "select COUNT(ma_sinh_vien) from sinh_vien where socccd like :soCCCD", nativeQuery = true)
+	 public int countSinhVienBySoCCCD(@Param("soCCCD") String soCCCD);
+	 
+	 
+	 
+	 
+	
+	 
 	 
 }

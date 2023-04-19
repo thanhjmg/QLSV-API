@@ -15,5 +15,10 @@ public interface SinhVienService {
 	public int countSinhVienByLHP(String maLHP);
 	
 	public int countSinhVienByNTH(String maNTH);
+	public int countSinhVienBySDT(String soDT);
+	
+	public int countSinhVienByEmail(String email);
+	
+	public int couSinhVienBySoCCCD(String soCCCD);
 
 }

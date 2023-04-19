@@ -76,4 +76,21 @@ public class SinhVienRest {
 		public int countSinhVienByNTH(@RequestParam("maNTH")String maNTH) {
 			return sinhVienService.countSinhVienByNTH(maNTH);
 		}
+		
+		@GetMapping("/countsvbysdt")
+		public int countSinhVienBySDT(@RequestParam("soDT")String soDT) {
+			return sinhVienService.countSinhVienBySDT(soDT);
+		}
+		
+		@GetMapping("/countsvbyemail")
+		public int countSinhVienByEmail(@RequestParam("email")String email) {
+			return sinhVienService.countSinhVienByEmail(email);
+		}
+		
+		@GetMapping("/countsvbysocccd")
+		public int countSinhVienBySoCCCD(@RequestParam("soCCCD")String soCCCD) {
+			return sinhVienService.couSinhVienBySoCCCD(soCCCD);
+		}
+		
+		
 }

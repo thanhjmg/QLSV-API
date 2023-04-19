@@ -93,5 +93,22 @@ public class SinhVienServiceImlp implements SinhVienService{
 		// TODO Auto-generated method stub
 		return sinhVienRepository.countSinhVienByNTH(maNTH);
 	}
+	
+	@Override
+	public int countSinhVienBySDT(String soDT) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countSinhVienBySDT(soDT);
+	}
+	@Override
+	public int countSinhVienByEmail(String email) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countSinhVienByEmail(email);
+	}
+
+	@Override
+	public int couSinhVienBySoCCCD(String soCCCD) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.countSinhVienBySoCCCD(soCCCD);
+	}
 
 }

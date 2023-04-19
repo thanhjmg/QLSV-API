@@ -61,4 +61,10 @@ public class LopHocServiceImlp implements LopHocService{
 		return lopHocRepository.findByNganhHoc(nganhHoc);
 	}
 
+	@Override
+	public int countLopHocByTenLopHoc(String tenLop) {
+		// TODO Auto-generated method stub
+		return lopHocRepository.countLopHocByTenLopHoc(tenLop);
+	}
+
 }

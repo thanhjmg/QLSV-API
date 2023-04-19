@@ -12,4 +12,6 @@ public interface LopHocService {
 	public LopHoc getLopHocById(String id);
 	public List<LopHoc> getLopHocByNganhHoc(NganhHoc nganhHoc);
 	public String autoId();
+	
+	public int countLopHocByTenLopHoc(String tenLop);
 }

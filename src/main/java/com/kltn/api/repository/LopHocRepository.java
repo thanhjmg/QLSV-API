@@ -16,4 +16,7 @@ public interface LopHocRepository extends JpaRepository<LopHoc, String>{
 	public int autoId();
 	
 	public List<LopHoc> findByNganhHoc(NganhHoc nganhHoc);
+	
+	@Query(value = " select COUNT(ma_lop) from lop_hoc where ten_lop like :tenLop", nativeQuery = true)
+	public int countLopHocByTenLopHoc(String tenLop);
 }
