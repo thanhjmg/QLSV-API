@@ -18,8 +18,7 @@ public interface BangDiemRepository extends JpaRepository<BangDiem, String>{
 	
 	
 	@Query(value = "SELECT DISTINCT \r\n"
-			+ "                  bang_diem.ma_hoc_phan, bang_diem.ma_sinh_vien, bang_diem.cuoi_ky, bang_diem.diem_tong_ket, bang_diem.giua_ky, bang_diem.thuc_hanh1, bang_diem.thuc_hanh2, bang_diem.thuc_hanh3, bang_diem.thuong_ky1, \r\n"
-			+ "                  bang_diem.thuong_ky2, bang_diem.thuong_ky3, bang_diem.thuong_ky4, bang_diem.thuong_ky5, bang_diem.trang_thai\r\n"
+			+ "                  bang_diem.* \r\n"
 			+ "FROM     sinh_vien INNER JOIN\r\n"
 			+ "                  bang_diem ON sinh_vien.ma_sinh_vien = bang_diem.ma_sinh_vien INNER JOIN\r\n"
 			+ "                  hoc_phan ON bang_diem.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
@@ -44,8 +43,7 @@ public interface BangDiemRepository extends JpaRepository<BangDiem, String>{
 	public float diemTBTheoHK(@Param("maSinhVien") String maSinhVien,@Param("maHK") String maHK);
 	
 	@Query(value = "SELECT DISTINCT \r\n"
-			+ "                  bang_diem.ma_hoc_phan, bang_diem.ma_sinh_vien, bang_diem.cuoi_ky, bang_diem.diem_tong_ket, bang_diem.giua_ky, bang_diem.thuc_hanh1, bang_diem.thuc_hanh2, bang_diem.thuc_hanh3, bang_diem.thuong_ky1, \r\n"
-			+ "                  bang_diem.thuong_ky2, bang_diem.thuong_ky3, bang_diem.thuong_ky4, bang_diem.thuong_ky5, bang_diem.trang_thai\r\n"
+			+ "                  bang_diem.*"
 			+ "FROM     sinh_vien INNER JOIN\r\n"
 			+ "                  bang_diem ON sinh_vien.ma_sinh_vien = bang_diem.ma_sinh_vien INNER JOIN\r\n"
 			+ "                  hoc_phan ON bang_diem.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
@@ -54,4 +52,7 @@ public interface BangDiemRepository extends JpaRepository<BangDiem, String>{
 			+ "                  nhom_thuc_hanh ON chi_tiet_phieu_dang_ky.ma_nhomth = nhom_thuc_hanh.ma_nhom INNER JOIN\r\n"
 			+ "                  lop_hoc_phan ON hoc_phan.ma_hoc_phan = lop_hoc_phan.ma_hoc_phan AND nhom_thuc_hanh.ma_lop_hoc_phan = lop_hoc_phan.ma_lop_hoc_phan where sinh_vien.ma_sinh_vien like :maSinhVien and bang_diem.trang_thai like N'Không đạt'", nativeQuery = true)
 	public List<BangDiem> getBangDiemKhongDat(@Param("maSinhVien") String maSinhVien);
+	
+	@Query("SELECT COUNT(*) val_count FROM BangDiem")
+	public int autoId();
 }

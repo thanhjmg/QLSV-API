@@ -36,9 +36,16 @@ public class NhomTHServiceImlp implements NhomTHService{
 
 	@Override
 	public String autoId() {
-		int id = nhomTHRepository.autoId();
-	    String naturalId = "NTH" + String.format("%05d", id+1);
-	    return naturalId;
+		String maxId = nhomTHRepository.getMaxId(); // Lấy id lớn nhất hiện tại
+	    if (maxId == null) {
+	        return "NTH00001"; // Nếu không có dữ liệu, trả về giá trị mặc định
+	    } else {
+	        String prefix = maxId.substring(0, 3); // Tách phần prefix từ id lớn nhất
+	        int number = Integer.parseInt(maxId.substring(5)); // Tách phần số từ id lớn nhất
+	        number++; // Tăng giá trị số lên 1
+	        String newId = prefix + String.format("%05d", number); // Tạo id mới
+	        return newId;
+	    }
 	}
 
 	@Override
@@ -51,6 +58,12 @@ public class NhomTHServiceImlp implements NhomTHService{
 	public List<NhomThucHanh> getAllNhomTHByMaLHP(String maLHP) {
 		// TODO Auto-generated method stub
 		return nhomTHRepository.getAllNhomTHByMaLHP(maLHP);
+	}
+
+	@Override
+	public void xoaTatCaNhomTHTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		nhomTHRepository.xoaTatCaNhomTHTheoMaLHP(maLHP);
 	}
 
 }

@@ -56,9 +56,18 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	
 	@Override
 	public String autoId() {
-		int id = lopHocPhanRepository.autoId();
-		String naturalId = "LHP" + String.format("%03d", id+1);
-		return naturalId;
+		String maxId = lopHocPhanRepository.getMaxId(); // Lấy id lớn nhất hiện tại
+		if (maxId == null) {
+		    return "LHP00001"; // Nếu không có dữ liệu, trả về giá trị mặc định
+		} else {
+		    String prefix = maxId.substring(0, maxId.length() - 5); // Tách phần prefix từ id lớn nhất
+		    int number = Integer.parseInt(maxId.substring(prefix.length())); // Tách phần số từ id lớn nhất
+		    number++; // Tăng giá trị số lên 1
+		    String newId = prefix + String.format("%05d", number); // Tạo id mới
+		    return newId;
+		}
+
+
 	}
 
 	@Override
@@ -131,6 +140,19 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	public List<BangDiem> getBangDiemKhongDat(String maSinhVien) {
 		// TODO Auto-generated method stub
 		return bangDiemRepository.getBangDiemKhongDat(maSinhVien);
+	}
+
+	@Override
+	public String autoIdBangDiem() {
+		int id = bangDiemRepository.autoId();
+		String naturalId = "BD" + String.format("%05d", id+1);
+		return naturalId;
+	}
+
+	@Override
+	public void xoaLopHocPhanTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		lopHocPhanRepository.xoaLopHocPhanTheoMaLHP(maLHP);
 	}
 
 

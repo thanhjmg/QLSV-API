@@ -13,4 +13,5 @@ public interface NhomTHService {
 	public String autoId();
 	public List<NhomThucHanh> getNhomTHTheoMaLHP(String maLHP);
 	public List<NhomThucHanh> getAllNhomTHByMaLHP( String maLHP);
+	public void xoaTatCaNhomTHTheoMaLHP( String maLHP);
 }

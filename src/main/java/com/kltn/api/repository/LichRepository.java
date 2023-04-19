@@ -3,6 +3,7 @@ package com.kltn.api.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -11,8 +12,8 @@ import com.kltn.api.entity.Lich;
 import com.kltn.api.entity.MonHoc;
 
 public interface LichRepository extends JpaRepository<Lich, String> {
-	@Query("SELECT COUNT(*) val_count FROM Lich")
-	public int autoId();
+	@Query("SELECT MAX(lich.maLich) FROM Lich lich")
+	public String getMaxId();
 	
 	//@Query(value = "select lich.* from lich where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	@Query(value = "SELECT lich.*\r\n"
@@ -76,4 +77,16 @@ public interface LichRepository extends JpaRepository<Lich, String> {
 	         + "                  hoc_ky ON phieu_dang_ky_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky AND chi_tiet_hoc_phan.ma_hoc_ky = hoc_ky.ma_hoc_ky INNER JOIN\r\n"
 	         + "                  lich ON nhom_thuc_hanh.ma_nhom = lich.ma_nhomth where sinh_vien.ma_sinh_vien like :maSinhVien AND hoc_ky.ma_hoc_ky like :maHK", nativeQuery = true)
 	public List<Lich> getALLLichByMaSinhVienAndHK(@Param("maSinhVien") String maSinhVien,@Param("maHK") String maHK);
+	
+	@Query(value = "DELETE FROM lich\r\n"
+			+ "WHERE EXISTS (\r\n"
+			+ "  SELECT 1\r\n"
+			+ "  FROM nhom_thuc_hanh\r\n"
+			+ "  WHERE nhom_thuc_hanh.ma_nhom = lich.ma_nhomth\r\n"
+			+ "    AND nhom_thuc_hanh.ma_lop_hoc_phan LIKE :maLHP\r\n"
+			+ ");\r\n"
+			+ "", nativeQuery = true)
+	@Modifying
+	public void xoaTatCaLichTheoMaLHP(@Param("maLHP") String maLHP);
+	
 }

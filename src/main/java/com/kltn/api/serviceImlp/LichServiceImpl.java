@@ -94,10 +94,17 @@ public class LichServiceImpl implements LichService{
 
 	@Override
 	public String autoId() {
-		// TODO Auto-generated method stub
-		 int id = lichRepository.autoId();
-		    String naturalId = "L" + String.format("%03d", id+1);
-		    return naturalId;
+		String maxId = lichRepository.getMaxId(); // Lấy id lớn nhất hiện tại
+		if (maxId == null) {
+		    return "L00001"; // Nếu không có dữ liệu, trả về giá trị mặc định
+		} else {
+		    String prefix = maxId.substring(0, maxId.length() - 5); // Tách phần prefix từ id lớn nhất
+		    int number = Integer.parseInt(maxId.substring(prefix.length())); // Tách phần số từ id lớn nhất
+		    number++; // Tăng giá trị số lên 1
+		    String newId = prefix + String.format("%05d", number); // Tạo id mới
+		    return newId;
+		}
+
 	}
 
 	@Override
@@ -138,5 +145,12 @@ public class LichServiceImpl implements LichService{
 	public List<Lich> getALLLichByMaSinhVienAndHK(String maSinhVien, String maHK) {
 		// TODO Auto-generated method stub
 		return lichRepository.getALLLichByMaSinhVienAndHK(maSinhVien, maHK);
+	}
+
+	@Override
+	public void xoaTatCaLichTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		lichRepository.xoaTatCaLichTheoMaLHP(maLHP);
+		
 	}
 }
