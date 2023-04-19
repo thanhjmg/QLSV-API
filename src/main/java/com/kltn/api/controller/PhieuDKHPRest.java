@@ -104,5 +104,11 @@ public class PhieuDKHPRest {
 	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(@RequestParam("maPhieuDK") String maPhieuDK, @RequestParam("maNhomTH") String maNhomTH) {
 		phieuDKHPService.deleteChiTietPDKByMaPhieuDKAndMaNhomTH(maPhieuDK, maNhomTH);
 	}
+	
+	@DeleteMapping("/chitietpdk/delete")
+	public void xoaTatCaChiTietPhieuTheoMaLHP(@RequestParam String maLHP) {
+		// TODO Auto-generated method stub
+		phieuDKHPService.xoaTatCaChiTietPhieuTheoMaLHP(maLHP);
+	}
 
 }

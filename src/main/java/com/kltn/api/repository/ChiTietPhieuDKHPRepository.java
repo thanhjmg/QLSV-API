@@ -52,5 +52,15 @@ public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDa
 			"delete chi_tiet_phieu_dang_ky where ma_phieu_dang_kyhp like :maPhieuDK AND ma_nhomth like :maNhomTH", nativeQuery = true)
 	@Modifying
 	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(@Param("maPhieuDK") String maPhieuDK,@Param("maNhomTH") String maNhomTH);
+	
+	@Query(value = "DELETE FROM chi_tiet_phieu_dang_ky\r\n"
+			+ "WHERE EXISTS (\r\n"
+			+ "  SELECT 1\r\n"
+			+ "  FROM nhom_thuc_hanh\r\n"
+			+ "    where nhom_thuc_hanh.ma_lop_hoc_phan LIKE :maLHP\r\n"
+			+ ");\r\n"
+			+ "", nativeQuery = true)
+	@Modifying
+	public void xoaTatCaChiTietPhieuTheoMaLHP(@Param("maLHP") String maLHP);
 
 }

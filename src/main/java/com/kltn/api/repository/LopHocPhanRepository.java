@@ -3,6 +3,7 @@ package com.kltn.api.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -10,8 +11,8 @@ import com.kltn.api.entity.LopHocPhan;
 import com.kltn.api.entity.MonHoc;
 
 public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
-	@Query("SELECT COUNT(*) val_count FROM LopHocPhan")
-	public int autoId();
+	@Query("SELECT MAX(lhp.maLopHocPhan) FROM LopHocPhan lhp")
+	public String getMaxId();
 	
 	@Query(value = "SELECT DISTINCT lop_hoc_phan.*\r\n"
 			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
@@ -48,4 +49,8 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 	
 	@Query(value = "select * from lop_hoc_phan where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	public LopHocPhan getLopHocPhanByMaLHP(@Param("maLHP") String maLHP);
+	
+	@Query(value = "delete lop_hoc_phan where lop_hoc_phan.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
+	@Modifying
+	public void xoaLopHocPhanTheoMaLHP(@Param("maLHP") String maLHP);
 }

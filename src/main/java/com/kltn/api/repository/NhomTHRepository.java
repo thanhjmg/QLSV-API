@@ -3,14 +3,15 @@ package com.kltn.api.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.kltn.api.entity.NhomThucHanh;
 
 public interface NhomTHRepository extends JpaRepository<NhomThucHanh, String>{
-	@Query("SELECT COUNT(*) val_count FROM NhomThucHanh")
-	public int autoId();
+	@Query("SELECT MAX(nth.maNhom) FROM NhomThucHanh nth")
+	public String getMaxId();
 	
 	@Query(value = "SELECT nhom_thuc_hanh.*\r\n"
 			+ "FROM     nhom_thuc_hanh INNER JOIN\r\n"
@@ -21,5 +22,9 @@ public interface NhomTHRepository extends JpaRepository<NhomThucHanh, String>{
 	@Query(value = "SELECT nhom_thuc_hanh.*\r\n"
 			+ "FROM     nhom_thuc_hanh where ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	public List<NhomThucHanh> getAllNhomTHByMaLHP(@Param("maLHP") String maLHP);//lay tat ca nhom TH
+	
+	@Query(value = "delete nhom_thuc_hanh where nhom_thuc_hanh.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
+	@Modifying
+	public void xoaTatCaNhomTHTheoMaLHP(@Param("maLHP") String maLHP);
 	
 }

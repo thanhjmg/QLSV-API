@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -82,6 +83,7 @@ public class LopHocPhanRest {
 	
 	@PostMapping("/bangdiem")
 	public BangDiem addBangDiem(@RequestBody BangDiem bangDiem) {
+		bangDiem.setMaBangDiem(lopHocPhanService.autoIdBangDiem());
 		lopHocPhanService.addBangDiem(bangDiem);
 		return bangDiem;
 	}
@@ -117,6 +119,12 @@ public class LopHocPhanRest {
 	public float diemTBTheoHK(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHK") String maHK) {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.diemTBTheoHK(maSinhVien, maHK);
+	}
+	
+	@DeleteMapping("/delete")
+	public void xoaLopHocPhanTheoMaLHP(@RequestParam String maLHP) {
+		// TODO Auto-generated method stub
+		lopHocPhanService.xoaLopHocPhanTheoMaLHP(maLHP);
 	}
 	
 }

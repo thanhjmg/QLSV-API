@@ -139,4 +139,10 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 		chiTietPhieuDKHPRepository.deleteChiTietPDKByMaPhieuDKAndMaNhomTH(maPhieuDK, maNhomTH);
 	}
 
+	@Override
+	public void xoaTatCaChiTietPhieuTheoMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		chiTietPhieuDKHPRepository.xoaTatCaChiTietPhieuTheoMaLHP(maLHP);
+	}
+
 }

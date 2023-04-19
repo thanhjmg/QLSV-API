@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-@IdClass(BangDiemPK.class)
+///@IdClass(BangDiemPK.class)
 public class BangDiem implements Serializable{
 	
 	/**
@@ -22,15 +22,16 @@ public class BangDiem implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ma_hoc_phan")
-	private HocPhan hocPhan;
-	
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "ma_sinh_vien")
-	private SinhVien sinhVien;
+	 	@Id
+	    private String maBangDiem;
+
+	    @ManyToOne
+	    @JoinColumn(name = "ma_hoc_phan")
+	    private HocPhan hocPhan;
+
+	    @ManyToOne
+	    @JoinColumn(name = "ma_sinh_vien")
+	    private SinhVien sinhVien;
 	
 	@Column(  nullable = true)
 	private Double thuongKy1;

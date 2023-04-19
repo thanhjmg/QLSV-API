@@ -30,4 +30,8 @@ public interface LopHocPhanService {
 	public List<BangDiem> getBangDiemKhongDat(String maSinhVien);
 	
 	public float diemTBTheoHK(String maSinhVien,String maHK);
+	public String autoIdBangDiem();
+	
+	public void xoaLopHocPhanTheoMaLHP(String maLHP);
+	
 }

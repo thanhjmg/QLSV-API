@@ -20,4 +20,6 @@ public interface LichService {
 	public List<Lich> getLichTheoNgayCuaGiangVien(String maGV,String ngayBD,  String ngayKT);
 	
 	public List<Lich> getALLLichByMaSinhVienAndHK(String maSinhVien,String maHK);
+	
+	public void xoaTatCaLichTheoMaLHP( String maLHP);
 }

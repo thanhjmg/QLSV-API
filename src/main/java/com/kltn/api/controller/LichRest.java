@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -78,6 +79,13 @@ public class LichRest {
 	public List<Lich> getLichTheoNgayCuaGiangVien(@RequestParam("maGV") String maGV,@RequestParam("ngayBD") String ngayBD,@RequestParam("ngayKT") String ngayKT) {
 		// TODO Auto-generated method stub
 		return lichService.getLichTheoNgayCuaGiangVien(maGV, ngayBD, ngayKT);
+	}
+	
+	@DeleteMapping("/delete")
+	public void xoaTatCaLichTheoMaLHP(@RequestParam String maLHP) {
+		// TODO Auto-generated method stub
+		lichService.xoaTatCaLichTheoMaLHP(maLHP);
+		
 	}
 
 }
