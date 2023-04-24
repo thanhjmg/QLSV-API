@@ -111,4 +111,10 @@ public class SinhVienServiceImlp implements SinhVienService{
 		return sinhVienRepository.countSinhVienBySoCCCD(soCCCD);
 	}
 
+	@Override
+	public List<SinhVien> getSinhVienByMaLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return sinhVienRepository.getSinhVienByMaLHP(maLHP);
+	}
+
 }

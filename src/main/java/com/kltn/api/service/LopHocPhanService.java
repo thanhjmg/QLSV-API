@@ -21,7 +21,7 @@ public interface LopHocPhanService {
 	public List<LopHocPhan> getLopHocPhanTheoMaHP(String maHP);
 	
 	public List<LopHocPhan> getTatCaLHPByHocPhanAndMaGVAndMaHK(String maGV, String maHK, String maHP);
-	public List<BangDiem> getBangDiemTheoLHPAndMaSV(String maLHP);
+	public List<BangDiem> getBangDiemTheoLHPAndMaGV(String maLHP,String maGV);
 	public void addBangDiem(BangDiem bangDiem);
 	public List<LopHocPhan> getLopHocPhanByTextSearch( String valueSearch);
 	public LopHocPhan getLopHocPhanByMaLHP(String maLHP);
@@ -33,5 +33,6 @@ public interface LopHocPhanService {
 	public String autoIdBangDiem();
 	
 	public void xoaLopHocPhanTheoMaLHP(String maLHP);
+	public List<LopHocPhan> getLopHocPhanByMaGVAndMaHK( String maGV, String maHK);
 	
 }

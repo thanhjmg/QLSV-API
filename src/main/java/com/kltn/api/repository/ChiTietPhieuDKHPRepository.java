@@ -55,12 +55,21 @@ public interface ChiTietPhieuDKHPRepository extends JpaRepository<ChiTietPhieuDa
 	
 	@Query(value = "DELETE FROM chi_tiet_phieu_dang_ky\r\n"
 			+ "WHERE EXISTS (\r\n"
-			+ "  SELECT 1\r\n"
-			+ "  FROM nhom_thuc_hanh\r\n"
-			+ "    where nhom_thuc_hanh.ma_lop_hoc_phan LIKE :maLHP\r\n"
-			+ ");\r\n"
-			+ "", nativeQuery = true)
+			+ "    SELECT 1\r\n"
+			+ "    FROM nhom_thuc_hanh\r\n"
+			+ "    WHERE nhom_thuc_hanh.ma_nhom = chi_tiet_phieu_dang_ky.ma_nhomth\r\n"
+			+ "    AND nhom_thuc_hanh.ma_lop_hoc_phan = :maLHP)", nativeQuery = true)
 	@Modifying
 	public void xoaTatCaChiTietPhieuTheoMaLHP(@Param("maLHP") String maLHP);
+	
+	@Query(value = "SELECT chi_tiet_phieu_dang_ky.*\r\n"
+			+ "FROM     chi_tiet_phieu_dang_ky INNER JOIN\r\n"
+			+ "                  phieu_dang_ky_hoc_phan ON chi_tiet_phieu_dang_ky.ma_phieu_dang_kyhp = phieu_dang_ky_hoc_phan.ma_phieu_dang_ky INNER JOIN\r\n"
+			+ "                  sinh_vien ON phieu_dang_ky_hoc_phan.id_sinh_vien = sinh_vien.ma_sinh_vien INNER JOIN\r\n"
+			+ "                  nhom_thuc_hanh ON chi_tiet_phieu_dang_ky.ma_nhomth = nhom_thuc_hanh.ma_nhom INNER JOIN\r\n"
+			+ "                  lop_hoc_phan ON nhom_thuc_hanh.ma_lop_hoc_phan = lop_hoc_phan.ma_lop_hoc_phan\r\n"
+			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and nhom_thuc_hanh.ten_nhom like N'Nhóm 0'\r\n"
+			+ "				  ORDER BY RIGHT(sinh_vien.ten_sinh_vien, 1) ASC", nativeQuery = true)
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHPDanhChoGV(@Param("maLHP") String maLHP);
 
 }

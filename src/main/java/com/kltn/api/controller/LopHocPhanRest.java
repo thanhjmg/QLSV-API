@@ -76,9 +76,9 @@ public class LopHocPhanRest {
 	}
 	
 	@GetMapping("/bangdiem")
-	public List<BangDiem> getBangDiemTheoLHP(@RequestParam("maLHP") String maLHP) {
+	public List<BangDiem> getBangDiemTheoLHP(@RequestParam("maLHP") String maLHP,@RequestParam("maGV") String maGV) {
 		// TODO Auto-generated method stub
-		return lopHocPhanService.getBangDiemTheoLHPAndMaSV(maLHP);
+		return lopHocPhanService.getBangDiemTheoLHPAndMaGV(maLHP, maGV);
 	}
 	
 	@PostMapping("/bangdiem")
@@ -125,6 +125,12 @@ public class LopHocPhanRest {
 	public void xoaLopHocPhanTheoMaLHP(@RequestParam String maLHP) {
 		// TODO Auto-generated method stub
 		lopHocPhanService.xoaLopHocPhanTheoMaLHP(maLHP);
+	}
+	
+	@GetMapping("/gv-hk")
+	public List<LopHocPhan> getLopHocPhanByMaGVAndMaHK(@RequestParam("maGV") String maGV,@RequestParam("maHK") String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getLopHocPhanByMaGVAndMaHK(maGV, maHK);
 	}
 	
 }

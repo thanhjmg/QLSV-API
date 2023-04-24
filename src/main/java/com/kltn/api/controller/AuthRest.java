@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -82,6 +84,14 @@ public class AuthRest {
         return ResponseEntity.status(HttpStatus.OK).headers(cookies).body(dataAuth);
     }
 
+    @GetMapping("/updatepass")
+    public void updatePassword(@RequestParam("pass") String pass,@RequestParam("userName") String userName) {
+		authService.updatePassword(pass, userName);
+	}
 	
-	
+    @GetMapping("/passold")
+    public Boolean getPassOld(@RequestParam("userName") String userName,@RequestParam("pass") String passInput) {
+		
+		return authService.getPassOld(userName, passInput);
+	}
 }

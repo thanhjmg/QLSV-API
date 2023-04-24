@@ -145,4 +145,10 @@ public class PhieuDKHPServiceImlp implements PhieuDKHPService{
 		chiTietPhieuDKHPRepository.xoaTatCaChiTietPhieuTheoMaLHP(maLHP);
 	}
 
+	@Override
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHPDanhChoGV(String maLHP) {
+		// TODO Auto-generated method stub
+		return chiTietPhieuDKHPRepository.getListChiTietPDKByMaLHPDanhChoGV(maLHP);
+	}
+
 }

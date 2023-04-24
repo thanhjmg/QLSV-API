@@ -9,12 +9,17 @@ import org.springframework.data.repository.query.Param;
 import com.kltn.api.entity.BangDiem;
 
 public interface BangDiemRepository extends JpaRepository<BangDiem, String>{
-	@Query(value = "SELECT distinct bang_diem.*\r\n"
+	@Query(value = "SELECT DISTINCT \r\n"
+			+ "                  bang_diem.ma_bang_diem, bang_diem.cuoi_ky, bang_diem.diem_tong_ket, bang_diem.giua_ky, bang_diem.thuc_hanh1, bang_diem.thuc_hanh2, bang_diem.thuc_hanh3, bang_diem.thuong_ky1, bang_diem.thuong_ky2, \r\n"
+			+ "                  bang_diem.thuong_ky3, bang_diem.thuong_ky4, bang_diem.thuong_ky5, bang_diem.trang_thai, bang_diem.ma_hoc_phan, bang_diem.ma_sinh_vien\r\n"
 			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
 			+ "                  hoc_phan ON lop_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
-			+ "                  bang_diem ON hoc_phan.ma_hoc_phan = bang_diem.ma_hoc_phan\r\n"
-			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
-	public List<BangDiem> getbangDiemTheoLHP(@Param("maLHP") String maLHP);
+			+ "                  bang_diem ON hoc_phan.ma_hoc_phan = bang_diem.ma_hoc_phan INNER JOIN\r\n"
+			+ "                  nhom_thuc_hanh ON lop_hoc_phan.ma_lop_hoc_phan = nhom_thuc_hanh.ma_lop_hoc_phan INNER JOIN\r\n"
+			+ "                  lich ON nhom_thuc_hanh.ma_nhom = lich.ma_nhomth INNER JOIN\r\n"
+			+ "                  nhan_vien ON lich.id_nhan_vien = nhan_vien.ma_nhan_vien\r\n"
+			+ "							  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and nhan_vien.ma_nhan_vien like :maGV", nativeQuery = true)
+	public List<BangDiem> getbangDiemTheoLHP(@Param("maLHP") String maLHP, @Param("maGV") String maGV);
 	
 	
 	@Query(value = "SELECT DISTINCT \r\n"

@@ -92,5 +92,11 @@ public class SinhVienRest {
 			return sinhVienService.couSinhVienBySoCCCD(soCCCD);
 		}
 		
+		@GetMapping("/lhp")
+		public List<SinhVien> getSinhVienByMaLHP(@RequestParam("maLHP") String maLHP) {
+			// TODO Auto-generated method stub
+			return sinhVienService.getSinhVienByMaLHP(maLHP);
+		}
+
 		
 }
