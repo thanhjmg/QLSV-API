@@ -16,7 +16,7 @@ public interface NhomTHRepository extends JpaRepository<NhomThucHanh, String>{
 	@Query(value = "SELECT nhom_thuc_hanh.*\r\n"
 			+ "FROM     nhom_thuc_hanh INNER JOIN\r\n"
 			+ "                  lop_hoc_phan ON nhom_thuc_hanh.ma_lop_hoc_phan = lop_hoc_phan.ma_lop_hoc_phan \r\n"
-			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP and nhom_thuc_hanh.ten_nhom not like N'Nhóm 0'", nativeQuery = true)
+			+ "				  where lop_hoc_phan.ma_lop_hoc_phan like :maLHP ", nativeQuery = true)
 	public List<NhomThucHanh> getNhomTHTheoMaLHP(@Param("maLHP") String maLHP);//bat trung nhưng nhom TH da co
 	
 	@Query(value = "SELECT nhom_thuc_hanh.*\r\n"

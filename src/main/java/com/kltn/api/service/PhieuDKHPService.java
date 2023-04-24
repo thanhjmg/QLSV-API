@@ -32,4 +32,6 @@ public interface PhieuDKHPService {
 	public void deleteChiTietPDKByMaPhieuDKAndMaNhomTH(String maPhieuDK, String maNhomTH);
 	
 	public void xoaTatCaChiTietPhieuTheoMaLHP( String maLHP);
+	
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHPDanhChoGV( String maLHP);
 }

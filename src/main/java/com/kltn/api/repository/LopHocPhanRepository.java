@@ -18,7 +18,7 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 			+ "FROM     lop_hoc_phan INNER JOIN\r\n"
 			+ "                  hoc_phan ON lop_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
 			+ "                  chi_tiet_hoc_phan ON hoc_phan.ma_hoc_phan = chi_tiet_hoc_phan.ma_hoc_phan\r\n"
-			+ "				  where chi_tiet_hoc_phan.ma_hoc_phan like :maHP and chi_tiet_hoc_phan.ma_hoc_ky like :maHK", nativeQuery = true)
+			+ "				  where chi_tiet_hoc_phan.ma_hoc_phan like :maHP and lop_hoc_phan.ma_hoc_ky like :maHK", nativeQuery = true)
 	public List<LopHocPhan> getLopHocPhanTheoMaHocPhan(@Param("maHP") String maHP, @Param("maHK") String maHK);
 	
 	@Query(value = "SELECT lop_hoc_phan.*\r\n"
@@ -37,7 +37,7 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 	public List<LopHocPhan> getLopHocPhanTheoMaHP(@Param("maHP") String maHP);
 
 	@Query(value = " SELECT DISTINCT \r\n"
-			+ "                  lop_hoc_phan.ma_lop_hoc_phan, lop_hoc_phan.ngay_bat_dau, lop_hoc_phan.ngay_ket_thuc, lop_hoc_phan.si_so, lop_hoc_phan.si_so_thuc, lop_hoc_phan.ten_lop_hoc_phan, lop_hoc_phan.trang_thai, lop_hoc_phan.ma_hoc_phan\r\n"
+			+ "                  lop_hoc_phan.*\r\n"
 			+ "FROM     nhan_vien INNER JOIN\r\n"
 			+ "                  lich ON nhan_vien.ma_nhan_vien = lich.id_nhan_vien INNER JOIN\r\n"
 			+ "                  nhom_thuc_hanh ON lich.ma_nhomth = nhom_thuc_hanh.ma_nhom INNER JOIN\r\n"
@@ -59,4 +59,16 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, String>{
 	@Query(value = "delete lop_hoc_phan where lop_hoc_phan.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	@Modifying
 	public void xoaLopHocPhanTheoMaLHP(@Param("maLHP") String maLHP);
+	
+	@Query(value = "SELECT DISTINCT \r\n"
+			+ "			                lop_hoc_phan.*\r\n"
+			+ "			FROM     nhan_vien INNER JOIN\r\n"
+			+ "			                  lich ON nhan_vien.ma_nhan_vien = lich.id_nhan_vien INNER JOIN\r\n"
+			+ "			                 nhom_thuc_hanh ON lich.ma_nhomth = nhom_thuc_hanh.ma_nhom INNER JOIN\r\n"
+			+ "			                 lop_hoc_phan ON nhom_thuc_hanh.ma_lop_hoc_phan = lop_hoc_phan.ma_lop_hoc_phan INNER JOIN\r\n"
+			+ "			                 hoc_phan ON lop_hoc_phan.ma_hoc_phan = hoc_phan.ma_hoc_phan INNER JOIN\r\n"
+			+ "			               chi_tiet_phieu_dang_ky ON nhom_thuc_hanh.ma_nhom = chi_tiet_phieu_dang_ky.ma_nhomth INNER JOIN\r\n"
+			+ "			               phieu_dang_ky_hoc_phan ON chi_tiet_phieu_dang_ky.ma_phieu_dang_kyhp = phieu_dang_ky_hoc_phan.ma_phieu_dang_ky\r\n"
+			+ "								  where nhan_vien.ma_nhan_vien like :maGV and lop_hoc_phan.ma_hoc_ky like :maHK and nhom_thuc_hanh.ten_nhom = N'Nhóm 0'", nativeQuery = true)
+	public List<LopHocPhan> getLopHocPhanByMaGVAndMaHK(@Param("maGV") String maGV, @Param("maHK") String maHK);
 }

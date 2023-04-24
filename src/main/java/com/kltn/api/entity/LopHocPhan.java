@@ -39,9 +39,13 @@ public class LopHocPhan{
 	
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "ma_hoc_phan")
 	private HocPhan hocPhan;
+	
+	@ManyToOne()
+	@JoinColumn(name = "ma_hoc_ky")
+	private HocKy hocKy;
 	
 	public LopHocPhan(String maLopHocPhan) {
 		super();

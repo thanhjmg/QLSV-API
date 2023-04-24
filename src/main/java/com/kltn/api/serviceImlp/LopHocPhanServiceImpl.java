@@ -92,9 +92,9 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	}
 
 	@Override
-	public List<BangDiem> getBangDiemTheoLHPAndMaSV(String maLHP) {
+	public List<BangDiem> getBangDiemTheoLHPAndMaGV(String maLHP,String maGV) {
 		// TODO Auto-generated method stub
-		return bangDiemRepository.getbangDiemTheoLHP(maLHP);
+		return bangDiemRepository.getbangDiemTheoLHP(maLHP, maGV);
 	}
 
 	@Override
@@ -156,6 +156,7 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 	}
 
 	@Override
+
 	public void updateTrangThaiBangDiem(String trangThai, String maSinhVien, String maHP) {
 		bangDiemRepository.updateTrangThaiBangDiem(trangThai, maSinhVien, maHP);
 		
@@ -191,6 +192,13 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		return bangDiemRepository.getDiemTongKet(maSinhVien, maLHP);
 	}
 	
+
+
+	public List<LopHocPhan> getLopHocPhanByMaGVAndMaHK(String maGV, String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanByMaGVAndMaHK(maGV, maHK);
+	}
+
 
 
 }

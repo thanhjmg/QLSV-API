@@ -106,4 +106,21 @@ public class AuthServiceImlp implements AuthService {
 
          return dataNewToken;
     }
+
+	@Override
+	public void updatePassword(String pass, String userName) {
+		 PasswordEncoder passEndcoder = new BCryptPasswordEncoder(); // khởi tạo pass mã hoá (chưa có data)
+	        String passMaHoa = passEndcoder.encode(pass);   // lấy pass ra, mã hoá bcrypt
+		userRepo.updatePassword(passMaHoa, userName);
+	}
+
+	@Override
+	public Boolean getPassOld(String userName,String passInput) {
+		// TODO Auto-generated method stub
+		PasswordEncoder passEndcoder = new BCryptPasswordEncoder(); // khởi tạo pass mã hoá (chưa có data)
+        //String passMaHoa = passEndcoder.encode(passInput);   // lấy pass ra, mã hoá bcrypt
+        if(passEndcoder.matches(passInput, userRepo.getPassOld(userName)))
+        	return true;
+		return false;
+	}
 }

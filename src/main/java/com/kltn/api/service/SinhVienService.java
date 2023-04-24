@@ -2,6 +2,8 @@ package com.kltn.api.service;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.kltn.api.entity.NhanVien;
 import com.kltn.api.entity.SinhVien;
 
@@ -20,5 +22,5 @@ public interface SinhVienService {
 	public int countSinhVienByEmail(String email);
 	
 	public int couSinhVienBySoCCCD(String soCCCD);
-
+	public List<SinhVien> getSinhVienByMaLHP( String maLHP);
 }

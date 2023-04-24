@@ -110,5 +110,11 @@ public class PhieuDKHPRest {
 		// TODO Auto-generated method stub
 		phieuDKHPService.xoaTatCaChiTietPhieuTheoMaLHP(maLHP);
 	}
+	
+	@GetMapping("/ctpdk/lhp")
+	public List<ChiTietPhieuDangKy> getListChiTietPDKByMaLHPDanhChoGV(@RequestParam String maLHP) {
+		// TODO Auto-generated method stub
+		return phieuDKHPService.getListChiTietPDKByMaLHPDanhChoGV(maLHP);
+	}
 
 }

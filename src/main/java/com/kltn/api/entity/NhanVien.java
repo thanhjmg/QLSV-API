@@ -28,6 +28,8 @@ public class NhanVien extends Nguoi{
 	private Boolean gioiTinh;
 	
 	@Column( columnDefinition = "nvarchar(255)")
+	private String hocVi;
+	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
 //	@Embedded
