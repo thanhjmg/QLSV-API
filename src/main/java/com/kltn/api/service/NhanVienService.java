@@ -13,5 +13,10 @@ public interface NhanVienService {
 	public String autoId();
 	public List<NhanVien> timKiemNhanVien(String textSearch);
 	public List<NhanVien> getGiangVienTheoKhoa( String maKhoa);
+	public int countNhanVienBySDT(String soDT);
+	
+	public int countNhanVienByEmail(String email);
+	
+	public int couNhanVienBySoCCCD(String soCCCD);
 
 }

@@ -18,5 +18,14 @@ public interface NhanVienRepository extends JpaRepository<NhanVien, String>{
 	 
 	 @Query(value = "select nhan_vien.* from nhan_vien where ma_khoa like :maKhoa", nativeQuery = true)
 	 public List<NhanVien> getGiangVienTheoKhoa(@Param("maKhoa") String maKhoa);
+	 
+	 @Query(value = "select COUNT(ma_nhan_vien) from nhan_vien where so_dien_thoai like :soDT", nativeQuery = true)
+	 public int countNhanVienBySDT(@Param("soDT") String soDT);
+	 
+	 @Query(value = "select COUNT(ma_nhan_vien) from nhan_vien where email like :email", nativeQuery = true)
+	 public int countNhanVienByEmail(@Param("email") String email);
+	 
+	 @Query(value = "select COUNT(ma_nhan_vien) from nhan_vien where socccd like :soCCCD", nativeQuery = true)
+	 public int countNhanVienBySoCCCD(@Param("soCCCD") String soCCCD);
 }
 

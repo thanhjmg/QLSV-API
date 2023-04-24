@@ -75,6 +75,13 @@ public class LopHocPhanRest {
 
 	}
 	
+	@GetMapping("/sinhvien-hocky")
+	public List<LopHocPhan> getLopHocPhanTheoMaSVAndHK(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHK") String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getLopHocPhanTheoMaSVAndHK(maSinhVien, maHK);
+
+	}
+	
 	@GetMapping("/bangdiem")
 	public List<BangDiem> getBangDiemTheoLHP(@RequestParam("maLHP") String maLHP) {
 		// TODO Auto-generated method stub
@@ -115,16 +122,42 @@ public class LopHocPhanRest {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getBangDiemKhongDat(maSinhVien);
 	}
+	
+	@GetMapping("/bangdiemdat")
+	public List<BangDiem> getBangDiemDat(@RequestParam("maSinhVien") String maSinhVien) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getBangDiemDat(maSinhVien);
+	}
 	@GetMapping("/diemtbtheohk")
 	public float diemTBTheoHK(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHK") String maHK) {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.diemTBTheoHK(maSinhVien, maHK);
 	}
 	
+	@GetMapping("/diemtblhp")
+	public float diemTBLHP(@RequestParam("maLHP") String maLHP) {
+		return lopHocPhanService.diemTBLHP(maLHP);
+	}
+	
+	
+	@GetMapping("/diemtongket")
+	public List<BangDiem> getDiemTongKet(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maLHP") String maLHP) {
+		return lopHocPhanService.getDiemTongKet(maSinhVien, maLHP);
+	}
+	
+	@GetMapping("/updatetrangthaibangdiem")
+	public void updateTrangThaiBangDiem(@RequestParam("trangThai") String trangThai,@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maHP") String maHP) {
+		lopHocPhanService.updateTrangThaiBangDiem(trangThai, maSinhVien, maHP);
+	}
+	
 	@DeleteMapping("/delete")
 	public void xoaLopHocPhanTheoMaLHP(@RequestParam String maLHP) {
 		// TODO Auto-generated method stub
 		lopHocPhanService.xoaLopHocPhanTheoMaLHP(maLHP);
+	}
+	@GetMapping("/bangdiem/sinhvien-monhoc")
+	public List<BangDiem> getBangDiemTheoSVAndMH(@RequestParam("maSinhVien") String maSinhVien,@RequestParam("maMH") String maMH){
+		return lopHocPhanService.getBangDiemTheoSVAndMH(maSinhVien, maMH);
 	}
 	
 }

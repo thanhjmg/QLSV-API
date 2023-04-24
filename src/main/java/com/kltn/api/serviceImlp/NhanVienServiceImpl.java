@@ -81,4 +81,22 @@ public class NhanVienServiceImpl implements NhanVienService{
 		// TODO Auto-generated method stub
 		return nhanVienRepository.getGiangVienTheoKhoa(maKhoa);
 	}
+
+	@Override
+	public int countNhanVienBySDT(String soDT) {
+		// TODO Auto-generated method stub
+		return nhanVienRepository.countNhanVienBySDT(soDT);
+	}
+
+	@Override
+	public int countNhanVienByEmail(String email) {
+		// TODO Auto-generated method stub
+		return nhanVienRepository.countNhanVienByEmail(email);
+	}
+
+	@Override
+	public int couNhanVienBySoCCCD(String soCCCD) {
+		// TODO Auto-generated method stub
+		return nhanVienRepository.countNhanVienBySoCCCD(soCCCD);
+	}
 }

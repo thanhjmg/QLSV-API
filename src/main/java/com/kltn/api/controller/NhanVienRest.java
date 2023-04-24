@@ -65,5 +65,20 @@ public class NhanVienRest {
 		// TODO Auto-generated method stub
 		return nhanVienService.getGiangVienTheoKhoa(maKhoa);
 	}
+	
+	@GetMapping("/countnvbysdt")
+	public int countNhanVienBySDT(@RequestParam("soDT")String soDT) {
+		return nhanVienService.countNhanVienBySDT(soDT);
+	}
+	
+	@GetMapping("/countnvbyemail")
+	public int countNhanVienByEmail(@RequestParam("email")String email) {
+		return nhanVienService.countNhanVienByEmail(email);
+	}
+	
+	@GetMapping("/countnvbysocccd")
+	public int countNhanVienBySoCCCD(@RequestParam("soCCCD")String soCCCD) {
+		return nhanVienService.couNhanVienBySoCCCD(soCCCD);
+	}
 }
 

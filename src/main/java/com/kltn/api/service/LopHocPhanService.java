@@ -25,13 +25,21 @@ public interface LopHocPhanService {
 	public void addBangDiem(BangDiem bangDiem);
 	public List<LopHocPhan> getLopHocPhanByTextSearch( String valueSearch);
 	public LopHocPhan getLopHocPhanByMaLHP(String maLHP);
-	
+	public List<BangDiem> getBangDiemTheoSVAndMH(String maSinhVien, String maMH);
 	public List<BangDiem> getBangDiemBySVAndHK(String maSinhVien,String maHK);
 	public List<BangDiem> getBangDiemKhongDat(String maSinhVien);
+	public List<BangDiem> getBangDiemDat(String maSinhVien);
+	
+	public List<LopHocPhan> getLopHocPhanTheoMaSVAndHK(String maSinhVien, String maHK);
 	
 	public float diemTBTheoHK(String maSinhVien,String maHK);
+	
+	public float diemTBLHP(String maLHP);
+	public List<BangDiem> getDiemTongKet(String maSinhVien, String maLHP);
 	public String autoIdBangDiem();
 	
 	public void xoaLopHocPhanTheoMaLHP(String maLHP);
+	
+	public void updateTrangThaiBangDiem(String trangThai, String maSinhVien, String maHP);
 	
 }

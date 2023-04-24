@@ -155,5 +155,42 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		lopHocPhanRepository.xoaLopHocPhanTheoMaLHP(maLHP);
 	}
 
+	@Override
+	public void updateTrangThaiBangDiem(String trangThai, String maSinhVien, String maHP) {
+		bangDiemRepository.updateTrangThaiBangDiem(trangThai, maSinhVien, maHP);
+		
+	}
+
+	@Override
+	public List<BangDiem> getBangDiemDat(String maSinhVien) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getBangDiemDat(maSinhVien);
+	}
+
+	@Override
+	public List<BangDiem> getBangDiemTheoSVAndMH(String maSinhVien, String maMH) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getBangDiemTheoSVAndMH(maSinhVien, maMH);
+	}
+
+	@Override
+	public List<LopHocPhan> getLopHocPhanTheoMaSVAndHK(String maSinhVien, String maHK) {
+		// TODO Auto-generated method stub
+		return lopHocPhanRepository.getLopHocPhanTheoMaSVAndHK(maSinhVien, maHK);
+	}
+
+	@Override
+	public float diemTBLHP(String maLHP) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.diemTBLHP(maLHP);
+	}
+
+	@Override
+	public List<BangDiem> getDiemTongKet(String maSinhVien, String maLHP) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getDiemTongKet(maSinhVien, maLHP);
+	}
+	
+
 
 }
