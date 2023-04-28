@@ -27,7 +27,7 @@ public class NganhHoc{
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "idKhoa")
 	private Khoa khoa;
 

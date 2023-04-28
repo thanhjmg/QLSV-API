@@ -166,4 +166,10 @@ public class LopHocPhanRest {
 		return lopHocPhanService.getLopHocPhanByMaGVAndMaHK(maGV, maHK);
 	}
 	
+	@GetMapping("/bangdiem/sv")
+	public List<BangDiem> getBangDiemByMaSV(@RequestParam("maSV") String maSinhVien) {
+		// TODO Auto-generated method stub
+		return lopHocPhanService.getBangDiemByMaSV(maSinhVien);
+	}
+	
 }

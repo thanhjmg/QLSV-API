@@ -104,6 +104,11 @@ public interface BangDiemRepository extends JpaRepository<BangDiem, String>{
 	@Modifying
 	@Query(value = "UPDATE bang_diem SET trang_thai = :trangThai WHERE ma_sinh_vien LIKE :maSV AND ma_hoc_phan LIKE :maHP", nativeQuery = true)
 	public void updateTrangThaiBangDiem(@Param("trangThai") String trangThai, @Param("maSV") String maSV, @Param("maHP") String maHP);
+	
+	@Query(value = "SELECT DISTINCT \r\n"
+			+ "                  bang_diem.* \r\n"
+			+ "FROM bang_diem where bang_diem.ma_sinh_vien like :maSinhVien", nativeQuery = true)
+	public List<BangDiem> getBangDiemByMaSV (@Param("maSinhVien") String maSinhVien);
 
 
 }

@@ -199,6 +199,12 @@ public class LopHocPhanServiceImpl implements LopHocPhanService{
 		return lopHocPhanRepository.getLopHocPhanByMaGVAndMaHK(maGV, maHK);
 	}
 
+	@Override
+	public List<BangDiem> getBangDiemByMaSV(String maSinhVien) {
+		// TODO Auto-generated method stub
+		return bangDiemRepository.getBangDiemByMaSV(maSinhVien);
+	}
+
 
 
 }

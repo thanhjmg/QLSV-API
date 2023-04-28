@@ -42,5 +42,7 @@ public interface LopHocPhanService {
 	public List<LopHocPhan> getLopHocPhanByMaGVAndMaHK( String maGV, String maHK);
 	
 	public void updateTrangThaiBangDiem(String trangThai, String maSinhVien, String maHP);
+	public List<BangDiem> getBangDiemByMaSV (String maSinhVien);
+
 	
 }
