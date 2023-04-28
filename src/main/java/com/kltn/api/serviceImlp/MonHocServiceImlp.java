@@ -43,7 +43,7 @@ public class MonHocServiceImlp implements MonHocService{
 	@Override
 	public String autoId() {
 		int id = monHocRepository.autoId();
-	    String maMH = "MH" + String.format("%03d", id+1);
+	    String maMH = "MH" + String.format("%05d", id+1);
 	    return maMH;
 	}
 

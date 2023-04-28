@@ -60,7 +60,7 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	@Override
 	public String autoId() {
 		int id = chuongTrinhKhungRepository.autoId();
-		String naturalId = "CTK" + String.format("%03d", id+1);
+		String naturalId = "CTK" + String.format("%05d", id+1);
 		return naturalId;
 	}
 

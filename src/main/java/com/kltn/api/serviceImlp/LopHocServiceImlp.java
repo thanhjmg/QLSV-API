@@ -51,7 +51,7 @@ public class LopHocServiceImlp implements LopHocService{
 	@Override
 	public String autoId() {
 		 int id = lopHocRepository.autoId();
-		    String naturalId = "LH" + String.format("%03d", id+1);
+		    String naturalId = "LH" + String.format("%05d", id+1);
 		    return naturalId;
 	}
 

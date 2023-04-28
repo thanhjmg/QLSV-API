@@ -32,17 +32,17 @@ public class NganhRest {
 	private NganhHocService nganhHocService;
 	
 	@PostMapping
-	public void addNganhHoc(@RequestBody NganhHoc nganhHoc) {
+	public NganhHoc addNganhHoc(@RequestBody NganhHoc nganhHoc) {
 		nganhHoc.setMaNganh(nganhHocService.autoId());
 		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
-		
+		return nganhHoc;
 	}
 	
 	@PutMapping
-	public void updateNganhHoc(@RequestBody NganhHoc nganhHoc) {
+	public NganhHoc updateNganhHoc(@RequestBody NganhHoc nganhHoc) {
 		//nganhHoc.setMaNganh(nganhHocService.autoId());
 		nganhHocService.saveOrUpdateNganhHoc(nganhHoc);
-		
+		return nganhHoc;
 	}
 	@GetMapping
 	public List<NganhHoc> getAllNganhHoc() {

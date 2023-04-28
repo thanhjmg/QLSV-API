@@ -96,12 +96,12 @@ public class LichServiceImpl implements LichService{
 	public String autoId() {
 		String maxId = lichRepository.getMaxId(); // Lấy id lớn nhất hiện tại
 		if (maxId == null) {
-		    return "L00001"; // Nếu không có dữ liệu, trả về giá trị mặc định
+		    return "L00000001"; // Nếu không có dữ liệu, trả về giá trị mặc định
 		} else {
-		    String prefix = maxId.substring(0, maxId.length() - 5); // Tách phần prefix từ id lớn nhất
+		    String prefix = maxId.substring(0, maxId.length() - 8); // Tách phần prefix từ id lớn nhất
 		    int number = Integer.parseInt(maxId.substring(prefix.length())); // Tách phần số từ id lớn nhất
 		    number++; // Tăng giá trị số lên 1
-		    String newId = prefix + String.format("%05d", number); // Tạo id mới
+		    String newId = prefix + String.format("%08d", number); // Tạo id mới
 		    return newId;
 		}
 
