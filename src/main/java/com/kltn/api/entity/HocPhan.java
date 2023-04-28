@@ -23,7 +23,7 @@ public class HocPhan {
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "ma_mon_hoc")
 	private MonHoc monHoc;
 
