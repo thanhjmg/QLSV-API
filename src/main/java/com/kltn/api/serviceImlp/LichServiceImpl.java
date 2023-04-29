@@ -153,4 +153,10 @@ public class LichServiceImpl implements LichService{
 		lichRepository.xoaTatCaLichTheoMaLHP(maLHP);
 		
 	}
+
+	@Override
+	public List<Lich> getTatCaLichTheoMaLHPAndNhomTH(String maLHP, String maNhomTH) {
+		// TODO Auto-generated method stub
+		return lichRepository.getTatCaLichTheoMaLHPAndNhomTH(maLHP, maNhomTH);
+	}
 }
