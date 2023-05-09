@@ -23,7 +23,7 @@ public class NganhHoc{
 	private String maNganh;
 	@Column( columnDefinition = "nvarchar(255)")
 	private String tenNganh;
-	private Integer tongTinChi;
+	//private Integer tongTinChi;
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	
