@@ -28,7 +28,7 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public List<NhanVien> getAllNhanVien() {
 		// TODO Auto-generated method stub
-		return nhanVienRepository.findAll();
+		return nhanVienRepository.findAll().subList(0, 50);
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public List<NhanVien> timKiemNhanVien(String textSearch) {
 		// TODO Auto-generated method stub
-		 return nhanVienRepository.timKiemNhanVien(textSearch);
+		 return nhanVienRepository.timKiemNhanVien(textSearch).subList(0, 50);
 	}
 
 	@Override

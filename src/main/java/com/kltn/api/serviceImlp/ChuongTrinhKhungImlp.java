@@ -92,6 +92,12 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 		return chiTietHPRepository.getChuongTrinhKhungTheoMaSV(maSV);
 	}
 
+	@Override
+	public List<ChuongTrinhKhung> getCTKByMaSV(String maSV) {
+		// TODO Auto-generated method stub
+		return chuongTrinhKhungRepository.getCTKByMaSV(maSV);
+	}
+
 	
 
 }

@@ -74,5 +74,12 @@ public class ChuongTrinhKhungRest {
 		// TODO Auto-generated method stub
 		return chuongTrinhKhungService.getChuongTrinhKhungTheoMaSV(maSV);
 	}
+	
+	@GetMapping("/masv")
+	public List<ChuongTrinhKhung> getCTKByMaSV(@RequestParam("maSV") String maSV) {
+		// TODO Auto-generated method stub
+		return chuongTrinhKhungService.getCTKByMaSV(maSV);
+	}
+	
 
 }

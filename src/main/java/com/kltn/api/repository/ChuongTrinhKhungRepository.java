@@ -18,5 +18,10 @@ public interface ChuongTrinhKhungRepository extends JpaRepository<ChuongTrinhKhu
             + "OR lower(ctk.maChuongTrinhKhung) LIKE lower(concat('%', :valueSearch, '%'))")
 	public List<ChuongTrinhKhung> getCTKByTextSearch(@Param("valueSearch") String valueSearch);
 	
-	
+	@Query(value = 
+			"SELECT chuong_trinh_khung.*\r\n"
+			+ "FROM     sinh_vien INNER JOIN\r\n"
+			+ "                  khoa_hoc ON sinh_vien.ma_khoa_hoc = khoa_hoc.ma_khoa_hoc INNER JOIN\r\n"
+			+ "                  chuong_trinh_khung ON khoa_hoc.ma_khoa_hoc = chuong_trinh_khung.ma_khoa_hoc where ma_sinh_vien like :maSinhVien", nativeQuery = true)
+	public List<ChuongTrinhKhung> getCTKByMaSV(@Param("maSinhVien") String maSinhVien);
 }

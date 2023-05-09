@@ -17,4 +17,6 @@ public interface ChuongTrinhKhungService {
 	public void addChuongTrinhKhungChoHK(ChiTietHocKy chiTietHocKy);
 	public List<ChuongTrinhKhung> getCTKByTextSearch( String valueSearch);
 	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV( String maSV);
+	
+	public List<ChuongTrinhKhung> getCTKByMaSV(String maSV);
 }
