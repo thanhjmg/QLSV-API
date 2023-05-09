@@ -22,4 +22,5 @@ public interface LichService {
 	public List<Lich> getALLLichByMaSinhVienAndHK(String maSinhVien,String maHK);
 	
 	public void xoaTatCaLichTheoMaLHP( String maLHP);
+	public List<Lich> getTatCaLichTheoMaLHPAndNhomTH( String maLHP, String maNhomTH);
 }

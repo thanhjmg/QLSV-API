@@ -22,6 +22,12 @@ public interface LichRepository extends JpaRepository<Lich, String> {
 			+ "				  where nhom_thuc_hanh.ma_lop_hoc_phan like :maLHP", nativeQuery = true)
 	public List<Lich> getTatCaLichTheoMaLHP(@Param("maLHP") String maLHP);
 	
+	
+	@Query(value = "SELECT lich.*\r\n"
+			+ "			FROM     lich INNER JOIN\r\n"
+			+ "			                  nhom_thuc_hanh ON lich.ma_nhomth = nhom_thuc_hanh.ma_nhom\r\n"
+			+ "						  where nhom_thuc_hanh.ma_lop_hoc_phan like :maLHP and (nhom_thuc_hanh.ma_nhom  LIKE :maNhomTH or nhom_thuc_hanh.ten_nhom LIKE 'Nhóm 0')", nativeQuery = true)
+	public List<Lich> getTatCaLichTheoMaLHPAndNhomTH(@Param("maLHP") String maLHP, @Param("maNhomTH") String maNhomTH);
 
 //	@Query(value = "SELECT lich.*\r\n"
 //			+ "FROM     sinh_vien INNER JOIN\r\n"
