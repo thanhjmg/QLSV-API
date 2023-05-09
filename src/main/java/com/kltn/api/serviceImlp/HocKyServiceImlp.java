@@ -100,4 +100,10 @@ public class HocKyServiceImlp implements  HocKyService{
 		return hocKyRepository.getHocKyByKhoaHoc(maKhoaHoc);
 	}
 
+	@Override
+	public List<HocKy> getHocKyTheoTen(String tenHocKy) {
+		// TODO Auto-generated method stub
+		return hocKyRepository.getHocKyTheoTen(tenHocKy);
+	}
+
 }

@@ -62,5 +62,9 @@ public class DayNhaRest {
 	        List<DayNha> dayNhas = dayNhaService.timKiemDayNha(textSearch);
 	        return ResponseEntity.ok(dayNhas);
 	    }
+	 @GetMapping("/tendaynha")
+	 public List<DayNha> getDayNhanTheoTen(@RequestParam("tenDayNha") String tenDayNha){
+		 return dayNhaService.getDayNhaTheoTen(tenDayNha);
+	 }
 
 }

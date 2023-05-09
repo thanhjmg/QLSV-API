@@ -22,4 +22,6 @@ public interface HocKyService {
 	public void removeMonHocOfChuongTrinhKhung(String maCTK, String maHK, String maHP);
 	
 	public List<HocKy> getHocKyByKhoaHoc(String maKhoaHoc);
+	
+	public List<HocKy> getHocKyTheoTen(String tenHocKy);
 }

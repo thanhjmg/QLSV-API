@@ -93,4 +93,9 @@ public class HocKyRest {
 		// TODO Auto-generated method stub
 		return hocKyService.getHocKyByKhoaHoc(maKhoaHoc);
 	}
+	
+	@GetMapping("/tenhocky")
+	public List<HocKy> getHocKyTheoTen(@RequestParam("tenHocKy") String tenHocKy){
+		return hocKyService.getHocKyTheoTen(tenHocKy);
+	}
 }

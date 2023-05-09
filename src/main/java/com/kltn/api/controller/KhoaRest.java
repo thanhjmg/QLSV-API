@@ -61,5 +61,9 @@ public class KhoaRest {
 		return khoa;
 		
 	}
+	@GetMapping("/tenkhoa")
+	public List<Khoa> getKhoaTheoTen(@RequestParam("tenKhoa") String tenKhoa){
+		return khoaService.getKhoaTheoTen(tenKhoa);
+	}
 
 }

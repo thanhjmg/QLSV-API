@@ -11,5 +11,6 @@ public interface DayNhaService {
 	public DayNha getDayNhaById(String id);
 	public String autoId();
 	public List<DayNha> timKiemDayNha(String textSearch);
-
+	
+	public List<DayNha> getDayNhaTheoTen(String tenDayNha);
 }

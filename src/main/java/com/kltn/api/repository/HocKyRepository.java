@@ -37,4 +37,7 @@ public interface HocKyRepository extends JpaRepository<HocKy, String>{
 	 		+ "                  chi_tiet_hoc_ky ON chuong_trinh_khung.ma_chuong_trinh_khung = chi_tiet_hoc_ky.ma_chuong_trinh_khung INNER JOIN\r\n"
 	 		+ "                  hoc_ky ON chi_tiet_hoc_ky.ma_hoc_ky = hoc_ky.ma_hoc_ky  where khoa_hoc.ma_khoa_hoc like :maKhoaHoc", nativeQuery = true)
 	 public List<HocKy> getHocKyByKhoaHoc(@Param("maKhoaHoc") String maKhoaHoc);
+	 
+	 @Query(value = "select * from hoc_ky where ten_hoc_ky like :tenHocKy", nativeQuery = true)
+	 public List<HocKy> getHocKyTheoTen(@Param("tenHocKy") String tenHocKy);
 }

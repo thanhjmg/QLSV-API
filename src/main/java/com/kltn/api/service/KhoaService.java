@@ -11,4 +11,6 @@ public interface KhoaService {
 	public void addOrUpdateKhoa(Khoa khoa);
 	public String autoId();
 	public List<Khoa> timKiemKhoa(String textSearch);
+	
+	public List<Khoa> getKhoaTheoTen(String tenKhoa);
 }

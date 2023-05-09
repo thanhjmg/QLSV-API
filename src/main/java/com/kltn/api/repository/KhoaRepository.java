@@ -19,4 +19,9 @@ public interface KhoaRepository extends JpaRepository<Khoa, String>{
 	 @Query("SELECT k FROM Khoa k WHERE lower(k.tenKhoa) LIKE lower(concat('%', :textSearch, '%')) "
 	            + "OR lower(k.maKhoa) LIKE lower(concat('%', :textSearch, '%'))")
 	  public List<Khoa> timKiemKhoa(@Param("textSearch") String textSearch);
+	 
+	 @Query(value = "SELECT * FROM Khoa k WHERE k.ten_khoa like :tenKhoa", nativeQuery = true)
+	 public List<Khoa> getKhoaTheoTen(@Param("tenKhoa") String tenKhoa);
+
+
 }

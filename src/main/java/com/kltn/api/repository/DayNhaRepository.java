@@ -16,4 +16,7 @@ public interface DayNhaRepository extends JpaRepository<DayNha, String>{
 	@Query("SELECT dn FROM DayNha dn WHERE lower(dn.tenDayNha) LIKE lower(concat('%', :textSearch, '%')) "
             + "OR lower(dn.maDayNha) LIKE lower(concat('%', :textSearch, '%'))")
   public List<DayNha> timKiemDayNha(@Param("textSearch") String textSearch);
+	
+	 @Query(value = "select * from day_nha where ten_day_nha like :tenDayNha", nativeQuery = true)
+	 public List<DayNha> getDayNhaTheoTen(@Param("tenDayNha") String tenDayNha);
 }

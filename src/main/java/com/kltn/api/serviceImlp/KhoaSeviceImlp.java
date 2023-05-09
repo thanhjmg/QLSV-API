@@ -47,4 +47,10 @@ public class KhoaSeviceImlp implements KhoaService{
 		return khoaRepository.timKiemKhoa(textSearch);
 	}
 
+	@Override
+	public List<Khoa> getKhoaTheoTen(String tenKhoa) {
+		// TODO Auto-generated method stub
+		return khoaRepository.getKhoaTheoTen(tenKhoa);
+	}
+
 }

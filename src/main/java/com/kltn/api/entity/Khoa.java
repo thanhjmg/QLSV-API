@@ -30,9 +30,7 @@ public class Khoa {
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "khoa")
 //	private List<NganhHoc> dsNganhHoc;
 	
-	
 
-	
 
 	public Khoa(String maKhoa) {
 		super();

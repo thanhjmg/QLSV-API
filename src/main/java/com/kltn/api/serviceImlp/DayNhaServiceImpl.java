@@ -51,4 +51,10 @@ public class DayNhaServiceImpl implements DayNhaService{
 		return dayNhaRepository.timKiemDayNha(textSearch);
 	}
 
+	@Override
+	public List<DayNha> getDayNhaTheoTen(String tenDayNha) {
+		// TODO Auto-generated method stub
+		return dayNhaRepository.getDayNhaTheoTen(tenDayNha);
+	}
+
 }
