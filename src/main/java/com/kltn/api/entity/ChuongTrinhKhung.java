@@ -23,6 +23,7 @@ public class ChuongTrinhKhung{
 	private String maChuongTrinhKhung;
 	@Column( columnDefinition = "nvarchar(255)")
 	private String tenChuongTrinhKhung;
+	private Integer tongSoTinChi;
 	@Column( columnDefinition = "nvarchar(255)")
 	private String trangThai;
 	

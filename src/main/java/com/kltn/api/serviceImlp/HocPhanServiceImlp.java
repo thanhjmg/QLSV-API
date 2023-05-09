@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kltn.api.entity.ChiTietHocPhan;
 import com.kltn.api.entity.HocPhan;
-import com.kltn.api.entity.LoaiMonHoc;
 import com.kltn.api.entity.LopHoc;
 import com.kltn.api.entity.MonHoc;
 import com.kltn.api.repository.ChiTietHPRepository;
