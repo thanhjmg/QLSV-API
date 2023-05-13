@@ -1,4 +1,4 @@
-package com.kltn.api.aws;
+package com.kltn.api.service;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;

@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +30,8 @@ public class SinhVienServiceImlp implements SinhVienService{
 	@Override
 	public List<SinhVien> getAllSinhVien() {
 		// TODO Auto-generated method stub
-		return sinhVienRepository.findAll().subList(0, 50);
+		Pageable pageable = PageRequest.of(0, 50);
+		return sinhVienRepository.findAll(pageable).getContent();
 	}
 
 	@Override
