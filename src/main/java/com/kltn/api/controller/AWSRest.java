@@ -1,10 +1,12 @@
-package com.kltn.api.aws;
+package com.kltn.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.kltn.api.service.AWSService;
 
 @RestController
 @RequestMapping("/api/file")

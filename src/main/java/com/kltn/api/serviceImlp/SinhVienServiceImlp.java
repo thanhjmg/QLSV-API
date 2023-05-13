@@ -28,7 +28,7 @@ public class SinhVienServiceImlp implements SinhVienService{
 	@Override
 	public List<SinhVien> getAllSinhVien() {
 		// TODO Auto-generated method stub
-		return sinhVienRepository.findAll().subList(0, 50);
+		return sinhVienRepository.findAll();
 	}
 
 	@Override
