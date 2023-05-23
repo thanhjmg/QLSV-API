@@ -19,12 +19,10 @@ public class AWSRest {
     @PostMapping("/")
     public ResponseEntity<String> upLoadFile(@RequestPart(value="file")MultipartFile file){
         try {
-        	System.out.println("ôhhjgg");
             return ResponseEntity.ok(awsService.uploadFile(file));
         }
         catch (Exception e){
         	throw e;
-//            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
     }
     @DeleteMapping("/{fileName}")

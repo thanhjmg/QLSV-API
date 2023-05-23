@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +30,12 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public List<NhanVien> getAllNhanVien() {
 		// TODO Auto-generated method stub
-		return nhanVienRepository.findAll();
+
+
+
+		Pageable pageable = PageRequest.of(0, 50);
+		return nhanVienRepository.findAll(pageable).getContent();
+
 	}
 
 	@Override

@@ -50,11 +50,6 @@ public class AuthRest {
         }
         catch(Exception e){
                 throw e;
-
-//                Map<String, String> error = new HashMap<>();
-//                error.put("errorMessage", e.getMessage());
-//
-//                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
             }
 
     }
