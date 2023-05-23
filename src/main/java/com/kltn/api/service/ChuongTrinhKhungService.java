@@ -16,7 +16,7 @@ public interface ChuongTrinhKhungService {
 	public String autoId();
 	public void addChuongTrinhKhungChoHK(ChiTietHocKy chiTietHocKy);
 	public List<ChuongTrinhKhung> getCTKByTextSearch( String valueSearch);
-	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV( String maSV);
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV( String maSV, String maKH);
 	
 	public List<ChuongTrinhKhung> getCTKByMaSV(String maSV);
 }

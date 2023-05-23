@@ -47,7 +47,7 @@ public interface ChiTietHPRepository extends JpaRepository<ChiTietHocPhan, Strin
 			+ "                  lop_hoc ON sinh_vien.ma_lop_hoc = lop_hoc.ma_lop INNER JOIN\r\n"
 			+ "                  nganh_hoc ON lop_hoc.id_nganh = nganh_hoc.ma_nganh INNER JOIN\r\n"
 			+ "                  chuong_trinh_khung ON nganh_hoc.ma_nganh = chuong_trinh_khung.id_nganh\r\n"
-			+ "				  where sinh_vien.ma_sinh_vien like :maSV)", nativeQuery = true)
-	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@Param("maSV") String maSV);
+			+ "				  where sinh_vien.ma_sinh_vien like :maSV and chuong_trinh_khung.[ma_khoa_hoc] like :maKH)", nativeQuery = true)
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@Param("maSV") String maSV, @Param("maKH") String maKH);
 	
 }
