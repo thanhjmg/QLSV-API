@@ -87,9 +87,9 @@ public class ChuongTrinhKhungImlp implements ChuongTrinhKhungService{
 	}
 
 	@Override
-	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(String maSV) {
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(String maSV, String maKH) {
 		// TODO Auto-generated method stub
-		return chiTietHPRepository.getChuongTrinhKhungTheoMaSV(maSV);
+		return chiTietHPRepository.getChuongTrinhKhungTheoMaSV(maSV, maKH);
 	}
 
 	@Override

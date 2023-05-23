@@ -70,9 +70,9 @@ public class ChuongTrinhKhungRest {
 	}
 	
 	@GetMapping("/sv")
-	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@RequestParam("maSV") String maSV) {
+	public List<ChiTietHocPhan> getChuongTrinhKhungTheoMaSV(@RequestParam("maSV") String maSV, @RequestParam("maKH") String maKH) {
 		// TODO Auto-generated method stub
-		return chuongTrinhKhungService.getChuongTrinhKhungTheoMaSV(maSV);
+		return chuongTrinhKhungService.getChuongTrinhKhungTheoMaSV(maSV, maKH);
 	}
 	
 	@GetMapping("/masv")
