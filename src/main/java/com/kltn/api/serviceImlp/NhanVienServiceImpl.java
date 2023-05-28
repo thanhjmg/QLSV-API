@@ -30,8 +30,12 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public List<NhanVien> getAllNhanVien() {
 		// TODO Auto-generated method stub
+
+
+
 		Pageable pageable = PageRequest.of(0, 50);
 		return nhanVienRepository.findAll(pageable).getContent();
+
 	}
 
 	@Override
@@ -76,7 +80,7 @@ public class NhanVienServiceImpl implements NhanVienService{
 	@Override
 	public List<NhanVien> timKiemNhanVien(String textSearch) {
 		// TODO Auto-generated method stub
-		 return nhanVienRepository.timKiemNhanVien(textSearch).subList(0, 50);
+		 return nhanVienRepository.timKiemNhanVien(textSearch);
 	}
 
 	@Override

@@ -30,8 +30,10 @@ public class SinhVienServiceImlp implements SinhVienService{
 	@Override
 	public List<SinhVien> getAllSinhVien() {
 		// TODO Auto-generated method stub
+
 		Pageable pageable = PageRequest.of(0, 50);
 		return sinhVienRepository.findAll(pageable).getContent();
+
 	}
 
 	@Override
