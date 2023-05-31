@@ -97,6 +97,11 @@ public class SinhVienRest {
 			// TODO Auto-generated method stub
 			return sinhVienService.getSinhVienByMaLHP(maLHP);
 		}
+		@GetMapping("/masv")
+		public String getMaSV() {
+		    // TODO Auto-generated method stub
+		    return sinhVienService.autoId();
+		}
 
 		
 }

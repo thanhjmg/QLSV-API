@@ -65,5 +65,10 @@ public class KhoaRest {
 	public List<Khoa> getKhoaTheoTen(@RequestParam("tenKhoa") String tenKhoa){
 		return khoaService.getKhoaTheoTen(tenKhoa);
 	}
+	@GetMapping("/makhoa")
+	public String getMaSV() {
+	    // TODO Auto-generated method stub
+	    return khoaService.autoId();
+	}
 
 }

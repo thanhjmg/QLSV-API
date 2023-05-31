@@ -80,5 +80,10 @@ public class NhanVienRest {
 	public int countNhanVienBySoCCCD(@RequestParam("soCCCD")String soCCCD) {
 		return nhanVienService.couNhanVienBySoCCCD(soCCCD);
 	}
+	@GetMapping("/manv")
+	public String getMaSV() {
+	    // TODO Auto-generated method stub
+	    return nhanVienService.autoId();
+	}
 }
 

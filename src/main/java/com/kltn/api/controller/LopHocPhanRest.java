@@ -171,5 +171,10 @@ public class LopHocPhanRest {
 		// TODO Auto-generated method stub
 		return lopHocPhanService.getBangDiemByMaSV(maSinhVien);
 	}
+	@GetMapping("/malhp")
+	public String getMaLHP() {
+	    // TODO Auto-generated method stub
+	    return lopHocPhanService.autoId();
+	}
 	
 }
