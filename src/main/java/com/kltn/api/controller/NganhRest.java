@@ -63,4 +63,9 @@ public class NganhRest {
 	        List<NganhHoc> nganhHocList = nganhHocService.getNganhHocByKhoa(khoa);
 	        return ResponseEntity.ok().body(nganhHocList);
 	    }
+	 @GetMapping("/manganh")
+		public String getMaSV() {
+		    // TODO Auto-generated method stub
+		    return nganhHocService.autoId();
+		}
 }

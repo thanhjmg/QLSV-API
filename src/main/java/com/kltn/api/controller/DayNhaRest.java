@@ -66,5 +66,11 @@ public class DayNhaRest {
 	 public List<DayNha> getDayNhanTheoTen(@RequestParam("tenDayNha") String tenDayNha){
 		 return dayNhaService.getDayNhaTheoTen(tenDayNha);
 	 }
+	 
+	 @GetMapping("/madaynha")
+		public String getMaHK() {
+		    // TODO Auto-generated method stub
+		    return dayNhaService.autoId();
+		}
 
 }

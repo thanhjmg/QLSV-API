@@ -57,5 +57,10 @@ public class PhongRest {
 		return phongService.getPhongHocConTrong(maLoai, maDay, ngayHoc, maCa);
 	}
 	
+	 @GetMapping("/maphong")
+		public String getMaHK() {
+		    // TODO Auto-generated method stub
+		    return phongService.autoId();
+		}
 	
 }

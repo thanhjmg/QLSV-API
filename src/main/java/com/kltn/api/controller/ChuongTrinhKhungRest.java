@@ -80,6 +80,11 @@ public class ChuongTrinhKhungRest {
 		// TODO Auto-generated method stub
 		return chuongTrinhKhungService.getCTKByMaSV(maSV);
 	}
+	 @GetMapping("/mactk")
+		public String getMaCTK() {
+		    // TODO Auto-generated method stub
+		    return chuongTrinhKhungService.autoId();
+		}
 	
 
 }

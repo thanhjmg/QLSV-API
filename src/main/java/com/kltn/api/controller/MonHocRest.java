@@ -61,4 +61,10 @@ public class MonHocRest {
 		// TODO Auto-generated method stub
 		return monHocService.getMonHocByTextSearch(valueSearch);
 	}
+	
+	@GetMapping("/mamonhoc")
+	public String getMaMH() {
+	    // TODO Auto-generated method stub
+	    return monHocService.autoId();
+	}
 }
